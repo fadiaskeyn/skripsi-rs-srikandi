@@ -32,7 +32,8 @@
         <div class="max-w-7xl mt-[10vh] lg:p-0 p-8  mx-auto">
             <h2 class="lg:text-5xl text-3xl font-bold tracking-tighter">Selamat Datang Di Sistem Informasi Pelaporan Indikator Pelayanan Rumah Sakit</h2>
         </div>
-        <form action="" class="mt-[10vh] space-y-8">
+        <form method="POST" action="{{ route('login') }}" class="mt-[10vh] space-y-8">
+            @csrf
             <div class="text-center space-y-4">
                 <h2 class="text-4xl font-bold">Login</h2>
                 <p class="text-lg">Sign in to continue.</p>
@@ -41,11 +42,11 @@
                 <div class="space-y-5 w-64 mx-auto">
                     <div class="input-box text-left space-y-3 w-full">
                         <label for="username" class="uppercase block font-semibold tracking-widest">Username</label>
-                        <input type="text" placeholder="" id="username" class="border border-black  p-3 w-full">
+                        <input type="text" placeholder="" id="username" class="border border-black  p-3 w-full" required>
                     </div>
                     <div class="input-box text-left space-y-3 w-full">
                         <label for="password" class="uppercase block font-semibold tracking-widest">Password</label>
-                        <input type="password" id="password" placeholder="*******" class="border border-black p-3 w-full">
+                        <input type="password" id="password" name="password" placeholder="*******" class="border border-black p-3 w-full" required>
                     </div>
                     <button class="bg-[#906236] px-10 py-2 text-lg text-white">Login</button>
                 </div>
