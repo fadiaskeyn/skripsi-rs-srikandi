@@ -30,4 +30,14 @@
     .sidebar-menu .menu-item .item {
         @apply hover:border-theme-border-sidebar  hover:bg-theme-border-sidebar/20;
     }
+    .tables {
+        @apply w-full border border-collapse;
+    }
+    .tables th,
+    td {
+        @apply border p-2;
+    }
+    .tables td {
+        @apply text-center;
+    }
 }
