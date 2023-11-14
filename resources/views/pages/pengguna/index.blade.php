@@ -10,16 +10,16 @@
             </div>
         </div>
         <div class="shadow border p-5 mt-20 bg-white">
-            <div class="p-2 flex justify-between">
+            <div class="p-2 lg:flex grid space-y-5 grid-cols-1 justify-between">
                 <div class="mt-3">
                     <h2 class="text-2xl font-bold">Table Pengguna</h2>
                 </div>
                 <div>
-                    <button class="px-8 py-4 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></button>
+                    <button class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></button>
                 </div>
             </div>
-            <div class="tables-responsive mt-10">
-                <table class="tables overflow-y-auto">
+            <div class="tables-responsive overflow-y-auto mt-10">
+                <table class="tables">
                     <thead>
                         <tr>
                             <th>No.</th>

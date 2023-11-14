@@ -28,12 +28,23 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/pengguna/create', function () {
-    return view('pages.pengguna.create');
+// registrasi
+Route::prefix('registrasi')->group(function () {
+    Route::get('/pasien-masuk', function () {
+        return view('pages.registrasi.pasien-masuk');
+    });
+    Route::get('/pasien-keluar', function () {
+        return view('pages.registrasi.pasien-keluar');
+    });
 });
-
-Route::get('/pengguna', function () {
-    return view('pages.pengguna.index');
+// admin
+Route::prefix('admin')->group(function(){
+    Route::get('/pengguna', function () {
+        return view('pages.pengguna.index');
+    });
+    Route::get('/pengguna/create', function () {
+        return view('pages.pengguna.create');
+    });
 });
 
 Route::middleware('auth')->group(function () {
