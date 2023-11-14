@@ -41,8 +41,8 @@
             <div class="gap-5 container flex w-full justify-center mx-auto">
                 <div class="space-y-5 w-64 mx-auto">
                     <div class="input-box text-left space-y-3 w-full">
-                        <label for="username" class="uppercase block font-semibold tracking-widest">Username</label>
-                        <input type="text" placeholder="" id="username" class="border border-black  p-3 w-full" required>
+                        <label for="email" class="uppercase block font-semibold tracking-widest">Username</label>
+                        <input  placeholder=""  type="email" name="email" class="border border-black  p-3 w-full" required>
                     </div>
                     <div class="input-box text-left space-y-3 w-full">
                         <label for="password" class="uppercase block font-semibold tracking-widest">Password</label>
