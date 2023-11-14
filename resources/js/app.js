@@ -1,7 +1,9 @@
-import './bootstrap';
+$(".dropdown-account-toggle").click(function (e) {
+    $(".dropdown-menu").toggleClass("hidden");
+    e.stopPropagation();
+});
 
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
+$(document).click(function (e) {
+    if (e.target.closest(".dropdown-menu")) return;
+    $(".dropdown-menu").addClass("hidden");
+});

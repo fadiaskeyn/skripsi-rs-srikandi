@@ -3,6 +3,27 @@
 @tailwind utilities;
 
 @layer base {
+    body {
+        @apply overflow-hidden;
+    }
+    .layout {
+        @apply flex;
+    }
+    .dropdown {
+        @apply bg-white  relative;
+    }
+    .dropdown .dropdown-menu {
+        @apply absolute top-16 bg-white right-8 z-10 w-80 border;
+    }
+    .dropdown .dropdown-menu .dropdown-menu-item {
+        @apply divide-y;
+    }
+    .dropdown .dropdown-menu .avatar-account .avatar {
+        @apply p-4;
+    }
+    .dropdown .dropdown-menu .dropdown-menu-item .item-dropdown {
+        @apply p-3 hover:bg-neutral-100 cursor-pointer w-full text-left;
+    }
     .active-menu {
         @apply border-theme-border-sidebar  bg-theme-border-sidebar/20;
     }

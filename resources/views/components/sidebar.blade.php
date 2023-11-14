@@ -1,9 +1,9 @@
 <div class="layout-sidebar ">
-    <div class="sidebar bg-theme-sidebar max-w-[280px] h-screen lg:block hidden">
-        <div class="logo-brand p-5">
+    <div class="sidebar  bg-[#423D37] max-w-[280px] h-screen lg:block hidden overflow-y-auto">
+        <div class="logo-brand p-5 bg-theme-sidebar">
             <img src="{{ asset('images/logo') }}/logo-horizontal.png" class="w-" alt="">
         </div>
-        <div class="sidebar-menu  h-screen w-auto bg-[#423D37]">
+        <div class="sidebar-menu w-auto">
             <ul class="divide-y divide-theme-border-sidebar">
                 <li class="menu-item">
                     <a href="#" class="">
