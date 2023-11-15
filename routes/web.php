@@ -22,12 +22,7 @@ Route::prefix('registrasi')->group(function () {
 });
 // admin
 Route::prefix('admin')->group(function(){
-    Route::get('/pengguna', function () {
-        return view('pages.pengguna.index');
-    });
-    Route::get('/pengguna/create', function () {
-        return view('pages.pengguna.create');
-    });
+    Route::resource('pengguna', App\Http\Controllers\Admin\UserController::class);
 });
 
 Route::middleware('auth')->group(function () {

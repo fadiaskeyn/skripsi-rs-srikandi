@@ -15,36 +15,22 @@
                     <h2 class="text-2xl font-bold">Table Pengguna</h2>
                 </div>
                 <div>
-                    <button class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></button>
+                    <a href="{{ route('pengguna.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
                 </div>
             </div>
-            <div class="tables-responsive overflow-y-auto mt-10">
-                <table class="tables">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Pengguna</th>
-                            <th>Jabatan</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Noga Muktiwati</td>
-                            <td>Dokter</td>
-                            <td>Noga</td>
-                            <td>******</td>
-                            <td class="flex gap-1 justify-center">
-                                <button class="px-4 py-3  rounded-lg bg-theme-border-sidebar/20 text-theme-border-sidebar">Edit</button>
-                                <button class="px-4 py-3 text-white rounded-lg bg-theme-border-sidebar">Hapus</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+            @php
+                
+              $data = [
+                ['id' => 1, 'cell1' => 'Row 1, Cell 1', 'cell2' => 'Row 1, Cell 2', 'cell3' => 'Row 1, Cell 3'],
+                ['id' => 2, 'cell1' => 'Row 2, Cell 1', 'cell2' => 'Row 2, Cell 2', 'cell3' => 'Row 2, Cell 3'],
+                ['id' => 3, 'cell1' => 'Row 3, Cell 1', 'cell2' => 'Row 3, Cell 2', 'cell3' => 'Row 3, Cell 3']
+            ];
+
+            @endphp
+            {{-- Table --}}
+            <x-content.table :headers="['No','Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3', 'Action']" :rows="$data" />
+
         </div>
     </div>
 @endsection
