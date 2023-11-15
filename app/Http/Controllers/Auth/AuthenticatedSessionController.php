@@ -27,13 +27,8 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
         $request->session()->regenerate();
-        $user = Auth::user();
 
-        if($user->hasRole('kepala-rm'))
-            return redirect()->route('admin.dashboard');
-
-        if($user->hasRole('petugas-pendaftaran'))
-            return redirect()->route('registration.dashboard');
+        return redirect_role();
     }
 
     /**

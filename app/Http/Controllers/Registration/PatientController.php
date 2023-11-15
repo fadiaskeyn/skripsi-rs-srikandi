@@ -3,16 +3,27 @@
 namespace App\Http\Controllers\Registration;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Registration\PatientRequest;
+use App\Repositories\PatientRepository;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
+    private PatientRepository $patientRepo;
+
+    public function __construct()
+    {
+        $this->patientRepo = new PatientRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('pages.registrasi.history.index', [
+            'data' => $this->patientRepo->getData(),
+        ]);
     }
 
     /**
@@ -20,15 +31,16 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.registrasi.history.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PatientRequest $request)
     {
-        //
+        $this->patientRepo->create($request->validated());
+        return redirect()->back();
     }
 
     /**
