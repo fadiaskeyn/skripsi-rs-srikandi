@@ -13,3 +13,5 @@ $(".dropdown-toggle").click(function () {
     $(this).children(".dropdown-arrow").toggleClass("rotate-180");
     $(".dropdown-toggle").toggleClass("active-hover");
 });
+
+$(".dropdown-menu-link:not(.active)").addClass('hidden');

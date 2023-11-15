@@ -27,17 +27,26 @@
     .dropdown-menu-link {
         @apply p-4  bg-theme-primary;
     }
+    .dropdown-menu-link.active {
+        @apply block;
+    }
     .dropdown-menu-link .menu-dropdown {
         @apply space-y-2;
     }
     .dropdown-menu-link .menu-dropdown .item-link {
         @apply p-3 w-full box-border text-left hover:bg-theme-border-sidebar rounded-md;
     }
+    .dropdown-menu-link .menu-dropdown .item-link.active {
+        @apply bg-theme-border-sidebar rounded-md;
+    }
     .active-menu {
         @apply border-theme-border-sidebar  bg-theme-border-sidebar/20;
     }
     .sidebar-menu .menu-item .item {
-        @apply hover:border-theme-border-sidebar  hover:bg-theme-border-sidebar/20;
+        @apply border-transparent hover:border-theme-border-sidebar  hover:bg-theme-border-sidebar/20;
+    }
+    .sidebar-menu .menu-item .item.active {
+        @apply border-theme-border-sidebar bg-theme-border-sidebar/20;
     }
     .tables {
         @apply w-full border border-collapse;

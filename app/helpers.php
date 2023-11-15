@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Irsyadulibad\LaravelActivehelper\ActiveHelper;
 
 if(!function_exists('redirect_role')) {
     function redirect_role() {
