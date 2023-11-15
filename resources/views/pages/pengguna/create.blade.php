@@ -13,44 +13,16 @@
                 {{-- form start --}}
                 <form class="mt-5 w-full max-w-sm" action="" method="POST">
                     <div class="md:flex md:items-center mb-6 w-full gap-2">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0" for="inline-full-name">
-                                Nama Pengguna
-                            </label>
-                        </div>
-                        <div class="md:w-2/3">
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="Mohammad Sahrullah">
-                        </div>
+                        <x-forms.input id="name" type="text" name="name" label="Nama Pengguna" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
-                                Jabatan
-                            </label>
-                        </div>
-                        <div class="md:w-2/3">
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="">
-                        </div>
+                       <x-forms.input id="position" type="text" name="position" label="Jabatan" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
-                                No Pegawai
-                            </label>
-                        </div>
-                        <div class="md:w-2/3">
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="">
-                        </div>
+                        <x-forms.input id="employee_number" type="text" name="employee_number" label="No Pegawai" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0 pr-4" for="inline-full-name">
-                                Email
-                            </label>
-                        </div>
-                        <div class="md:w-2/3">
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="">
-                        </div>
+                        <x-forms.input id="email" type="email" name="email" label="Email" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
                         <div class="md:w-1/3">
@@ -66,24 +38,10 @@
                         </div>
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0" for="inline-full-name">
-                                Username
-                            </label>
-                        </div>
-                        <div class="md:w-2/3">
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="">
-                        </div>
+                       <x-forms.input id="username" type="text" name="username" label="Username" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 " for="inline-password">
-                                Password
-                            </label>
-                        </div>
-                        <div class="md:w-2/3">
-                            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="inline-password" type="password" placeholder="******************">
-                        </div>
+                        <x-forms.input id="password" type="password" name="password" label="Password" />
                     </div>
                     <div class="bg-white flex gap-5 ">
                         <button class="inline-flex items-center px-4 py-2 bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium ">
