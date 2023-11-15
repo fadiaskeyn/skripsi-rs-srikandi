@@ -33,9 +33,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="btn-logout">
+                            <a href="{{ route('logout') }}" id="btn-logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <button class="item-dropdown">Logout</button>
                             </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -43,40 +47,3 @@
         </div>
     </div>
 </header>
-
-@push('script-injection')
-    <script>
-        $("#btn-logout").on('click', function() {
-            Swal.fire({
-                title: 'Keluar',
-                html: 'Affakah yakin akan mengakhiri sesi ini?',
-                icon: 'question',
-                iconColor: '#DC3545',
-                showCancelButton: true,
-                confirmButtonText: 'Logout',
-                cancelButtonText: `Batal`,
-                confirmButtonColor: '#DC3545'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('logout') }}",
-                        data: {
-                            _token: "{{ csrf_token() }}",
-                        },
-                        dataType: 'json',
-                        success: function(data) {
-                            if (data.status == 'success') {
-                                const url = "{{ route('login') }}"
-                                window.location.href = url;
-                            }
-                        },
-                        error: function(e) {
-                            console.log(e)
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-@endpush

@@ -6,18 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Interface\UserRepositoryInterface;
 use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
     
-    protected $userRepository;
+    protected UserRepository $userRepository;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct()
     {
 
-        $this->userRepository = $userRepository;
+        $this->userRepository = new UserRepository;
     
     }
     /**
