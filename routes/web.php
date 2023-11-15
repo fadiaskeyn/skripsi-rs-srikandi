@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::get("/", fn() => to_route('login'));
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn() => redirect_role())->name('dashboard');
 
