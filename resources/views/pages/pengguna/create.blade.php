@@ -11,7 +11,9 @@
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 w-full max-w-sm" action="" method="POST" autocomplete="off">
+                <form class="mt-5 w-full max-w-sm" action="{{ route('pengguna.store') }}" method="POST" autocomplete="off">
+                    @csrf
+                    
                     <div class="md:flex md:items-center mb-6 w-full gap-2">
                         <x-forms.input id="name" type="text" name="name" label="Nama Pengguna" />
                     </div>
@@ -31,8 +33,11 @@
                             </label>
                         </div>
                         <div class="md:w-2/3 relative">
-                            <select name="" id=""  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
-                                <option value="">Kepala RM</option>
+                            <select name="role" id=""  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                                <option selected disabled value="0">Pilih akses</option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                @endforeach
                             </select>
                             <span class="absolute right-4 top-2"><iconify-icon icon="ep:arrow-down-bold"></iconify-icon></span>
                         </div>
@@ -44,11 +49,11 @@
                         <x-forms.input id="password" type="password" name="password" label="Password" />
                     </div>
                     <div class="bg-white flex gap-5 ">
-                        <button class="inline-flex items-center px-4 py-2 bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium ">
+                        <button type="submit" class="inline-flex items-center px-4 py-2 bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium ">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                             </svg>
-                            Perbarui
+                            Tambah
                         </button>
                         <a href="{{ route('pengguna.index') }}" class="inline-flex items-center px-4 py-2 bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium">
                             {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

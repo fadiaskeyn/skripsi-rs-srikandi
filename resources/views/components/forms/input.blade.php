@@ -14,5 +14,10 @@
     </label>
 </div>
 <div class="md:w-2/3">
-    <input {{ $attributes->merge(['class' => $class]) }} type="{{ $type }}" name="{{ $name }}" value="{{ $value }}" id="{{ $id }}">
+    <input {{ $attributes->merge(['class' => $class]) }} type="{{ $type }}" name="{{ $name }}" value="{{ old($name, $value) }}" id="{{ $id }}">
+     @error($name)
+        <div class="text-red-500 mt-2 text-sm">
+            {{ $message }}
+        </div>
+    @enderror
 </div>
