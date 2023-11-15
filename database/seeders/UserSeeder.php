@@ -15,8 +15,10 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $kepalaRm = User::factory()->create([
-            'name' => 'Mohammad Sahrullah',
-            'email' => 'mohammadsahrullah894@gmail.com',
+            'name' => 'admin',
+            'position' => 'Kepala Rumah Sakit',
+            'employee_number' => 001,
+            'email' => 'admin@mail.com',
             'password' => Hash::make('admin123'),
         ]);
 

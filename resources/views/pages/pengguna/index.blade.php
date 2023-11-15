@@ -15,36 +15,13 @@
                     <h2 class="text-2xl font-bold">Table Pengguna</h2>
                 </div>
                 <div>
-                    <button class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></button>
+                    <a href="{{ route('admin.pengguna.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
                 </div>
             </div>
-            <div class="tables-responsive overflow-y-auto mt-10">
-                <table class="tables">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama Pengguna</th>
-                            <th>Jabatan</th>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Noga Muktiwati</td>
-                            <td>Dokter</td>
-                            <td>Noga</td>
-                            <td>******</td>
-                            <td class="flex gap-1 justify-center">
-                                <button class="px-4 py-3  rounded-lg bg-theme-border-sidebar/20 text-theme-border-sidebar">Edit</button>
-                                <button class="px-4 py-3 text-white rounded-lg bg-theme-border-sidebar">Hapus</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+            {{-- Table --}}
+            <x-content.table :headers="['No','name','username','email','Action']" :rows="$data" />
+
         </div>
     </div>
 @endsection
