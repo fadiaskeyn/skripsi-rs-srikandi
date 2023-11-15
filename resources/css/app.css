@@ -24,6 +24,15 @@
     .dropdown .dropdown-menu .dropdown-menu-item .item-dropdown {
         @apply p-3 hover:bg-neutral-100 cursor-pointer w-full text-left;
     }
+    .dropdown-menu-link {
+        @apply p-4  bg-theme-primary;
+    }
+    .dropdown-menu-link .menu-dropdown {
+        @apply space-y-2;
+    }
+    .dropdown-menu-link .menu-dropdown .item-link {
+        @apply p-3 w-full box-border text-left hover:bg-theme-border-sidebar rounded-md;
+    }
     .active-menu {
         @apply border-theme-border-sidebar  bg-theme-border-sidebar/20;
     }

@@ -64,6 +64,7 @@
                         data: {
                             _token: "{{ csrf_token() }}",
                         },
+                        dataType: 'json',
                         success: function(data) {
                             if (data.status == 'success') {
                                 const url = "{{ route('login') }}"

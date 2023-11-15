@@ -15,7 +15,7 @@
                     <h2 class="text-2xl font-bold">Table Pengguna</h2>
                 </div>
                 <div>
-                    <a href="{{ route('pengguna.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
+                    <a href="{{ route('admin.pengguna.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
                 </div>
             </div>
 
