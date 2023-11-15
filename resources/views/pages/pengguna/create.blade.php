@@ -11,9 +11,9 @@
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 w-full max-w-sm" action="{{ route('pengguna.store') }}" method="POST" autocomplete="off">
+                <form class="mt-5 w-full max-w-sm" action="{{ route('admin.pengguna.store') }}" method="POST" autocomplete="off">
                     @csrf
-                    
+
                     <div class="md:flex md:items-center mb-6 w-full gap-2">
                         <x-forms.input id="name" type="text" name="name" label="Nama Pengguna" />
                     </div>
