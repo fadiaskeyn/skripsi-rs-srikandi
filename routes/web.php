@@ -32,10 +32,10 @@ Route::get('/', function () {
 Route::prefix('registrasi')->group(function () {
     Route::get('/pasien-masuk', function () {
         return view('pages.registrasi.pasien-masuk');
-    });
+    })->name('registrasi.pasien-masuk');
     Route::get('/pasien-keluar', function () {
         return view('pages.registrasi.pasien-keluar');
-    });
+    })->name('registrasi.pasien-keluar');
 });
 // admin
 Route::prefix('admin')->group(function(){

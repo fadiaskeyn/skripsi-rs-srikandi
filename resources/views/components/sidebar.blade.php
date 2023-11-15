@@ -6,7 +6,7 @@
         <div class="sidebar-menu w-auto">
             <ul class="divide-y divide-theme-border-sidebar">
                 <li class="menu-item">
-                    <a href="#" class="" >
+                    <a href="{{ route('dashboard') }}" class="" >
                         <button class="item w-full border-l-8 px-8 py-5 text-left text-white {{ request()->is('/', 'dashboard') ? 'active-menu' : 'border-transparent' }}">
                             Dashboard
                         </button>
@@ -14,16 +14,19 @@
                 </li>
                 <li class="menu-item dropdown-toggle">
                     <a href="#" class="">
-                        <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex {{ request()->is('register', 'register/pasien-masuk',  'register/pasien-masuk/*', 'register/pasien-keluar', 'register/pasien-keluar/*' ) ? 'active-menu' : '' }}">
+                        <button class="item w-full border-l-8  px-8 py-5 text-left text-white flex {{ request()->is('registrasi', 'registrasi/pasien-masuk',  'registrasi/pasien-masuk/*', 'registrasi/pasien-keluar', 'registrasi/pasien-keluar/*' ) ? 'active-menu' : 'border-l-transparent' }}">
                             <span>Register</span>
-                            <span class="flex justify-end w-full mt-0"><iconify-icon icon="iconamoon:arrow-down-2-duotone" class="text-2xl"></iconify-icon></span>
+                            <span class="dropdown-arrow flex justify-end w-full mt-0"><iconify-icon icon="iconamoon:arrow-down-2-duotone" class="text-2xl"></iconify-icon></span>
                         </button>
                     </a>
-                    <div class="dropdown-menu-link {{ request()->is('register', 'register/pasien-masuk',  'register/pasien-masuk/*', 'register/pasien-keluar', 'register/pasien-keluar/*' ) ? '' : 'hidden' }}">
-                        <ul class="menu-dropdown">
-                        </ul>
-                    </div>
                 </li>
+                <div class="dropdown-menu-link {{ request()->is('registrasi', 'registrasi/pasien-masuk',  'registrasi/pasien-masuk/*', 'registrasi/pasien-keluar', 'registrasi/pasien-keluar/*' ) ? 'show' : 'hidden' }}">
+                    <ul class="menu-dropdown">
+                        <li><a href="{{ route('registrasi.pasien-masuk') }}" class="text-white"><button class="item-link">Registrasi Pasien Masuk</button></a></li>
+                        <li><a href="{{ route('registrasi.pasien-keluar') }}" class="text-white"><button class="item-link">Registrasi Pasien Keluar</button></a></li>
+                        <li><a href="#" class="text-white"><button class="item-link">Histori Pasien</button></a></li>
+                    </ul>
+                </div>
                 <li class="menu-item">
                     <a href="#" class="">
                         <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
@@ -48,13 +51,19 @@
                         </button>
                     </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item dropdown-toggle">
                     <a href="#" class="">
                         <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
                             <span>Admin</span>
                         </button>
                     </a>
                 </li>
+                <div class="dropdown-menu-link {{ request()->is('admin', 'admin/pengguna',  'admin/pengguna/*') ? 'show' : 'hidden' }}">
+                    <ul class="menu-dropdown">
+                        <li><a href="{{ route('admin.pengguna') }}" class="text-white"><button class="item-link">Registrasi Pasien Masuk</button></a></li>
+                        <li><a href="#" class="text-white"><button class="item-link">Histori Pasien</button></a></li>
+                    </ul>
+                </div>
             </ul>
         </div>
     </div>
