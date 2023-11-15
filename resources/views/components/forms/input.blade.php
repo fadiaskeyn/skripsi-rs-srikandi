@@ -3,7 +3,7 @@
     'type' => 'text',
     'name',
     'value' => '',
-    'class' => 'bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500',
+    'class' => 'bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white',
     'label',
     'labelClass' => 'block text-gray-500 font-bold md:text-left mb-1 md:mb-0'
 ])

@@ -10,8 +10,8 @@ Route::resource('histori', PatientController::class);
 
 Route::get('pasien-masuk', function () {
     return view('pages.registrasi.pasien-masuk');
-});
+})->name('pasien-masuk');;
 
 Route::get('pasien-keluar', function () {
     return view('pages.registrasi.pasien-keluar');
-});
+})->name('pasien-keluar');

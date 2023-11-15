@@ -49,7 +49,7 @@ class UserController extends Controller
         $user = $this->userRepository->create($validated);
         $this->assignUserRole($user, $validated['role']);
 
-        return to_route('pengguna.index');
+        return to_route('admin.pengguna.index');
 
     }
 
