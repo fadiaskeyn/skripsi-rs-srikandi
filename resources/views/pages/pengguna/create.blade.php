@@ -11,7 +11,7 @@
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 w-full max-w-sm">
+                <form class="mt-5 w-full max-w-sm" action="" method="POST">
                     <div class="md:flex md:items-center mb-6 w-full gap-2">
                         <div class="md:w-1/3">
                             <label class="block text-gray-500 font-bold md:text-left mb-1 md:mb-0" for="inline-full-name">

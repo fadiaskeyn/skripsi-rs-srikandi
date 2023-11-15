@@ -32,7 +32,7 @@
         <div class="max-w-7xl mt-[10vh] lg:p-0 p-8  mx-auto">
             <h2 class="lg:text-5xl text-3xl font-bold tracking-tighter">Selamat Datang Di Sistem Informasi Pelaporan Indikator Pelayanan Rumah Sakit</h2>
         </div>
-        <form method="POST" action="{{ route('login') }}" class="mt-[10vh] space-y-8">
+        <form method="POST" action="{{ route('login') }}" autocomplete="off" class="mt-[10vh] space-y-8">
             @csrf
             <div class="text-center space-y-4">
                 <h2 class="text-4xl font-bold">Login</h2>
