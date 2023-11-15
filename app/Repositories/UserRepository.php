@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
 {
+
+    public function getData(): array{
+        $user = User::select('id', 'name', 'username', 'email')->get();
+        return $user->toArray();
+    }
+
     public function create(array $data): User
     {
         return User::create([

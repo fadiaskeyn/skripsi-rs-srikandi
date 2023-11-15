@@ -19,17 +19,8 @@
                 </div>
             </div>
 
-            @php
-                
-              $data = [
-                ['id' => 1, 'cell1' => 'Row 1, Cell 1', 'cell2' => 'Row 1, Cell 2', 'cell3' => 'Row 1, Cell 3'],
-                ['id' => 2, 'cell1' => 'Row 2, Cell 1', 'cell2' => 'Row 2, Cell 2', 'cell3' => 'Row 2, Cell 3'],
-                ['id' => 3, 'cell1' => 'Row 3, Cell 1', 'cell2' => 'Row 3, Cell 2', 'cell3' => 'Row 3, Cell 3']
-            ];
-
-            @endphp
             {{-- Table --}}
-            <x-content.table :headers="['No','Row 1, Cell 1', 'Row 1, Cell 2', 'Row 1, Cell 3', 'Action']" :rows="$data" />
+            <x-content.table :headers="['No','name','username','email','Action']" :rows="$data" />
 
         </div>
     </div>
