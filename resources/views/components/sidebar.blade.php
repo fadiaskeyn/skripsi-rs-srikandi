@@ -73,13 +73,13 @@
                 <div class="dropdown-menu-link">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Grafik Kunjungan</button></a>
+                            <a href="{{ route('admin.chart.visit') }}" class="text-white"><button class="item-link">Grafik Kunjungan</button></a>
                         </li>
                         <li>
-                            <a href="" class="text-white"><button class="item-link">Grafik Barber Johnson</button></a>
+                            <a href="{{ route('admin.chart.barber-johnson') }}" class="text-white"><button class="item-link">Grafik Barber Johnson</button></a>
                         </li>
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Grafik Tren Rawat Inap</button></a>
+                            <a href="{{ route('admin.chart.inpatient') }}" class="text-white"><button class="item-link">Grafik Rawat Inap</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">Grafik 10 Besar penyakit RI</button></a>
@@ -97,7 +97,7 @@
                 <div class="dropdown-menu-link">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Data Pengguna</button></a>
+                            <a href="{{ route('admin.pengguna.index') }}" class="text-white"><button class="item-link">Data Pengguna</button></a>
                         </li>
                         <li>
                             <a href="" class="text-white"><button class="item-link">Data Ruangan & TT</button></a>
