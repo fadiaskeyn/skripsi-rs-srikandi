@@ -15,6 +15,7 @@ export default {
                 "theme-primary": "#423D37",
                 "theme-sidebar": "#3C3D41",
                 "theme-border-sidebar": "#785839",
+                "theme-secondary": "#785839",
             },
             fontFamily: {
                 "plus-jakarta-sans": "'Plus Jakarta Sans', sans-serif",
