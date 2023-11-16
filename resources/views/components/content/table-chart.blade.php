@@ -1,16 +1,31 @@
-<div class="tables-responsive overflow-y-auto">
-    <table class="tables">
-        <thead class="bg-[#423D37] text-white">
-             <tr>
-                <td>Perempuan</td>
-                <td>Laki-laki</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>10%</td>
-                <td>75%</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <table class="tables mt-8">
+                        <thead>
+                            <tr>
+                                <th class="bg-theme-secondary text-white">Type</th>
+                                <th class="bg-theme-secondary text-white">Nilai Indikator</th>
+                                <th class="bg-theme-secondary text-white">Warna</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>BOR</td>
+                                <td>65%</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>BTO</td>
+                                <td>65%</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>TOI</td>
+                                <td>65%</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>AVLOS</td>
+                                <td>65%</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>

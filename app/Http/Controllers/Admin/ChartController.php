@@ -20,19 +20,16 @@ class ChartController extends Controller
 
     public function visit()
     {
-        // return view('pages.grafik.kunjungan', ['chart'=> $this->chart->build()]);
-        return view('pages.grafik.kunjungan.index');
+        return view('pages.chart.visit', ['chart'=> $this->chart->build()]);
     }
 
     public function inpatient()
     {
-        // return view('pages.grafik.rawat-inap', ['chart'=> $this->chart->build()]);
-        return view('pages.grafik.rawat-inap.index');
+        return view('pages.chart.inpatient', ['chart'=> $this->chart->build()]);
     }
 
     public function barberJohnson()
     {
-        // return view('pages.grafik.barber-johnson', ['chart' => $this->barber->build()]);
-        return view('pages.grafik.barber-johnson.index');
+        return view('pages.chart.barber-johnson', ['chart' => $this->barber->build()]);
     }
 }
