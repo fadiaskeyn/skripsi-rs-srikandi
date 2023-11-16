@@ -11,7 +11,7 @@ Route::resource('pengguna', App\Http\Controllers\Admin\UserController::class);
 Route::controller(App\Http\Controllers\Admin\ChartController::class)
     ->group(function(){
 
-        Route::get('kunjungan', 'visit')->name('chart.visit');
-        Route::get('rawat-inap', 'inpatient')->name('chart.inpatient');
-        Route::get('barber-johnson', 'barberJohnson')->name('chart.barber-johnson');
+        Route::get('kunjungan', 'visit')->name('grafik.visit');
+        Route::get('rawat-inap', 'inpatient')->name('grafik.inpatient');
+        Route::get('barber-johnson', 'barberJohnson')->name('grafik.barber-johnson');
     });

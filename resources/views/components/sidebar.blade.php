@@ -62,7 +62,7 @@
                         </li>
                     </ul>
                 </div>
-                <li class="menu-item dropdown-toggle">
+                <li class="menu-item dropdown-toggle @active('admin.grafik.*')" >
                     <a href="#" class="">
                         <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex ">
                             <span>Grafik</span>
@@ -70,16 +70,16 @@
                         </button>
                     </a>
                 </li>
-                <div class="dropdown-menu-link">
+                <div class="dropdown-menu-link @active('admin.grafik.*')">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('admin.chart.visit') }}" class="text-white"><button class="item-link">Grafik Kunjungan</button></a>
+                            <a href="{{ route('admin.grafik.visit') }}" class="text-white"><button class="item-link">Grafik Kunjungan</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.chart.barber-johnson') }}" class="text-white"><button class="item-link">Grafik Barber Johnson</button></a>
+                            <a href="{{ route('admin.grafik.barber-johnson') }}" class="text-white"><button class="item-link">Grafik Barber Johnson</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.chart.inpatient') }}" class="text-white"><button class="item-link">Grafik Rawat Inap</button></a>
+                            <a href="{{ route('admin.grafik.inpatient') }}" class="text-white"><button class="item-link">Grafik Rawat Inap</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">Grafik 10 Besar penyakit RI</button></a>

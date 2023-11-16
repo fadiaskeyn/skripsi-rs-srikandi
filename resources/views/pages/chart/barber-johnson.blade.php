@@ -54,9 +54,8 @@
             <div class="col-span-6">
                 <div class="max-w-sm rounded overflow-hidden shadow-lg px-6 py-4">
 
-                     {{-- Table --}}
-                   <x-content.table-chart/>
-
+                    {{-- Table --}}
+                <x-content.table-chart/>
                 </div>
             </div>
         </div>
