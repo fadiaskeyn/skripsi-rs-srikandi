@@ -15,3 +15,5 @@ Route::controller(App\Http\Controllers\Admin\ChartController::class)
         Route::get('rawat-inap', 'inpatient')->name('chart.inpatient');
         Route::get('barber-johnson', 'barberJohnson')->name('chart.barber-johnson');
     });
+
+    

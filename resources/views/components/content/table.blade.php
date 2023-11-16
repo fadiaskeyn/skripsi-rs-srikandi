@@ -1,22 +1,22 @@
 <div class="tables-responsive overflow-y-auto mt-10">
     <table class="tables">
         <thead>
-             <tr>
+            <tr>
                 @foreach ($headers as $header)
                     <th>{{ $header }}</th>
                 @endforeach
             </tr>
         </thead>
         <tbody>
-             @foreach ($rows as $row)
-             
+            @foreach ($rows as $row)
+            
                 <tr>
                     @foreach ($row as $cell)
                         <td>{{ $cell }}</td>
                     @endforeach
                     <td>
-                        <a href="/edit/{{ $row['id'] }}">Edit</a> <!-- Tautan untuk mengedit -->
-                        <a href="/delete/{{ $row['id'] }}">Hapus</a> <!-- Tautan untuk menghapus -->
+                        <a class="inline-flex  items-center px-4 py-2 rounded-lg bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium" href="/edit/{{ $row['id'] }}">Edit</a> <!-- Tautan untuk mengedit -->
+                        <a class="inline-flex items-center px-4 py-2 rounded-lg bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium" href="/delete/{{ $row['id'] }}">Hapus</a> <!-- Tautan untuk menghapus -->
                     </td>
                 </tr>
             @endforeach

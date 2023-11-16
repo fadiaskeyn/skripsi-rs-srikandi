@@ -4,50 +4,36 @@
         <div class="w-full bg-white">
             <div class="space-y-8 pb-8">
                 <div class="head">
-                    <h2 class="text-3xl font-bold">Data Pengguna</h2>
+                    <h2 class="text-3xl font-bold">Data Ruangan & Tempat Tidur<h2>
                 </div>
                 <div class="line h-2 rounded-full w-full bg-theme-border-sidebar/20">
                     <div class="line h-2 rounded-full w-2/4 bg-theme-border-sidebar"></div>
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 w-full max-w-sm" action="{{ route('admin.pengguna.store') }}" method="POST" autocomplete="off">
+                <form class="mt-5 w-full max-w-sm" action="" method="POST" autocomplete="off">
                     @csrf
 
                     <div class="md:flex md:items-center mb-6 w-full gap-2">
-                        <x-forms.input id="name" type="text" name="name" label="Nama Pengguna" />
+                        <x-forms.input id="name" type="text" name="name" label="Nama Ruangan" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.input id="position" type="text" name="position" label="Jabatan" />
-                    </div>
-                    <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.input id="employee_number" type="text" name="employee_number" label="No Pegawai" />
-                    </div>
-                    <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.input id="email" type="email" name="email" label="Email" />
+                        <x-forms.input id="position" type="text" name="position" label="Jumlah Tempat Tidur" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
                         <div class="md:w-1/3">
                             <label class="block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0" for="inline-full-name">
-                                Role Pengguna
+                                Jenis Ruangan
                             </label>
                         </div>
                         <div class="md:w-2/3 relative">
                             <select name="role" id=""  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white">
-                                <option selected disabled value="0">Pilih akses</option>
-                                @foreach ($roles as $role)
-                                    <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                @endforeach
+                                <option selected disabled value="0">Pilih Jenis Ruangan</option>
                             </select>
                             <span class="absolute right-4 top-2"><iconify-icon icon="ep:arrow-down-bold"></iconify-icon></span>
                         </div>
                     </div>
-                    <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.input id="username" type="text" name="username" label="Username" />
-                    </div>
-                    <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.input id="password" type="password" name="password" label="Password" />
-                    </div>
+                    
                     <div class="bg-white flex gap-5 ">
                         <button type="submit" class="inline-flex items-center px-4 py-2 rounded-lg bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium ">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
