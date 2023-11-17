@@ -11,17 +11,17 @@
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 w-full max-w-sm" action="" method="POST" autocomplete="off">
+                <form class="mt-5 w-full max-w-sm" action="{{ route('admin.room.store') }}" method="POST" autocomplete="off">
                     @csrf
 
                     <div class="md:flex md:items-center mb-6 w-full gap-2">
                         <x-forms.input id="name" type="text" name="name" label="Nama Ruangan" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.input id="position" type="numbe" name="position" label="Jumlah Tempat Tidur" />
+                        <x-forms.input id="number_of_beds" type="number" name="number_of_beds" label="Jumlah Tempat Tidur" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.select name="room_type" id="room_type" label="Jenis Ruangan" :options="['BPJS', 'Umum']" />
+                        <x-forms.select name="type_room" id="type_room" label="Jenis Ruangan" :options="['BPJS', 'Umum']" />
                     </div>
                     
                     <div class="bg-white flex gap-5 ">

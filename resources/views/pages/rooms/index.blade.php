@@ -20,7 +20,7 @@
         </div>
 
         {{-- Table --}}
-        <x-content.table :headers="['No','Nama Ruangan','Jumlah Tempat Tidur','Jenis Ruangan','Action']" :rows="[]" />
+        <x-content.table :headers="['No','Nama Ruangan','Jumlah Tempat Tidur','Jenis Ruangan','Action']" :rows="$data" />
 
     </div>
 </div>
