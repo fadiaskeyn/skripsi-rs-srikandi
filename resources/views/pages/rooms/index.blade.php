@@ -15,7 +15,7 @@
                 <h2 class="text-2xl font-bold">Table Ruangan Inap</h2>
             </div>
             <div>
-                <a href="" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Data<span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
+                <a href="{{ route('admin.room.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Data<span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
             </div>
         </div>
 

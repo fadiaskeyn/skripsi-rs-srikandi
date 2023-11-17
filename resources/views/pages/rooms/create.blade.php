@@ -18,20 +18,10 @@
                         <x-forms.input id="name" type="text" name="name" label="Nama Ruangan" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.input id="position" type="text" name="position" label="Jumlah Tempat Tidur" />
+                        <x-forms.input id="position" type="numbe" name="position" label="Jumlah Tempat Tidur" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0" for="inline-full-name">
-                                Jenis Ruangan
-                            </label>
-                        </div>
-                        <div class="md:w-2/3 relative">
-                            <select name="role" id=""  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white">
-                                <option selected disabled value="0">Pilih Jenis Ruangan</option>
-                            </select>
-                            <span class="absolute right-4 top-2"><iconify-icon icon="ep:arrow-down-bold"></iconify-icon></span>
-                        </div>
+                        <x-forms.select name="room_type" id="room_type" label="Jenis Ruangan" :options="['BPJS', 'Umum']" />
                     </div>
                     
                     <div class="bg-white flex gap-5 ">
@@ -41,7 +31,7 @@
                             </svg>
                             Tambah
                         </button>
-                        <a href="{{ route('admin.pengguna.index') }}" class="inline-flex items-center px-4 py-2 rounded-lg bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium">
+                        <a href="{{ route('admin.room.index') }}" class="inline-flex items-center px-4 py-2 rounded-lg bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium">
                             {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg> --}}

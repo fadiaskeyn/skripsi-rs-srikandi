@@ -100,7 +100,7 @@
                             <a href="{{ route('admin.pengguna.index') }}" class="text-white"><button class="item-link">Data Pengguna</button></a>
                         </li>
                         <li>
-                            <a href="" class="text-white"><button class="item-link">Data Ruangan & TT</button></a>
+                            <a href="{{ route('admin.room.index') }}" class="text-white"><button class="item-link">Data Ruangan & TT</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">Data Jenis Pelayanan</button></a>

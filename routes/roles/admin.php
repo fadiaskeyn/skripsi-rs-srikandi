@@ -16,4 +16,11 @@ Route::controller(App\Http\Controllers\Admin\ChartController::class)
         Route::get('barber-johnson', 'barberJohnson')->name('chart.barber-johnson');
     });
 
-    
+
+Route::get('/ruangan', function(){
+    return view('pages.rooms.index');
+})->name('room.index');
+
+Route::get('/ruangan/create', function(){
+    return view('pages.rooms.create');
+})->name('room.create');
