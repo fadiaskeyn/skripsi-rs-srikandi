@@ -106,6 +106,9 @@
                             <a href="{{ route('admin.service.index') }}" class="text-white"><button class="item-link">Data Jenis Pelayanan</button></a>
                         </li>
                         <li>
+                            <a href="{{ route('admin.payment.index') }}" class="text-white"><button class="item-link">Data Jenis Pembayaran</button></a>
+                        </li>
+                        <li>
                             <a href="#" class="text-white"><button class="item-link">Data Diagnosa</button></a>
                         </li>
                     </ul>
