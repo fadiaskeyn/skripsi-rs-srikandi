@@ -1,4 +1,3 @@
-
 <div class="md:flex md:items-center mb-6 w-full gap-2">
     <x-forms.input id="medrec_number" type="number" name="medrec_number" label="No. RM" maxlength="6" />
 </div>
@@ -9,28 +8,28 @@
     <x-forms.input id="birthdate" type="date" name="birthdate" label="Tgl. Lahir" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.input id="gender" type="text" name="gender" label="Jenis Kelamin" />
+    <x-forms.select id="gender" type="text" name="gender" label="Jenis Kelamin" placeholder="Pilih Jenis Kelamin" :options="['P', 'L']" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
     <x-forms.input id="address" type="text" name="address" label="Alamat" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.select name="status" id="status" label="Status Pasien" :options="['Baru', 'Lama']" />
+    <x-forms.select name="status" id="status" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Baru', 'Lama']" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
     <x-forms.input id="date"  type="date" name="date" label="Tanggal Masuk" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.select name="status" id="status" label="Jenis Pelayanan" :options="$services" selected="OBGYN" />
+    <x-forms.select name="status" id="status" label="Jenis Pelayanan" placeholder="Pilih Jenis Pelayanan" :options="$services" selected="OBGYN" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.select name="status" id="status" label="Kelas Rawat" :options="['1', '2', '3']" selected="1" />
+    <x-forms.select name="status" id="status" label="Kelas Rawat" placeholder="Pilih Kelas Rawat" :options="['1', '2', '3']" selected="1" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-<x-forms.select name="status" id="status" label="Pembayaran" :options="$payments" selected="1" />
+    <x-forms.select name="status" id="status" label="Pembayaran" placeholder="Pilih Pembayaran" :options="$payments" selected="1" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.select name="status" id="status" label="Ruang Perawatan" :options="$rooms" />
+    <x-forms.select name="status" id="status" label="Ruang Perawatan" placeholder="Pilih Ruang Perawatan" :options="$rooms" />
 </div>
 
 <div class="bg-white flex gap-5 ">

@@ -7,7 +7,7 @@
     'labelClass' => 'block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0',
     'options',
     'selected' => null,
-    'placeholder' => 'Pilih akses'
+    'placeholder',
 ])
 
 <div class="md:w-1/3">

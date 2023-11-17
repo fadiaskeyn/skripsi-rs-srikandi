@@ -22,7 +22,7 @@
                     {{-- header --}}
                     @include('components.header')
                     {{-- content section --}}
-                    <div class="p-5 container-fluid h-screen">
+                    <div class="p-5  h-screen bg-[#D9D9D9]">
                         @yield('content')
                     </div>
                 </div>
