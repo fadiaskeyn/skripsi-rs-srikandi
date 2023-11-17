@@ -3,7 +3,6 @@
 namespace App\Interface;
 
 use App\Models\Patient;
-use Illuminate\Support\Collection;
 
 interface PatientRepositoryInterface
 {

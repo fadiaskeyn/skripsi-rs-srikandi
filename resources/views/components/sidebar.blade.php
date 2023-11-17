@@ -23,7 +23,7 @@
                 <div class="dropdown-menu-link @active('registration.patients.*')">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('registration.patients.masuk') }}" class="text-white"><button class="item-link @active('registration.patients.masuk')">Registrasi Pasien Masuk</button></a>
+                            <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patients.masuk')">Registrasi Pasien Masuk</button></a>
                         </li>
                         <li>
                             <a href="" class="text-white"><button class="item-link">Registrasi Pasien Keluar</button></a>
@@ -52,10 +52,10 @@
                 <div class="dropdown-menu-link">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Indikator Pelayanan RS</button></a>
+                            <a href="{{ route('admin.reports.hospital-service-indicator') }}" class="text-white"><button class="item-link">Indikator Pelayanan RS</button></a>
                         </li>
                         <li>
-                            <a href="" class="text-white"><button class="item-link">Kunjuangan RS</button></a>
+                            <a href="{{ route('admin.reports.hospital-visit') }}" class="text-white"><button class="item-link">Kunjuangan RS</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">10 Besar penyakit RI</button></a>
@@ -100,10 +100,13 @@
                             <a href="{{ route('admin.pengguna.index') }}" class="text-white"><button class="item-link">Data Pengguna</button></a>
                         </li>
                         <li>
-                            <a href="" class="text-white"><button class="item-link">Data Ruangan & TT</button></a>
+                            <a href="{{ route('admin.room.index') }}" class="text-white"><button class="item-link">Data Ruangan & TT</button></a>
                         </li>
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Data Jenis Pelayanan</button></a>
+                            <a href="{{ route('admin.service.index') }}" class="text-white"><button class="item-link">Data Jenis Pelayanan</button></a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.payment.index') }}" class="text-white"><button class="item-link">Data Jenis Pembayaran</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">Data Diagnosa</button></a>

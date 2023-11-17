@@ -11,20 +11,7 @@
     <x-forms.input id="email" type="email" name="email" label="Email" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <div class="md:w-1/3">
-        <label class="block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0" for="inline-full-name">
-            Role Pengguna
-        </label>
-    </div>
-    <div class="md:w-2/3 relative">
-        <select name="role" id=""  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white">
-            <option selected disabled value="0">Pilih akses</option>
-            @foreach ($roles as $role)
-                <option value="{{ $role->name }}">{{ $role->name }}</option>
-            @endforeach
-        </select>
-        <span class="absolute right-4 top-2"><iconify-icon icon="ep:arrow-down-bold"></iconify-icon></span>
-    </div>
+   <x-select name="role" label="Role Pengguna" :options="$roles" selected="{{ $selectedRole }}" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
     <x-forms.input id="username" type="text" name="username" label="Username" />
