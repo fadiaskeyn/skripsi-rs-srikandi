@@ -70,7 +70,10 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">     
+                <div class="card h-auto bg-white border border-gray-200 p-5 w-full rounded-md">     
+                    <div class="head text-center">
+                        <h2 class="text-2xl font-bold">Grafik Kunjungan</h2>
+                    </div>
                     <div class="flex justify-center w-full">
                         <div id="chart"></div>
                     </div>
@@ -78,8 +81,8 @@
             </div>
         </div>
         <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">
-            <h2>Pasien Masuk Hari Ini</h2>     
-            <table class="w-full border-collapse border  mt-8">
+            <h2 class="font-bold text-lg">Pasien Masuk Hari Ini</h2>     
+            <table class="table-pasien w-full border-collapse border mt-8">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -95,7 +98,6 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

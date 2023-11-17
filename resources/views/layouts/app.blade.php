@@ -22,7 +22,7 @@
                     {{-- header --}}
                     @include('components.header')
                     {{-- content section --}}
-                    <div class="p-5  h-screen bg-[#D9D9D9]">
+                    <div class="p-5  h-screen">
                         @yield('content')
                     </div>
                 </div>
@@ -36,7 +36,7 @@
     <script src="{{ asset('plugins/js/sweetalert2.js') }}"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     {{-- default app js --}}
-    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    <script src="{{ asset('js/app.js') }}"></script>
     {{-- javascript injection --}}
     @stack('script-injection')
 </html>

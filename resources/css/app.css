@@ -58,4 +58,10 @@
     .tables td {
         @apply text-center;
     }
+    .table-pasien th {
+        @apply bg-theme-secondary text-white;
+    }
+    .table-pasien th {
+        @apply border-2 border-black;
+    }
 }

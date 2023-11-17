@@ -15,25 +15,35 @@
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="address" type="text" name="address" label="Alamat" />
         </div>
-    </div>
-    <div class="p-5 w-[50%]">
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.select name="status" id="status" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Baru', 'Lama']" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="date"  type="date" name="date" label="Tanggal Masuk" />
         </div>
+    </div>
+    <div class="p-5 w-[50%]">
+       
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Jenis Pelayanan" placeholder="Pilih Jenis Pelayanan" :options="$services" selected="OBGYN" />
+            <x-forms.select name="status" id="status"  label="Jenis Pelayanan" placeholder="Pilih Jenis Pelayanan" :options="['IGD', 'OBGYN']" selected="OBGYN" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Kelas Rawat" placeholder="Pilih Kelas Rawat" :options="['1', '2', '3']" selected="1" />
+            <x-forms.select name="status" id="status" label="Kelas Rawat" placeholder="Pilih Kelas Rawat" :options="['Kelas I', 'Kelas II', 'Kelas III']" selected="1" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Pembayaran" placeholder="Pilih Pembayaran" :options="$payments" selected="1" />
+            <x-forms.select name="status" id="status" label="Pembayaran" placeholder="Pilih Pembayaran" :options="['Tunai', 'Kartu']" selected="1" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Ruang Perawatan" placeholder="Pilih Ruang Perawatan" :options="$rooms" />
+            <x-forms.select name="status" id="status" label="Ruang Perawatan" placeholder="Pilih Ruang Perawatan" :options="['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']" />
+        </div>
+        <div class="md:flex md:items-center mb-6 gap-2">
+            <x-forms.select name="status" id="status" label="Tanggal Keluar" placeholder="Pilih Jam keluar" :options="['1 Hari', '2 Hari', '3 Hari']" />
+        </div>
+        <div class="md:flex md:items-center mb-6 gap-2">
+            <x-forms.select name="status" id="status" label="Cara keluar" placeholder="Pilih Cara keluar" :options="['Atas Izin Dokter', 'Atas Izin Pasien']" />
+        </div>
+        <div class="md:flex md:items-center mb-6 gap-2">
+            <x-forms.input name="status" id="status" label="DPJB"  type="text"  />
         </div>
     </div>
 </div>
