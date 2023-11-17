@@ -52,10 +52,10 @@
                 <div class="dropdown-menu-link">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Indikator Pelayanan RS</button></a>
+                            <a href="{{ route('admin.reports.hospital-service-indicator') }}" class="text-white"><button class="item-link">Indikator Pelayanan RS</button></a>
                         </li>
                         <li>
-                            <a href="" class="text-white"><button class="item-link">Kunjuangan RS</button></a>
+                            <a href="{{ route('admin.reports.hospital-visit') }}" class="text-white"><button class="item-link">Kunjuangan RS</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">10 Besar penyakit RI</button></a>

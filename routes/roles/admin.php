@@ -18,3 +18,12 @@ Route::controller(App\Http\Controllers\Admin\ChartController::class)
         Route::get('rawat-inap', 'inpatient')->name('chart.inpatient');
         Route::get('barber-johnson', 'barberJohnson')->name('chart.barber-johnson');
     });
+
+// Laporan kunjungan rumah sakit
+Route::get('hospital-visit-report', function (){
+    return view('pages.reports.hospital-visit');
+})->name('reports.hospital-visit');
+
+Route::get('hospital-service-indicator', function() {
+    return view('pages.reports.hospital-service-indicator');
+})->name('reports.hospital-service-indicator');
