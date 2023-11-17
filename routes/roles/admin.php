@@ -8,6 +8,7 @@ Route::get('/', function () {
 
 Route::resource('pengguna', App\Http\Controllers\Admin\UserController::class);
 Route::resource('room', App\Http\Controllers\Admin\RoomController::class);
+Route::resource('service', App\Http\Controllers\Admin\ServiceController::class);
 
 Route::controller(App\Http\Controllers\Admin\ChartController::class)
     ->group(function(){

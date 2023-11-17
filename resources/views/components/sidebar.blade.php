@@ -103,7 +103,7 @@
                             <a href="{{ route('admin.room.index') }}" class="text-white"><button class="item-link">Data Ruangan & TT</button></a>
                         </li>
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Data Jenis Pelayanan</button></a>
+                            <a href="{{ route('admin.service.index') }}" class="text-white"><button class="item-link">Data Jenis Pelayanan</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">Data Diagnosa</button></a>

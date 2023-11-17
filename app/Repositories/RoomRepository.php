@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Interface\RoomRepositoryInterface;
 use App\Models\Room;
-use Illuminate\Support\Collection;
 
 class RoomRepository implements RoomRepositoryInterface
 {
