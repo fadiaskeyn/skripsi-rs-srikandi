@@ -23,7 +23,7 @@
                 <div class="dropdown-menu-link @active('registration.patients.*')">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('registration.patients.masuk') }}" class="text-white"><button class="item-link @active('registration.patients.masuk')">Registrasi Pasien Masuk</button></a>
+                            <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patients.masuk')">Registrasi Pasien Masuk</button></a>
                         </li>
                         <li>
                             <a href="" class="text-white"><button class="item-link">Registrasi Pasien Keluar</button></a>

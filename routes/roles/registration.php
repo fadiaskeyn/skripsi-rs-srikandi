@@ -8,10 +8,10 @@ Route::get('dashboard', fn() => "Hello world")
 
 Route::resource('histori', PatientController::class);
 
-Route::get('pasien-masuk', function () {
-    return view('pages.registrasi.pasien-masuk');
-})->name('patients.masuk');;
+Route::resource('patient-entry', \App\Http\Controllers\Registration\PatientEntryController::class)
+        ->only( 'create', 'store');
 
-Route::get('pasien-keluar', function () {
-    return view('pages.registrasi.pasien-keluar');
-})->name('patients.keluar');
+Route::get('patient-exit', function () {
+    return view('pages.registration.patient-exit');
+})->name('patients.exit');
+

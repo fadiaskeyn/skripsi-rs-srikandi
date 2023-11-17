@@ -21,16 +21,16 @@
     <x-forms.input id="date"  type="date" name="date" label="Tanggal Masuk" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.select name="status" id="status" label="Jenis Pelayanan" :options="['OBGYN', 'User', 'Guest']" selected="OBGYN" />
+    <x-forms.select name="status" id="status" label="Jenis Pelayanan" :options="$services" selected="OBGYN" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
     <x-forms.select name="status" id="status" label="Kelas Rawat" :options="['1', '2', '3']" selected="1" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.input id="date"  type="text" name="date" label="Pembayaran" />
+<x-forms.select name="status" id="status" label="Pembayaran" :options="$payments" selected="1" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.select name="status" id="status" label="Ruang Perawatan" :options="['BPJS', 'QRIS']" selected="BPJS" />
+    <x-forms.select name="status" id="status" label="Ruang Perawatan" :options="$rooms" />
 </div>
 
 <div class="bg-white flex gap-5 ">

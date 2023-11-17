@@ -18,8 +18,8 @@
 <div class="md:w-2/3 relative">
     <select name="{{ $name }}" id="{{ $id }}" {{ $attributes->merge(['class' => $class]) }}>
         <option selected disabled value="0">{{ $placeholder }}</option>
-        @foreach ($options as $option)
-            <option value="{{ $option }}" {{ $option == $selected ? 'selected' : '' }}>{{ $option }}</option>
+        @foreach ($options as $key => $option)
+            <option value="{{ $key }}" {{ $option == $selected ? 'selected' : '' }}>{{ $option }}</option>
         @endforeach
     </select>
     <span class="absolute right-4 top-2"><iconify-icon icon="ep:arrow-down-bold"></iconify-icon></span>
