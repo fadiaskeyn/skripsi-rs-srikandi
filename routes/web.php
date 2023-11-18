@@ -9,8 +9,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn() => redirect_role())->name('dashboard');
 });
 
-Route::get("/patient-out", fn() => view('pages.registrasi.patient-out'));
-Route::get("/diagnosa", fn() => view('pages.diagnosa.index'));
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

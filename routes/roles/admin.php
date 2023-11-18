@@ -11,6 +11,9 @@ Route::resource('room', App\Http\Controllers\Admin\RoomController::class);
 Route::resource('service', App\Http\Controllers\Admin\ServiceController::class);
 Route::resource('payment', App\Http\Controllers\Admin\PaymentController::class);
 
+Route::get("daily-recap", function() { return view('pages.dailyrecap.index'); } )->name('admin.daily-recap');
+Route::get("diagnosa", function() { return view('pages.diagnosa.index'); })->name('admin.diagnosa');
+
 Route::controller(App\Http\Controllers\Admin\ChartController::class)
     ->group(function(){
 
