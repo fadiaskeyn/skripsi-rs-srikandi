@@ -26,7 +26,7 @@
                             <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patients.masuk')">Registrasi Pasien Masuk</button></a>
                         </li>
                         <li>
-                            <a href="" class="text-white"><button class="item-link">Registrasi Pasien Keluar</button></a>
+                            <a href="{{ route('registration.patient-exit.create') }}" class="text-white"><button class="item-link">Registrasi Pasien Keluar</button></a>
                         </li>
                         <li>
                             <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link">Histori Pasien</button></a>
