@@ -19,7 +19,7 @@
         <div class="shadow border p-5 mt-20 bg-white">
             <div class="p-2 lg:flex grid space-y-5 grid-cols-1 justify-between">
                 <div class="mt-3 w-full">
-                    <h2 class="text-2xl font-bold">Table Diagnosa</h2>
+                    <h2 class="text-2xl font-bold">Table Rekapitulasi Sensus Harian</h2>
                 </div>
                 <div class="w-full flex justify-end gap-5">
                     <a href="#" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Download PDF<span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
@@ -34,7 +34,59 @@
                 </div>
             </div>
             {{-- Table --}}
-            <x-content.table :headers="['No.','Kode Diagnosa','Diagnosa','Action']" :rows="[]" />
+            <table class="tables w-full">
+                <thead>
+                    <tr>
+                        <th rowspan="3">No.</th>
+                        <th rowspan="3">Tanggal</th>
+                        <th rowspan="3">Pasien Masuk</th>
+                        <th rowspan="3">Pasien Pindah</th>
+                        <th rowspan="3">Jumlah</th>
+                        <th colspan="5">Pasien Keluar</th>
+                        <th rowspan="3">Total Pasien Keluar</th>
+                        <th rowspan="3">Hari Perawatan</th>
+                        <th rowspan="3">Lama Rawat</th>
+                        <th colspan="3">Cara bayar</th>
+                        <th colspan="4">Kelas</th>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Pasien Keluar Hidup</th>
+                        <th colspan="2">Pasien Keluar Mati</th>
+                        <th rowspan="2">UMUM</th>
+                        <th rowspan="2">BPJS</th>
+                        <th rowspan="2">ASURANSI</th>
+                        <th rowspan="2">VIP</th>
+                        <th rowspan="2">I</th>
+                        <th rowspan="2">II</th>
+                        <th rowspan="2">III</th>
+                    </tr>
+                    <tr>
+                        <th class="">Pulang Paksa</th>
+                        <th class="">Atas Perintah Dokter</th>
+                        <th class="">Dirujuk</th>
+                        <th class="">Mati < 48 Jam</th>
+                        <th class="">Mati > 48 Jam</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
