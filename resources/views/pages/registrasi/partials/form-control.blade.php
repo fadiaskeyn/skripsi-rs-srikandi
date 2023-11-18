@@ -1,7 +1,20 @@
 <div class="flex gap-5 w-full">
     <div class="p-5 w-[50%]">
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="medrec_number" type="number" name="medrec_number" label="No. RM" maxlength="6" />
+            <label class="block text-md font-bold mb-2" for="pair">
+                Choose your city:
+            </label>
+            <select
+                class="selectpicker" style="width: 100%" 
+                data-placeholder="Select a city..."
+                data-allow-clear="false"
+                title="Select city...">
+                <option value="0">Pilih</option>
+                <option>Amsterdam</option>
+                <option>Rotterdam</option>
+                <option>Den Haag</option>
+            </select>
+            {{-- <x-forms.input id="medrec_number" type="number" name="medrec_number" label="No. RM" maxlength="6" /> --}}
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="fullname" type="text" name="fullname" label="Nama Pasien" />
