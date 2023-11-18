@@ -1,7 +1,7 @@
 <div class="flex gap-5 w-full">
     <div class="p-5 w-[50%]">
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="medrec_number" type="number" name="medrec_number" label="No. RM" maxlength="6" />
+            <x-forms.input id="medrec_number"  name="medrec_number" type="number"  label="No. RM" maxlength="6" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="fullname" type="text" name="fullname" label="Nama Pasien" />
