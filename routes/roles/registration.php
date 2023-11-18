@@ -12,6 +12,6 @@ Route::resource('patient-entry', \App\Http\Controllers\Registration\PatientEntry
         ->only( 'create', 'store');
 
 Route::get('patient-exit', function () {
-    return view('pages.registration.patient-exit');
-})->name('patients.exit');
+    return view('pages.registrasi.patient-exit');
+})->name('patient-exit.create');
 
