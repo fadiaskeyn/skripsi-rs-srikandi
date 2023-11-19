@@ -64,7 +64,7 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateServiceRequest $request, Service $service)
+    public function update(ServiceRequest $request, Service $service)
     {
         //
     }
@@ -74,6 +74,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $this->serviceRepository->destroy($service);
+        return response()->json(['success' => 'Data berhasil dihapus secara permanent']);return response()->json(['success' => 'Data berhasil dihapus secara permanent']);
     }
 }

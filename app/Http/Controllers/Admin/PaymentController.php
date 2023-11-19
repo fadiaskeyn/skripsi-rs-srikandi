@@ -75,6 +75,7 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        $this->paymentRepository->destroy($payment);
+        return response()->json(['success' => 'Data berhasil dihapus secara permanent']);
     }
 }

@@ -18,4 +18,9 @@ class PaymentRepository implements PaymentRepositoryInterface
             'name' => $data['name']
         ]);
     }
+
+    public function destroy(Payment $payment): bool
+    {
+        return $payment->delete();
+    }
 }
