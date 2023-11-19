@@ -20,4 +20,9 @@ class RoomRepository implements RoomRepositoryInterface
             'type_room' => $data['type_room']
         ]);
     }
+
+    public function destroy(Room $room): bool
+    {
+        return $room->delete();
+    }
 }

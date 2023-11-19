@@ -8,5 +8,6 @@ interface RoomRepositoryInterface
 {
     public function getData(): array;
     public function create(array $data): Room;
+    public function destroy(Room $room): bool;
 
 }

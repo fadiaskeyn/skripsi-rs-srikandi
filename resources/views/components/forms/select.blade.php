@@ -7,7 +7,6 @@
     'labelClass' => 'block text-gray-500 font-bold mx-auto md:text-left mb-1 md:mb-0',
     'options',
     'selected' => null,
-    'placeholder',
 ])
 
 <div class="md:w-1/3">
@@ -17,7 +16,7 @@
 </div>
 <div class="md:w-2/3 relative">
     <select name="{{ $name }}" id="{{ $id }}" {{ $attributes->merge(['class' => $class]) }}>
-        <option selected disabled value="0">{{ $placeholder }}</option>
+        <option selected disabled value="0">Pilih salah satu</option>
         @foreach ($options as $key => $option)
             <option value="{{ $key }}" {{ $option == $selected ? 'selected' : '' }}>{{ $option }}</option>
         @endforeach

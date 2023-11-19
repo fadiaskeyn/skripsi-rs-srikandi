@@ -76,6 +76,7 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        $this->roomRepository->destroy($room);
+        return response()->json(['success' => 'Data berhasil dihapus secara permanent']);
     }
 }

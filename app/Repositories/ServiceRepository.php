@@ -18,4 +18,8 @@ class ServiceRepository implements ServiceRepositoryInterface
             'name' => $data['name']
         ]);
     }
+    public function destroy(Service $service): bool 
+    {
+         return $service->delete();
+    }
 }
