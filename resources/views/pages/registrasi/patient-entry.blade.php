@@ -11,7 +11,7 @@
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 w-1/2 p-8 " action="{{ route('registration.histori.store') }}" method="POST" autocomplete="off">
+                <form class="mt-5 w-full p-8 " action="{{ route('registration.histori.store') }}" method="POST" autocomplete="off">
                     @csrf
                     @include('pages.registrasi.partials.form-control')
                 </form>

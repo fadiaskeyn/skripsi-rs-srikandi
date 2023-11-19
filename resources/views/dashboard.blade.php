@@ -19,7 +19,7 @@
                                 <iconify-icon icon="mdi:clock-outline" class="text-4xl"></iconify-icon>
                             </div>
                             <div class="text-right w-full">
-                                <h2 class="font-bold text-2xl">8:16PM</h2>
+                                <h2 class="font-bold text-2xl">8:16 PM</h2>
                                 <p class="text-sm">Jam</p>
                             </div>
                         </div>

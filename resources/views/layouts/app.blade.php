@@ -17,10 +17,14 @@
     <body class="font-plus-jakarta-sans antialiased">
             <div class="layout">
                 {{-- sidebar--}}
-                @include('components.sidebar')
+                @if(Route::current()->getName() !== 'reports.preview')
+                    @include('components.sidebar')
+                @endif
                 <div class="w-full overflow-y-auto overflow-x-hidden">
                     {{-- header --}}
-                    @include('components.header')
+                    @if(Route::current()->getName() !== 'reports.preview'))
+                        @include('components.header')
+                    @endif
                     {{-- content section --}}
                     <div class="p-5  h-screen">
                         @yield('content')

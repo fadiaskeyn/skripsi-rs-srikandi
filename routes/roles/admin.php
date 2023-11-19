@@ -28,3 +28,7 @@ Route::get('hospital-visit-report', function (){
 Route::get('hospital-service-indicator', function() {
     return view('pages.reports.hospital-service-indicator');
 })->name('reports.hospital-service-indicator');
+
+Route::get('report/preview', function() {
+    return view('pages.reports.report');
+})->name('reports.print');
