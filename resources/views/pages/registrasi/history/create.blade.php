@@ -24,7 +24,7 @@
                         <x-forms.input id="birthdate" type="date" name="birthdate" label="Tgl. Lahir" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
-                        <x-forms.input id="gender" type="text" name="gender" label="Jenis Kelamin" />
+                        <x-forms.select id="gender" type="text" name="gender" label="Jenis Kelamin" placeholder="Pilih Jenis Kelamin" :options="['P' => 'P', 'L' => 'L']" />
                     </div>
                     <div class="md:flex md:items-center mb-6 gap-2">
                        <x-forms.input id="address" type="text" name="address" label="Alamat" />

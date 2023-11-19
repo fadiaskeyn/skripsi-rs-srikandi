@@ -1,52 +1,43 @@
 <div class="flex gap-5 w-full">
     <div class="p-5 w-[50%]">
         <div class="md:flex md:items-center mb-6 gap-2">
-            <label class="block text-md font-bold mb-2" for="pair">
-                Choose your city:
-            </label>
-            <select
-                class="selectpicker" style="width: 100%" 
-                data-placeholder="Select a city..."
-                data-allow-clear="false"
-                title="Select city...">
-                <option value="0">Pilih</option>
-                <option>Amsterdam</option>
-                <option>Rotterdam</option>
-                <option>Den Haag</option>
-            </select>
-            {{-- <x-forms.input id="medrec_number" type="number" name="medrec_number" label="No. RM" maxlength="6" /> --}}
+            <input type="hidden" name="medrec_number" id="medrec_number" value="">
+            <x-forms.input id="rm" type="text" name="rm" label="No. RM" />
+            <button type="button" class="bg-theme-border-sidebar text-white px-4 py-2 rounded-full" id="rm-button">
+                <iconify-icon icon="mingcute:search-line" class="text-lg"></iconify-icon>
+            </button>
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="fullname" type="text" name="fullname" label="Nama Pasien" />
+            <x-forms.input id="fullname" type="text" name="fullname" label="Nama Pasien" readonly />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="birthdate" type="date" name="birthdate" label="Tgl. Lahir" />
+            <x-forms.input id="birthdate" type="date" name="birthdate" label="Tgl. Lahir" readonly />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select id="gender" type="text" name="gender" label="Jenis Kelamin" placeholder="Pilih Jenis Kelamin" :options="['P', 'L']" />
+            <x-forms.select id="gender" type="text" name="gender" label="Jenis Kelamin" placeholder="Pilih Jenis Kelamin" :options="['P' => 'P', 'L' => 'L']" readonly/>
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="address" type="text" name="address" label="Alamat" />
+            <x-forms.input id="address" type="text" name="address" label="Alamat" readonly />
         </div>
     </div>
     <div class="p-5 w-[50%]">
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Baru', 'Lama']" />
+            <x-forms.select name="new_patient" id="new_patient" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Lama', 'Baru']" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="date"  type="date" name="date" label="Tanggal Masuk" />
+            <x-forms.input id="date" type="date" name="date" label="Tanggal Masuk" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Jenis Pelayanan" placeholder="Pilih Jenis Pelayanan" :options="$services" selected="OBGYN" />
+            <x-forms.select name="service_id" id="service_id" label="Jenis Pelayanan" placeholder="Pilih Jenis Pelayanan" :options="$services" selected="OBGYN" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Kelas Rawat" placeholder="Pilih Kelas Rawat" :options="['1', '2', '3']" selected="1" />
+            <x-forms.select name="nursing_class" id="nursing_class" label="Kelas Rawat" placeholder="Pilih Kelas Rawat" :options="[1 => '1', '2', '3']" selected="1" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Pembayaran" placeholder="Pilih Pembayaran" :options="$payments" selected="1" />
+            <x-forms.select name="payment_id" id="payment_id" label="Pembayaran" placeholder="Pilih Pembayaran" :options="$payments" selected="1" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="status" id="status" label="Ruang Perawatan" placeholder="Pilih Ruang Perawatan" :options="$rooms" />
+            <x-forms.select name="room_id" id="room_id" label="Ruang Perawatan" placeholder="Pilih Ruang Perawatan" :options="$rooms" />
         </div>
     </div>
 </div>
@@ -65,3 +56,36 @@
     </a>
     </div>
 </div>
+
+@push('script-injection')
+<script>
+    function resetForm() {
+        const selectors = `input[name=fullname],input[name=birthdate],select[name=gender],input[name=address]`;
+        $(selectors).val('');
+    }
+
+    $('#rm-button').click(function() {
+        const medrec = $('#rm').val();
+
+        $.ajax({
+            url: `/api/patients/${medrec}`,
+            dataType: 'JSON',
+            success(res) {
+                for(const [key, value] of Object.entries(res.data)) {
+                    $(`input[name=${key}]`).val(value);
+                    $(`select[name=${key}]`).val(value);
+                }
+            },
+            error() {
+                resetForm();
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Pasien tidak ditemukan',
+                    timer: 1300,
+                });
+            },
+        });
+    });
+</script>
+@endpush

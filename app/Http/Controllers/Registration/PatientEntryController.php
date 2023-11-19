@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Registration;
 use App\Models\PatientEntry;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\{Payment, Room, Service};
+use App\Http\Requests\Registration\PatientEntryRequest;
+use App\Models\{Patient, Payment, Room, Service};
 use App\Repositories\PatientEntryRepository;
 
 class PatientEntryController extends Controller
 {
-    
+
     protected PatientEntryRepository $patientEntryRepository;
 
     public function __construct()
@@ -41,9 +42,16 @@ class PatientEntryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PatientEntryRequest $request)
     {
-        //
+        $patient = Patient::where('medrec_number', $request->medrec_number)->first();
+        $data = $request->validated();
+
+        $data['patient_id'] = $patient->id;
+        (new PatientEntryRepository)->create($data);
+
+        return back()
+            ->with('swals', 'Berhasil mendaftarkan pasien');
     }
 
     /**

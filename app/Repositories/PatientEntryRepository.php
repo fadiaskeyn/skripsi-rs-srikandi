@@ -15,11 +15,13 @@ class PatientEntryRepository implements PatientEntryRepositoryInterface
     public function create(array $data): PatientEntry
     {
         return PatientEntry::create([
-            // 'medrec_number' => $data['medrec_number'],
-            // 'fullname' => $data['fullname'],
-            // 'birthdate' => $data['birthdate'],
-            // 'gender' => $data['gender'],
-            // 'address' => $data['address'],
+            'patient_id' => $data['patient_id'],
+            'date' => $data['date'],
+            'new_patient' => $data['new_patient'],
+            'nursing_class' => $data['nursing_class'],
+            'service_id' => $data['service_id'],
+            'payment_id' => $data['payment_id'],
+            'room_id' => $data['room_id'],
         ]);
     }
 }
