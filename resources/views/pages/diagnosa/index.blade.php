@@ -31,7 +31,7 @@
                 </div>
             </div>
             {{-- Table --}}
-            <x-content.table :headers="['No.','Kode Diagnosa','Diagnosa','Action']" :rows="[]" />
+            <x-content.table :headers="['No.','Kode Diagnosa','Diagnosa','Action']" :rows="[]" edit="admin.diagnosa.edit" delete="admin.diagnosa.destroy" />
         </div>
     </div>
 @endsection

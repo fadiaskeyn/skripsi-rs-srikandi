@@ -25,7 +25,7 @@
                 </div>
             </div>
             {{-- Table --}}
-            <x-content.table :headers="['No','name','username','email','Action']" :rows="$data" />
+            <x-content.table :headers="['No','name','username','email','Action']" :rows="$data" edit="admin.pengguna.edit" delete="admin.pengguna.destroy"/>
         </div>
     </div>
 @endsection

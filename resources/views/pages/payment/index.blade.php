@@ -20,7 +20,7 @@
         </div>
 
         {{-- Table --}}
-        <x-content.table :headers="['No','Nama Pembayaran','Action']" :rows="$data" />
+        <x-content.table :headers="['No','Nama Pembayaran','Action']" :rows="$data" edit="admin.payment.edit" delete="admin.payment.destroy"/>
 
     </div>
 </div>
