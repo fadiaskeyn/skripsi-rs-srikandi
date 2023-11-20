@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/', DashboardController::class)->name('dashboard');
 
 Route::resource('pengguna', App\Http\Controllers\Admin\UserController::class);
 Route::resource('room', App\Http\Controllers\Admin\RoomController::class);

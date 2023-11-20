@@ -8,9 +8,11 @@
                         <div class="flex gap-5">
                             <div class="w-full"><iconify-icon icon="solar:calendar-linear" class="text-4xl"></iconify-icon></div>
                             <div class="w-full text-right">
-                                <h2 class="font-bold text-lg">Selasa</h2>
-                                <p class="text-sm">17 Mar 2023</p>
+                                <h2 class="font-bold text-lg" id="day"></h2>
+                                <p class="text-sm" id="date"></p>
                             </div>
+
+
                         </div>
                     </div>
                     <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">
@@ -19,8 +21,7 @@
                                 <iconify-icon icon="mdi:clock-outline" class="text-4xl"></iconify-icon>
                             </div>
                             <div class="text-right w-full">
-                                <h2 class="font-bold text-2xl">8:16 PM</h2>
-                                <p class="text-sm">Jam</p>
+                                <span id="time" class="font-bold text-2xl"></span>
                             </div>
                         </div>
                     </div>
@@ -98,15 +99,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        @for($i = 0; $i < 9; $i++)
+                            <td></td>
+                        @endfor
                     </tr>
                 </tbody>
             </table>
@@ -115,9 +110,40 @@
 @endsection
 
 @push('script-injection')
+
+    {{-- Birthday --}}
     <script>
-        
-      
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+
+        const currentDate = new Date();
+        const day = days[currentDate.getDay()];
+        const date = currentDate.getDate();
+        const month = months[currentDate.getMonth()];
+        const year = currentDate.getFullYear();
+
+        document.getElementById('day').innerHTML = day;
+        document.getElementById('date').innerHTML = `${date} ${month} ${year}`;
+    </script>
+            
+    {{-- Time --}}
+    <script>
+        // Get the current time
+        const currentTime = new Date();
+        const hours = currentTime.getHours();
+        const minutes = currentTime.getMinutes();
+
+        // Format the time
+        let formattedTime = `${hours}:${minutes}`;
+        formattedTime += hours >= 12 ? " PM" : " AM";
+
+        // Update the time element
+        const timeElement = document.getElementById("time");
+        if (timeElement) {
+            timeElement.textContent = formattedTime;
+        }
+    </script>
+    <script>      
         var options = {
           series: [25, 15, 44, 55, 41, 17],
           chart: {
