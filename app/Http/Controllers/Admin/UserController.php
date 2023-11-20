@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
-use App\Interface\UserRepositoryInterface;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -12,14 +11,14 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    
+
     protected UserRepository $userRepository;
 
     public function __construct()
     {
 
         $this->userRepository = new UserRepository;
-    
+
     }
     /**
      * Display a listing of the resource.
@@ -35,7 +34,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::select('id','name')->get();
+        $roles = Role::pluck('name', 'name')->toArray();
         return view('pages.pengguna.create',['roles' => $roles, 'user' => new User]);
     }
 
@@ -44,7 +43,6 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-
         $validated = $request->validated();
 
         $user = $this->userRepository->create($validated);
@@ -67,15 +65,23 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('pages.pengguna.edit', ['user'=> $user]);
+        $roles = Role::pluck('name', 'name')->toArray();
+
+        return view('pages.pengguna.edit', [
+            'user' => $user,
+            'roles' => $roles,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $this->userRepository->update($user, $request->validated());
+
+        return back()
+            ->with('swals', 'Berhasil mengupdate pengguna');
     }
 
     /**
@@ -83,8 +89,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $this->userRepository->destroy($user);
-        return response()->json(['success' => 'Data berhasil dihapus secara permanent']);
+        $user->delete();
+
+        return back()
+            ->with('swals', 'Berhasil menghapus pengguna');
     }
 
     protected function assignUserRole(User $user, string $roleName): void

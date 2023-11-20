@@ -97,7 +97,7 @@
                 <div class="dropdown-menu-link">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('admin.pengguna.index') }}" class="text-white"><button class="item-link">Data Pengguna</button></a>
+                            <a href="{{ route('admin.user.index') }}" class="text-white"><button class="item-link">Data Pengguna</button></a>
                         </li>
                         <li>
                             <a href="{{ route('admin.room.index') }}" class="text-white"><button class="item-link">Data Ruangan & TT</button></a>

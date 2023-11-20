@@ -1,5 +1,5 @@
 @props([
-    'id',
+    'id' => '',
     'name',
     'value' => '',
     'class' => 'bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white',
