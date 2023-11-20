@@ -33,7 +33,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        return view('pages.rooms.create');
+        return view('pages.rooms.create', ['room' => new Room]);
     }
 
     /**
@@ -60,7 +60,7 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        return view('pages.rooms.edit', ['room' => $room]);
     }
 
     /**
@@ -68,7 +68,9 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $validated = $request->validated();
+        $this->roomRepository->update($room, $validated);
+        return to_route('admin.room.index');
     }
 
     /**

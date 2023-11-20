@@ -11,10 +11,11 @@
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 w-full max-w-sm" action="{{ route('admin.service.store') }}" method="POST" autocomplete="off">
+                <form class="mt-5 w-full max-w-sm" action="{{ route('admin.payment.update', $payment->id) }}" method="POST" autocomplete="off">
                     @csrf
+                    @method('PUT')
                     
-                    @include('pages.service.partials.form-control')
+                    @include('pages.payment.partials.form-control')
                 </form>
                 {{-- form end --}}
             </div>

@@ -32,7 +32,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('pages.payment.create');
+        return view('pages.payment.create', [ 'payment' => new Payment ]);
     }
 
     /**
@@ -59,15 +59,16 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        //
+        return view('pages.payment.edit', [ 'payment' => $payment ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Payment $payment)
+    public function update(PaymentRequest $request, Payment $payment)
     {
-        //
+        $this->paymentRepository->update($payment, $request->validated());
+        return to_route('admin.payment.index');
     }
 
     /**

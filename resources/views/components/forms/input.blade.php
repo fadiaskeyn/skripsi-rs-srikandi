@@ -14,7 +14,7 @@
     </label>
 </div>
 <div class="w-full">
-    <input {{ $attributes->merge(['class' => $class]) }} type="{{ $type }}" name="{{ $name }}" value="{{ old($name, $value) }}" id="{{ $id }}" @readonly(isset($readonly))>
+    <input {{ $attributes->merge(['class' => $class]) }} type="{{ $type }}" name="{{ $name }}" value="{{ old($name,$value) }}" id="{{ $id }}"  @readonly(isset($readonly))>
     @error($name)
         <div class="text-red-500 mt-2 text-sm">
             {{ $message }}

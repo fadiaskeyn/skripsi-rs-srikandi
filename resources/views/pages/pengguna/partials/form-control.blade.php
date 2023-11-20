@@ -1,23 +1,23 @@
 <div class="md:flex md:items-center mb-6 w-full gap-2">
-    <x-forms.input id="name" type="text" name="name" label="Nama Pengguna" />
+    <x-forms.input id="name" value="{{ $user->name }}" type="text" name="name" label="Nama Pengguna" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.input id="position" type="text" name="position" label="Jabatan" />
+    <x-forms.input id="position" value="{{ $user->position }}" type="text" name="position" label="Jabatan" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.input id="employee_number" type="text" name="employee_number" label="No Pegawai" />
+    <x-forms.input id="employee_number" value="{{ $user->employee_number }}" type="text" name="employee_number" label="No Pegawai" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.input id="email" type="email" name="email" label="Email" />
+    <x-forms.input id="email" type="email" value="{{ $user->email }}" name="email" label="Email" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-   <x-select name="role" label="Role Pengguna" :options="$roles" selected="{{ $selectedRole }}" />
+   <x-select name="role" label="Role Pengguna" :options="$roles" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.input id="username" type="text" name="username" label="Username" />
+    <x-forms.input id="username" type="text" value="{{ $user->username }}" name="username" label="Username" />
 </div>
 <div class="md:flex md:items-center mb-6 gap-2">
-    <x-forms.input id="password" type="password" name="password" label="Password" />
+    <x-forms.input id="password" type="password" value="{{ $user->password }}" name="password" label="Password" />
 </div>
 <div class="bg-white flex gap-5 ">
     <button type="submit" class="inline-flex items-center px-4 py-2 bg-theme-border-sidebar hover:bg-gray-700 text-white text-sm md:text-left font-medium ">

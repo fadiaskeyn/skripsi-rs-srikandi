@@ -18,6 +18,14 @@ class ServiceRepository implements ServiceRepositoryInterface
             'name' => $data['name']
         ]);
     }
+    public function update(Service $service, array $data): Service
+    {
+        $service->update([
+            'name' => $data['name']
+        ]);
+        
+        return $service;
+    }
     public function destroy(Service $service): bool 
     {
          return $service->delete();

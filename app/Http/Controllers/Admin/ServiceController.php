@@ -31,7 +31,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('pages.service.create');
+        return view('pages.service.create', [ 'service' => new Service ]);
     }
 
     /**
@@ -58,7 +58,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('pages.service.edit', [ 'service' => $service ]);
     }
 
     /**
@@ -66,7 +66,9 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, Service $service)
     {
-        //
+        $validated = $request->validated();
+        $this->serviceRepository->update($service, $validated);
+        return to_route('admin.service.index');
     }
 
     /**

@@ -21,6 +21,17 @@ class RoomRepository implements RoomRepositoryInterface
         ]);
     }
 
+    public function update(Room $room, array $data): Room
+    {
+        $room->update([
+            'name' => $data['name'],
+            'number_of_beds' => $data['number_of_beds'],
+            'type_room' => $data['type_room']
+        ]);
+        
+        return $room;
+    }
+
     public function destroy(Room $room): bool
     {
         return $room->delete();

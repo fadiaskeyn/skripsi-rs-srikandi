@@ -24,4 +24,13 @@ class UserRepository implements UserRepositoryInterface
             'password' => Hash::make($data['password']),
         ]);
     }
+    public function update(User $user, array $data): User
+    {
+        $user->update($data);
+        return $user;
+    }
+    public function destroy(User $user): bool
+    {
+        return $user->delete();
+    }
 }

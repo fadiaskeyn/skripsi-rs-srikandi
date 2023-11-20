@@ -36,7 +36,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::select('id','name')->get();
-        return view('pages.pengguna.create',['roles' => $roles]);
+        return view('pages.pengguna.create',['roles' => $roles, 'user' => new User]);
     }
 
     /**
@@ -65,9 +65,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('pages.pengguna.edit', ['user'=> $user]);
     }
 
     /**
@@ -81,9 +81,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $this->userRepository->destroy($user);
+        return response()->json(['success' => 'Data berhasil dihapus secara permanent']);
     }
 
     protected function assignUserRole(User $user, string $roleName): void

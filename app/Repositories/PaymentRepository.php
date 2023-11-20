@@ -18,7 +18,14 @@ class PaymentRepository implements PaymentRepositoryInterface
             'name' => $data['name']
         ]);
     }
-
+    public function update(Payment $payment, array $data): Payment
+    {
+        $payment->update([
+            'name' => $data['name']
+        ]);
+        
+        return $payment;
+    }
     public function destroy(Payment $payment): bool
     {
         return $payment->delete();
