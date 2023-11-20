@@ -13,14 +13,14 @@ class BarberJohnsonChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\BarChart
+    public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
-        return $this->chart->barChart()
-            ->setTitle('San Francisco vs Boston.')
-            ->setSubtitle('Wins during season 2021.')
-            ->addData('San Francisco', [6, 9, 3, 4, 10, 8])
-            ->addData('Boston', [7, 3, 8, 2, 6, 4])
-            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June'])
-            ->setGrid();
+       return $this->chart->lineChart()
+            ->setTitle('Sales during 2021.')
+            ->setSubtitle('Physical sales vs Digital sales.')
+            ->addData('Published posts', [4, 9, 5, 2, 1, 8])
+            ->addData('Unpublished posts', [7, 2, 7, 2, 5, 4])
+            ->setColors(['#ffc63b', '#ff6384'])
+            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June']);
     }
 }
