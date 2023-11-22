@@ -35,10 +35,10 @@
                 </div>
                 <li class="menu-item">
                     <a href="#" class="">
-                        <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
+                        <a href="/admin/census" class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
                             <span>Rekapitulasi Sensus Harian</span>
                             {{-- <span class="flex justify-end w-full mt-0"><iconify-icon icon="iconamoon:arrow-down-2-duotone" class="text-2xl"></iconify-icon></span> --}}
-                        </button>
+                        </a>
                     </a>
                 </li>
                 <li class="menu-item dropdown-toggle">

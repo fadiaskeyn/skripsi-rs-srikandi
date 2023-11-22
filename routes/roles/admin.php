@@ -19,14 +19,10 @@ Route::controller(App\Http\Controllers\Admin\ChartController::class)
     });
 
 // Laporan kunjungan rumah sakit
-Route::get('hospital-visit-report', function (){
-    return view('pages.reports.hospital-visit');
-})->name('reports.hospital-visit');
+Route::get('hospital-visit-report', fn() => view('pages.reports.hospital-visit'))->name('reports.hospital-visit');
 
-Route::get('hospital-service-indicator', function() {
-    return view('pages.reports.hospital-service-indicator');
-})->name('reports.hospital-service-indicator');
+Route::get('hospital-service-indicator', fn() =>  view('pages.reports.hospital-service-indicator'))->name('reports.hospital-service-indicator');;
 
-Route::get('report/preview', function() {
-    return view('pages.reports.report');
-})->name('reports.print');
+Route::get('report/preview', fn() =>  view('pages.reports.report'))->name('reports.print');
+
+Route::get('/census', App\Http\Controllers\Admin\CensusController::class    );
