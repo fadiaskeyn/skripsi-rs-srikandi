@@ -5,15 +5,25 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Diagnosis;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\DiagnosisRepository;
 
 class DiagnosisController extends Controller
 {
+
+    protected DiagnosisRepository $diagnosisRepository;
+
+    public function __construct()
+    {
+        $this->diagnosisRepository = new DiagnosisRepository;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('pages.diagnosis.index', ['diagnosis' => Diagnosis::all()]);
+        return view('pages.diagnosis.index', [
+            'diagnosis' => $this->diagnosisRepository->getData()
+        ]);
     }
 
     /**
@@ -29,8 +39,7 @@ class DiagnosisController extends Controller
      */
     public function store(Request $request)
     {
-        $diagnosa = Diagnosis::create($request->all());
-        return response()->json($diagnosa);
+       return $this->diagnosisRepository->save($request);
     }
 
     /**
@@ -44,9 +53,12 @@ class DiagnosisController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Diagnosis $diagnosis)
-    {
-        //
+    public function edit(int $id)
+    {   
+        $diagnosis = DiagnosisRepository::getFind($id);
+        return response()->json([
+            'data' => $diagnosis
+        ]);
     }
 
     /**
@@ -54,16 +66,14 @@ class DiagnosisController extends Controller
      */
     public function update(Request $request, Diagnosis $diagnosis)
     {
-        $diagnosis->update($request->all());
-        return response()->json($diagnosis);
+       
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Diagnosis $diagnosis)
+    public function destroy(int $id)
     {
-        $diagnosis->delete();
-        return response()->json(['success'=>'Data Diagnosa berhasil dihapus']);
+      return $this->diagnosisRepository->destroy($id);
     }
 }

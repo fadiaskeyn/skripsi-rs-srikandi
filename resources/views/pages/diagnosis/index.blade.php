@@ -12,10 +12,9 @@
         <div class="mt-5 max-w-2xl space-y-5">
             <form action="#" id="diagnosaForm" method="POST">
                 @csrf
-                <x-forms.input name="code_diagnosis" type="text" id="code_diagnosis" label="Kode Diagnosa" />
-                <x-forms.input name="name" type="text"  id="name" label="Diagnosa" />
-                <button type="submit" name="create_record" id="create_record" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Simpan<span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></button>
-
+                <x-forms.input name="code_diagnosis" maxlength="6" type="text" id="code_diagnosis" label="Kode Diagnosa" />
+                <x-forms.input name="name" type="text" id="name" label="Diagnosa" />
+                <button type="submit" name="create_record" id="create_record" class="px-4 py-3 text-white rounded-lg bg-theme-border-sidebar text-center mt-5">Simpan<span class="ml-4 mt-4"></button>
             </form>
         </div>
         <div class="shadow border p-5 mt-20 bg-white">
@@ -48,11 +47,11 @@
                     <tbody>
                         @foreach($diagnosis as $diagnosa)
                         <tr>
-                            <td>{{ $diagnosa->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $diagnosa->code_diagnosis }}</td>
                             <td>{{ $diagnosa->name }}</td>
                             <td>
-                                <button class="update" id="{{ $diagnosa->id }}">Update</button>
+                                <button class="update" id="{{ $diagnosa->id }}">Edit</button>
                                 <button class="delete" id="{{ $diagnosa->id }}">Delete</button>
                             </td>
                         </tr>
@@ -78,7 +77,7 @@
             data: $(this).serialize(),
             dataType: "json",
             success: function(data) {
-                console.log(data);
+                window.location.reload();
                 // Update table or show success message
             },
             error: function(error) {
@@ -108,22 +107,27 @@
             method: "GET",
             dataType: "json",
             success: function(data) {
+                res = data.data;
                 // Populate form with data for editing
+                var code_diagnosis = $('#code_diagnosis').val(res.code_diagnosis);
+                code_diagnosis.attr('readonly', true);
+                var name = $('#name').val(res.name);
             }
         });
     });
 
+
     // DELETE
     $(document).on('click', '.delete', function() {
         var id = $(this).attr('id');
-        if (confirm("Are you sure you want to delete this data?")) {
+        if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
             $.ajax({
                 url: "/admin/diagnosis/"+id,
                 method: "DELETE",
                 data: {_token: $('input[name="_token"]').val()},
                 dataType: "json",
                 success: function(data) {
-                    console.log(data);
+                    window.location.reload();
                     // Remove data from table or show success message
                 },
                 error: function(error) {

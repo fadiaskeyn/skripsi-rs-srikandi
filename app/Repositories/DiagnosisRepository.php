@@ -4,30 +4,35 @@ namespace App\Repositories;
 
 use App\Interface\DiagnosisRepositoryInterface;
 use App\Models\Diagnosis;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Collection;
 
 class DiagnosisRepository implements DiagnosisRepositoryInterface
 {
-    public function getData(): array
+    public function getData(): Collection
     {
-        return Diagnosis::select('id', 'name')->get()->toArray();
+        return Diagnosis::select('id', 'code_diagnosis', 'name')->get();
     }
 
-    public function create(array $data): Diagnosis
+
+    public function save(Request $request)
     {
-        return Diagnosis::create([
-            'name' => $data['name']
+        $diagnosa = Diagnosis::updateOrCreate(['code_diagnosis' => $request->code_diagnosis], $request->all());
+        return response()->json([
+            'data' => $diagnosa
         ]);
     }
-    public function update(Diagnosis $diagnosis, array $data): Diagnosis
+    public function destroy(int $id): JsonResponse
     {
-        $diagnosis->update([
-            'name' => $data['name']
-        ]);
-        
-        return $diagnosis;
+         $diagnosis = self::getFind($id);
+         $diagnosis->delete();
+         return response()->json(['success'=>'Data Diagnosa berhasil dihapus']);
     }
-    public function destroy(Diagnosis $diagnosis): bool 
+
+    public static function getFind(int $id)
     {
-         return $diagnosis->delete();
+        return Diagnosis::findOrFail($id);
     }
 }
