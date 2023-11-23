@@ -3,32 +3,32 @@
     <div class="w-full space-y-8">
         <div class="lg:flex grid grid-cols-1 gap-5 w-full justify-center">
             <div class="w-full space-y-5">
-                <div class="grid lg:grid-cols-3 grid-cols-1 gap-4 justify-center w-full">
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 justify-center w-full">
                     <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">     
-                        <div class="flex gap-5">
-                            <div class="w-full"><iconify-icon icon="solar:calendar-linear" class="text-4xl"></iconify-icon></div>
-                            <div class="w-full text-right">
-                                <h2 class="font-bold text-lg">Selasa</h2>
+                        <div class="flex flex-col gap-2">
+                            <div class="w-full"><iconify-icon icon="solar:calendar-linear" class="text-3xl"></iconify-icon></div>
+                            <div class="w-full">
+                                <h2 class="font-bold text-sm">Selasa</h2>
                                 <p class="text-sm">17 Mar 2023</p>
                             </div>
                         </div>
                     </div>
                     <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">
-                        <div class="flex gap-5 w-full">
+                        <div class="flex flex-col gap-2 w-full">
                             <div class="w-full">
-                                <iconify-icon icon="mdi:clock-outline" class="text-4xl"></iconify-icon>
+                                <iconify-icon icon="mdi:clock-outline" class="text-3xl"></iconify-icon>
                             </div>
-                            <div class="text-right w-full">
-                                <h2 class="font-bold text-2xl">8:16 PM</h2>
+                            <div class="w-full">
+                                <h2 class="font-bold text-sm">8:16 PM</h2>
                                 <p class="text-sm">Jam</p>
                             </div>
                         </div>
                     </div>
                     <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">
-                        <div class="flex justify-center gap-5 w-full">
-                            <div class="w-full"><iconify-icon icon="mdi:bedroom-outline" class="text-5xl"></iconify-icon></div>
-                            <div class="text-right w-full">
-                                <h2 class="font-bold text-lg text-right">Jumlah Tempat Tidur</h2>
+                        <div class="flex flex-col justify-center gap-2 w-full">
+                            <div class="w-full"><iconify-icon icon="mdi:bedroom-outline" class="text-3xl"></iconify-icon></div>
+                            <div class=" w-full">
+                                <h2 class="font-bold text-sm">Jumlah Tempat Tidur</h2>
                                 <p>50</p>
                             </div>
                         </div>
@@ -36,10 +36,10 @@
                 </div>
                 <div class="w-full flex gap-4">
                     <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">
-                        <div class="flex justify-center gap-5 w-full">
+                        <div class="flex flex-col justify-center gap-2 w-full">
                             <div class="w-full"><iconify-icon icon="mdi:bedroom-outline" class="text-5xl"></iconify-icon></div>
-                            <div class="text-right w-full">
-                                <h2 class="font-bold text-lg text-right">Tempat Tidur Tersedia</h2>
+                            <div class="text-left w-full">
+                                <h2 class="font-bold text-sm text-left">Tempat Tidur Tersedia</h2>
                                 <p>20/50</p>
                             </div>
                         </div>

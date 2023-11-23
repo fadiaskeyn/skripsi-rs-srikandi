@@ -22,7 +22,7 @@
                 @endif
                 <div class="w-full overflow-y-auto overflow-x-hidden">
                     {{-- header --}}
-                    @if(Route::current()->getName() !== 'reports.preview'))
+                    @if(Route::current()->getName() !== 'reports.preview')
                         @include('components.header')
                     @endif
                     {{-- content section --}}
