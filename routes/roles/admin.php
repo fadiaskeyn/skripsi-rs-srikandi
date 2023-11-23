@@ -1,17 +1,15 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/', DashboardController::class)->name('dashboard');
 
-Route::resource('pengguna', App\Http\Controllers\Admin\UserController::class);
+Route::resource('user', App\Http\Controllers\Admin\UserController::class);
 Route::resource('room', App\Http\Controllers\Admin\RoomController::class);
 Route::resource('service', App\Http\Controllers\Admin\ServiceController::class);
 Route::resource('payment', App\Http\Controllers\Admin\PaymentController::class);
-
-Route::get("diagnosa", function() { return view('pages.diagnosa.index'); })->name('admin.diagnosa');
+Route::resource('diagnosis', App\Http\Controllers\Admin\DiagnosisController::class);
 
 Route::controller(App\Http\Controllers\Admin\ChartController::class)
     ->group(function(){
@@ -21,14 +19,10 @@ Route::controller(App\Http\Controllers\Admin\ChartController::class)
     });
 
 // Laporan kunjungan rumah sakit
-Route::get('hospital-visit-report', function (){
-    return view('pages.reports.hospital-visit');
-})->name('reports.hospital-visit');
+Route::get('hospital-visit-report', fn() => view('pages.reports.hospital-visit'))->name('reports.hospital-visit');
 
-Route::get('hospital-service-indicator', function() {
-    return view('pages.reports.hospital-service-indicator');
-})->name('reports.hospital-service-indicator');
+Route::get('hospital-service-indicator', fn() =>  view('pages.reports.hospital-service-indicator'))->name('reports.hospital-service-indicator');;
 
-Route::get('report/preview', function() {
-    return view('pages.reports.report');
-})->name('reports.print');
+Route::get('report/preview', fn() =>  view('pages.reports.report'))->name('reports.print');
+
+Route::get('/census', App\Http\Controllers\Admin\CensusController::class    );

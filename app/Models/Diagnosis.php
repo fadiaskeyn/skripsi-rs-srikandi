@@ -5,17 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PatientEntry extends Model
+class Diagnosis extends Model
 {
     use HasFactory;
 
+    protected $table = 'diagnoses';
+
     protected $fillable = [
-        'patient_id',
-        'date',
-        'new_patient',
-        'nursing_class',
-        'service_id',
-        'payment_id',
-        'room_id',
+        'code_diagnosis',
+        'name'
     ];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 class UserRequest extends FormRequest
@@ -22,14 +23,32 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $data = [
             'name' => 'required|string|max:255',
             'position' => 'required|string|max:255',
             'employee_number' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email')
+                    ->ignore($this->user),
+            ],
+            'username' => [
+                'required',
+                'alpha_dash',
+                Rule::unique('users', 'username')
+                    ->ignore($this->user),
+            ],
             'role' => 'required|exists:roles,name',
-            'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'password' => 'nullable|string|min:8',
+            'role' => 'nullable|exists:roles,name',
         ];
+
+        if($this->isMethod('POST')) {
+            $data['password'] = 'required|string|min:8';
+            $data['role'] = 'required|exists:roles,name';
+        }
+
+        return $data;
     }
 }

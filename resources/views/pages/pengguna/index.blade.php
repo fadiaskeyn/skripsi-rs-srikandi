@@ -15,7 +15,7 @@
                     <h2 class="text-2xl font-bold">Table Pengguna</h2>
                 </div>
                 <div class="w-full flex justify-end">
-                    <a href="{{ route('admin.pengguna.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
+                    <a href="{{ route('admin.user.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
                 </div>
             </div>
             <div class="flex justify-end">
@@ -25,7 +25,31 @@
                 </div>
             </div>
             {{-- Table --}}
-            <x-content.table :headers="['No','name','username','email','Action']" :rows="$data" edit="admin.pengguna.edit" delete="admin.pengguna.destroy"/>
+            <x-content.table :headers="['No','name','username','email','Action']" :rows="$data" edit="admin.user.edit" url="/admin/pengguna/"/>
         </div>
     </div>
 @endsection
+
+@push('script-injection')
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Anda tidak akan dapat mengembalikan ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Hapus'
+        }).then((result) => {
+            if(!result.isConfirmed) return;
+
+            const formElement = `<form action="{{ route('admin.user.index') }}/${id}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </form>`;
+
+            $(formElement).appendTo('body').submit();
+        });
+    }
+</script>
+@endpush

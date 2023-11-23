@@ -5,7 +5,7 @@
     'value' => '',
     'class' => 'bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full p-2 text-gray-700 leading-tight focus:outline-none focus:bg-white',
     'label',
-    'labelClass' => 'block text-gray-500 font-bold md:text-left mb-1 md:mb-0'
+    'labelClass' => 'block text-gray-500 font-bold md:text-left mb-1 md:mb-0',
 ])
 
 <div class="w-2/4">
@@ -14,7 +14,7 @@
     </label>
 </div>
 <div class="w-full">
-    <input {{ $attributes->merge(['class' => $class]) }} type="{{ $type }}" name="{{ $name }}" value="{{ old($name, $value) }}" id="{{ $id }}">
+    <input {{ $attributes->merge(['class' => $class]) }} type="{{ $type }}" name="{{ $name }}" value="{{ old($name,$value) }}" id="{{ $id }}"  @readonly(isset($readonly))>
     @error($name)
         <div class="text-red-500 mt-2 text-sm">
             {{ $message }}

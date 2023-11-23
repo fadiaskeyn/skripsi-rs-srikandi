@@ -69,22 +69,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    @for ($i = 0; $i < 10; $i++)
+                        <tr>
+                            @for ($j = 0; $j < 20; $j++)
+                                <td></td>
+                            @endfor
+                        </tr>
+                    @endfor
+                    
                 </tbody>
             </table>
         </div>

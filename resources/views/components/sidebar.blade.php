@@ -35,10 +35,10 @@
                 </div>
                 <li class="menu-item">
                     <a href="#" class="">
-                        <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
+                        <a href="/admin/census" class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
                             <span>Rekapitulasi Sensus Harian</span>
                             {{-- <span class="flex justify-end w-full mt-0"><iconify-icon icon="iconamoon:arrow-down-2-duotone" class="text-2xl"></iconify-icon></span> --}}
-                        </button>
+                        </a>
                     </a>
                 </li>
                 <li class="menu-item dropdown-toggle">
@@ -97,7 +97,7 @@
                 <div class="dropdown-menu-link">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('admin.pengguna.index') }}" class="text-white"><button class="item-link">Data Pengguna</button></a>
+                            <a href="{{ route('admin.user.index') }}" class="text-white"><button class="item-link">Data Pengguna</button></a>
                         </li>
                         <li>
                             <a href="{{ route('admin.room.index') }}" class="text-white"><button class="item-link">Data Ruangan & TT</button></a>
@@ -109,7 +109,7 @@
                             <a href="{{ route('admin.payment.index') }}" class="text-white"><button class="item-link">Data Jenis Pembayaran</button></a>
                         </li>
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Data Diagnosa</button></a>
+                            <a href="{{ route('admin.diagnosis.index') }}" class="text-white"><button class="item-link">Data Diagnosa</button></a>
                         </li>
                     </ul>
                 </div>
