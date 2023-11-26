@@ -49,7 +49,7 @@
     <script>
 var options = {
     series: [{
-        name: 'Points',
+        name: 'BOR',
         type: 'scatter',
         data: [{
             x: 1,
