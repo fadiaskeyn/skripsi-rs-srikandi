@@ -1,7 +1,12 @@
+
 <div class="flex gap-5 w-full">
     <div class="p-5 w-[50%]">
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="medrec_number" type="number" name="medrec_number" label="No. RM" maxlength="6" />
+                        <input type="hidden" name="medrec_number" id="medrec_number" value="">
+                        <x-forms.input id="rm" type="text" name="rm" label="No. RM" />
+                        <button type="button" class="bg-theme-border-sidebar text-white px-4 py-2 rounded-full" id="rm-button">
+                            <iconify-icon icon="mingcute:search-line" class="text-lg"></iconify-icon>
+                        </button>
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="fullname" type="text" name="fullname" label="Nama Pasien" />
@@ -10,7 +15,7 @@
             <x-forms.input id="birthdate" type="date" name="birthdate" label="Tgl. Lahir" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select id="gender" type="text" name="gender" label="Jenis Kelamin" placeholder="Pilih Jenis Kelamin" :options="['P', 'L']" />
+            <x-forms.select id="gender" type="text" name="gender" label="Jenis Kelamin" placeholder="Pilih Jenis Kelamin" :options="['P' => 'P', 'L' => 'L']" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="address" type="text" name="address" label="Alamat" />
@@ -62,3 +67,36 @@
     </a>
     </div>
 </div>
+
+@push('script-injection')
+    <script>
+    function resetForm() {
+        const selectors = `input[name=fullname],input[name=birthdate],select[name=gender],input[name=address]`;
+        $(selectors).val('');
+    }
+
+    $('#rm-button').click(function() {
+        const medrec = $('#rm').val();
+
+        $.ajax({
+            url: `/api/patients/${medrec}`,
+            dataType: 'JSON',
+            success(res) {
+                for(const [key, value] of Object.entries(res.data)) {
+                    $(`input[name=${key}]`).val(value);
+                    $(`select[name=${key}]`).val(value);
+                }
+            },
+            error() {
+                resetForm();
+
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Pasien tidak ditemukan',
+                    timer: 1300,
+                });
+            },
+        });
+    });
+</script>
+@endpush

@@ -22,6 +22,7 @@ class PatientEntryRepository implements PatientEntryRepositoryInterface
             'service_id' => $data['service_id'],
             'payment_id' => $data['payment_id'],
             'room_id' => $data['room_id'],
+            'status_patient' => 'entry'
         ]);
     }
 }

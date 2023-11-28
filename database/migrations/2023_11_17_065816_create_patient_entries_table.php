@@ -20,6 +20,10 @@ return new class extends Migration
             $table->foreignId('service_id')->constrained();
             $table->foreignId('payment_id')->constrained();
             $table->foreignId('room_id')->constrained();
+            $table->date('out_date')->nullable();
+            $table->string('way_out')->nullable();
+            $table->string('dpjb')->nullable();
+            $table->enum('status_patient', ['entry', 'exit'])->nullable();
             $table->timestamps();
         });
     }

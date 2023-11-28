@@ -46,113 +46,68 @@
 @endsection
 
 @push('script-injection')
-    <script>
+<script>
+
 var options = {
-    series: [{
-        name: 'BOR',
-        type: 'scatter',
-        data: [{
-            x: 1,
-            y: 2.14
-        }, {
-            x: 1.2,
-            y: 2.19
-        }, {
-            x: 1.8,
-            y: 2.43
-        }, {
-            x: 2.3,
-            y: 3.8
-        }, {
-            x: 2.6,
-            y: 4.14
-        }, {
-            x: 2.9,
-            y: 5.4
-        }, {
-            x: 3.2,
-            y: 5.8
-        }, {
-            x: 3.8,
-            y: 6.04
-        }, {
-            x: 4.55,
-            y: 6.77
-        }, {
-            x: 4.9,
-            y: 8.1
-        }, {
-            x: 5.1,
-            y: 9.4
-        }, {
-            x: 7.1,
-            y: 7.14
-        },{
-            x: 9.18,
-            y: 8.4
-        }]
-    }, {
-        name: 'Line',
-        type: 'line',
-        data: [{
-            x: 1,
-            y: 2
-        }, {
-            x: 2,
-            y: 3
-        }, {
-            x: 3,
-            y: 4
-        }, {
-            x: 4,
-            y: 5
-        }, {
-            x: 5,
-            y: 6
-        }, {
-            x: 6,
-            y: 7
-        }, {
-            x: 7,
-            y: 8
-        }, {
-            x: 8,
-            y: 9
-        }, {
-            x: 9,
-            y: 10
-        }, {
-            x: 10,
-            y: 11
-        }]
-    }],
-    chart: {
-        height: 350,
-        type: 'line',
-    },
-    fill: {
-        type:'solid',
-    },
-    markers: {
-        size: [6, 0]
-    },
-    tooltip: {
-        shared: false,
-        intersect: true,
-    },
-    legend: {
-        show: false
-    },
-    xaxis: {
-        type: 'numeric',
-        min: 0,
-        max: 12,
-        tickAmount: 12
+  series: [{
+    name: "BOR",
+    data: [
+      [0.0, 35.48],
+      [0.0, 64.52],
+      [0.0, 35.48],
+      [0.0, 46.52]
+    ]
+  }, {
+    name: "LOS",
+    data: [
+      [0.0, 3.05],
+      [5.85, 5.85]
+    ]
+  }, {
+    name: "TOI",
+    data: [
+      [3.05, 3.05],
+      [0.0, 5.85]
+    ]
+  }, {
+    name: "BTO",
+    data: [
+      [8.58, 0.0],
+      [0.0, 8.58]
+    ]
+  }, {
+    name: "TITIK",
+    data: [
+      [3.0, 5.85],
+      [3.0, 0.0]
+    ]
+  }],
+  chart: {
+    height: 350,
+    type: 'scatter',
+    zoom: {
+      enabled: true,
+      type: 'xy'
     }
-};
+  },
+  xaxis: {
+    tickAmount: 10,
+    labels: {
+      formatter: function(val) {
+        return parseFloat(val).toFixed(1);
+      }
+    },
+    categories: [0, 35.48, 64.52, 46.52]
+  },
+  yaxis: {
+    tickAmount: 7,
+    categories: [0, 35.48, 64.52, 46.52]
+  }
+};  
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
 
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
+</script>
 
-    </script>
+
 @endpush
