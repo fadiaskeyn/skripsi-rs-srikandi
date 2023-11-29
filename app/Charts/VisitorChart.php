@@ -15,26 +15,21 @@ class VisitorChart
         $this->chart = $chart;
     }
 
+    public function countPatientsByGender($gender) {
+        return PatientEntry::whereHas('patient', function ($query) use ($gender) {
+            $query->where('gender', $gender);
+        })->count();
+    }
+
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
 
-        $maleCount = PatientEntry::whereHas('patient', function ($query) {
-            $query->where('gender', 'L');
-        })->count();
-
-        $femaleCount = PatientEntry::whereHas('patient', function ($query) {
-            $query->where('gender', 'P');
-        })->count();
-
-        $genderData = [
-            'Laki-laki' => $maleCount,
-            'Perempuan' => $femaleCount,
-        ];
-
+        $male = $this->countPatientsByGender('L');
+        $female = $this->countPatientsByGender('P');
 
         $chart = $this->chart->pieChart()
-            ->addData(array_values($genderData))
-            ->setLabels(array_keys($genderData));
+        ->addData([$male, $female])
+        ->setLabels(['Laki-laki', 'Perempuan']);
 
         return $chart;
     }
