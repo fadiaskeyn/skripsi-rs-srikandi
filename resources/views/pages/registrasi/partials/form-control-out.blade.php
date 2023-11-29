@@ -79,7 +79,7 @@
         const medrec = $('#rm').val();
 
         $.ajax({
-            url: `/api/patients/${medrec}`,
+            url: `/api/patient-entry/${medrec}`,
             dataType: 'JSON',
             success(res) {
                 for(const [key, value] of Object.entries(res.data)) {

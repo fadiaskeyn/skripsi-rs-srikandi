@@ -14,9 +14,6 @@
                     @foreach ($row as $cell)
                         <td>{{ $cell }}</td>
                     @endforeach
-                    <td>
-                        <a href="">Register</a>
-                    </td>
                 </tr>
             @endforeach
         </tbody>

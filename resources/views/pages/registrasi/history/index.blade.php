@@ -17,7 +17,7 @@
             </div>
 
             {{-- Table --}}
-            <x-content.table-patient :headers="['No', 'No. RM', 'Nama', 'Tgl Lahir', 'Jenis Kelamin', 'Alamat', 'Action']" :rows="$data" />
+            <x-content.table-patient :headers="['No', 'No. RM', 'Nama', 'Tgl Lahir', 'Jenis Kelamin', 'Alamat']" :rows="$data" />
 
         </div>
     </div>

@@ -18,4 +18,9 @@ class PatientEntry extends Model
         'payment_id',
         'room_id',
     ];
+
+    public function patient(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }

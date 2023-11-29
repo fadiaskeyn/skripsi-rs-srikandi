@@ -23,24 +23,19 @@
                 <div class="dropdown-menu-link @active('registration.patients.*')">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patients.masuk')">Registrasi Pasien Masuk</button></a>
+                            <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patients.masuk')">Pasien Masuk</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('registration.patient-exit.create') }}" class="text-white"><button class="item-link">Registrasi Pasien Keluar</button></a>
+                            <a href="{{ route('registration.patient-exit.create') }}" class="text-white"><button class="item-link">Pasien Keluar</button></a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white"><button class="item-link">Pasien Pindah</button></a>
                         </li>
                         <li>
                             <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link">Histori Pasien</button></a>
                         </li>
                     </ul>
                 </div>
-                <li class="menu-item">
-                    <a href="#" class="">
-                        <a href="/admin/census" class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
-                            <span>Rekapitulasi Sensus Harian</span>
-                            {{-- <span class="flex justify-end w-full mt-0"><iconify-icon icon="iconamoon:arrow-down-2-duotone" class="text-2xl"></iconify-icon></span> --}}
-                        </a>
-                    </a>
-                </li>
                 <li class="menu-item dropdown-toggle">
                     <a href="#" class="">
                         <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
@@ -56,6 +51,10 @@
                         </li>
                         <li>
                             <a href="{{ route('admin.reports.hospital-visit') }}" class="text-white"><button class="item-link">Kunjuangan RS</button></a>
+                        </li>
+                        <li>
+                            <a href="/admin/census" class="text-white">
+                            <button class="item-link">Rekapitulasi Sensus Harian</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">10 Besar penyakit RI</button></a>

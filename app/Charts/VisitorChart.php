@@ -2,12 +2,14 @@
 
 namespace App\Charts;
 
+use App\Models\PatientEntry;
 use ArielMejiaDev\LarapexCharts\LarapexChart;
+use Illuminate\Support\Facades\Cache;
 
 class VisitorChart
 {
     protected $chart;
-
+    
     public function __construct(LarapexChart $chart)
     {
         $this->chart = $chart;
@@ -15,10 +17,25 @@ class VisitorChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\PieChart
     {
-        return $this->chart->pieChart()
-            ->setTitle('Top 3 scorers of the team.')
-            ->setSubtitle('Season 2021.')
-            ->addData([40, 60])
-            ->setLabels(['Player 7', 'Player 10']);
+
+        $maleCount = PatientEntry::whereHas('patient', function ($query) {
+            $query->where('gender', 'L');
+        })->count();
+
+        $femaleCount = PatientEntry::whereHas('patient', function ($query) {
+            $query->where('gender', 'P');
+        })->count();
+
+        $genderData = [
+            'Laki-laki' => $maleCount,
+            'Perempuan' => $femaleCount,
+        ];
+
+
+        $chart = $this->chart->pieChart()
+            ->addData(array_values($genderData))
+            ->setLabels(array_keys($genderData));
+
+        return $chart;
     }
 }
