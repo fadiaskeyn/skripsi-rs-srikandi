@@ -7,7 +7,7 @@
         @apply overflow-hidden;
     }
     .layout {
-        @apply flex;
+        @apply flex h-screen w-full;
     }
     .dropdown {
         @apply bg-white  relative;

@@ -1,7 +1,7 @@
 <div class="layout-sidebar">
-    <div class="sidebar  bg-[#423D37] max-w-[280px] h-screen lg:block hidden overflow-y-auto">
+    <div class="sidebar bg-[#423D37] max-w-[280px] h-screen lg:block hidden overflow-y-auto">
         <div class="logo-brand p-5 bg-theme-sidebar">
-            <img src="{{ asset('images/logo') }}/logo-horizontal.png" class="w-" alt="">
+            <img src="{{ asset('images/logo') }}/logo-horizontal.png"  alt="">
         </div>
         <div class="sidebar-menu w-auto">
             <ul class="divide-y divide-theme-border-sidebar">
