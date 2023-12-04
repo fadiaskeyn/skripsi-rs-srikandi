@@ -20,7 +20,7 @@
                 @if(Route::current()->getName() !== 'reports.preview')
                     @include('components.sidebar')
                 @endif
-                <div class="w-full">
+                <div class="w-full overflow-y-auto">
                     {{-- header --}}
                     @if(Route::current()->getName() !== 'reports.preview')
                         @include('components.header')
