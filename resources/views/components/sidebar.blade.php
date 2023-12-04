@@ -14,25 +14,25 @@
                 </li>
                 <li class="menu-item dropdown-toggle">
                     <a href="#" class="">
-                        <button class="item w-full border-l-8 px-8 py-5 text-left text-white flex @active('registration.patients.*')">
+                        <button class="item w-full border-l-8 px-8 py-5 text-left text-white flex @active('registration.patient*,registration.histori.*')">
                             <span>Register</span>
                             <span class="dropdown-arrow flex justify-end w-full mt-0"><iconify-icon icon="iconamoon:arrow-down-2-duotone" class="text-2xl"></iconify-icon></span>
                         </button>
                     </a>
                 </li>
-                <div class="dropdown-menu-link @active('registration.patients.*')">
+                <div class="dropdown-menu-link @active('registration.patient*,registration.histori.*')">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patients.masuk')">Pasien Masuk</button></a>
+                            <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patient-entry.create')">Pasien Masuk</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('registration.patient-exit.create') }}" class="text-white"><button class="item-link">Pasien Keluar</button></a>
+                            <a href="{{ route('registration.patient-exit.create') }}" class="text-white"><button class="item-link @active('registration.patient-exit.create')">Pasien Keluar</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">Pasien Pindah</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link">Histori Pasien</button></a>
+                            <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link @active('registration.histori.index')">Histori Pasien</button></a>
                         </li>
                     </ul>
                 </div>

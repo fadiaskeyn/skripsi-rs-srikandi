@@ -6,6 +6,7 @@ use App\Models\PatientEntry;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Registration\PatientEntryRequest;
+use App\Http\Resources\PatientEntryResource;
 use App\Models\{Patient, Payment, Room, Service};
 use App\Repositories\PatientEntryRepository;
 
@@ -31,7 +32,6 @@ class PatientEntryController extends Controller
      */
     public function create()
     {
-
         return view('pages.registrasi.patient-entry',[
             'payments' => Payment::pluck('name', 'id')->toArray(),
             'services' => Service::pluck('name', 'id')->toArray(),
@@ -57,9 +57,17 @@ class PatientEntryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PatientEntry $patientEntry)
+    public function show($medrec)
     {
-        //
+        $patient = Patient::where('medrec_number', $medrec)->first();
+        $entry = PatientEntry::where('patient_id', $patient->id)
+            ->where('status_patient', 'entry')
+            ->latest()
+            ->first();
+
+        if(!$entry) return abort(404);
+
+        return PatientEntryResource::make($entry);
     }
 
     /**

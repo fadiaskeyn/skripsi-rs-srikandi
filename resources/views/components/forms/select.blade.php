@@ -1,6 +1,6 @@
 @props([
     'id' => '',
-    'name',
+    'name' => '',
     'value' => '',
     'class' => 'bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white',
     'label',
@@ -15,8 +15,8 @@
     </label>
 </div>
 <div class="md:w-2/3 relative">
-    <select name="{{ $name }}" id="{{ $id }}" {{ $attributes->merge(['class' => $class]) }}>
-        <option selected disabled value="0">Pilih salah satu</option>
+    <select @if(strlen($name) > 0) name="{{ $name }}" @endif id="{{ $id }}" {{ $attributes->merge(['class' => $class]) }}>
+        <option selected disabled>Pilih salah satu</option>
         @foreach ($options as $key => $option)
             <option value="{{ $key }}" {{ $option == $selected ? 'selected' : '' }}>{{ $option }}</option>
         @endforeach

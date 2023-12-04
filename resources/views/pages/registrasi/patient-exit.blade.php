@@ -11,13 +11,13 @@
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 lg:w-3/4 w-full p-8 " action="{{ route('registration.histori.store') }}" method="POST" autocomplete="off">
+                <form class="mt-5 lg:w-3/4 w-full p-8" action="{{ route('registration.patient-exit.store') }}" method="POST" autocomplete="off">
                     @csrf
                     @include('pages.registrasi.partials.form-control-out')
                 </form>
                 {{-- form end --}}
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 @endsection
