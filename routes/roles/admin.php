@@ -25,4 +25,4 @@ Route::get('hospital-service-indicator', fn() =>  view('pages.reports.hospital-s
 
 Route::get('report/preview', fn() =>  view('pages.reports.report'))->name('reports.print');
 
-Route::get('/census', App\Http\Controllers\Admin\CensusController::class    );
+Route::get('/census', App\Http\Controllers\Admin\CensusController::class);

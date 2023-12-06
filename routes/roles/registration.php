@@ -16,3 +16,5 @@ Route::resource('patient-entry', PatientEntryController::class)
 
 Route::resource('patient-exit', PatientExitController::class)
     ->only('create', 'store');
+
+Route::view('/pasien-pindah', 'pages.registrasi.patient-move')->name('patient-move');
