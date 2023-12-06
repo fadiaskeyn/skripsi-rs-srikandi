@@ -67,6 +67,9 @@
     .table-print th {
         @apply bg-theme-secondary text-white;
     }
+    .tables th {
+        @apply bg-theme-secondary text-white;
+    }
 }
 
 .select2-container {
