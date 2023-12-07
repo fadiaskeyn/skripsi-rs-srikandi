@@ -42,70 +42,76 @@
         </div>
     </div>
 
-   
+
 @endsection
 
 @push('script-injection')
 <script>
 
 var options = {
-  series: [{
-    name: "BOR",
-    data: [
-      [0.0, 35.48],
-      [0.0, 64.52],
-      [0.0, 35.48],
-      [0.0, 46.52]
-    ]
-  }, {
-    name: "LOS",
-    data: [
-      [0.0, 3.05],
-      [5.85, 5.85]
-    ]
-  }, {
-    name: "TOI",
-    data: [
-      [3.05, 3.05],
-      [0.0, 5.85]
-    ]
-  }, {
-    name: "BTO",
-    data: [
-      [8.58, 0.0],
-      [0.0, 8.58]
-    ]
-  }, {
-    name: "TITIK",
-    data: [
-      [3.0, 5.85],
-      [3.0, 0.0]
-    ]
-  }],
-  chart: {
-    height: 350,
-    type: 'scatter',
-    zoom: {
-      enabled: true,
-      type: 'xy'
-    }
-  },
-  xaxis: {
-    tickAmount: 10,
-    labels: {
-      formatter: function(val) {
-        return parseFloat(val).toFixed(1);
-      }
+    series: [{
+        name: 'BOR',
+        color: '#3c85e6',
+        data: [{ x: 0, y: 0 }, { x: 35.48, y: 64.52 }],
+    }, {
+        name: 'LOS',
+        color: '#e83838',
+        data: [{ x: 0, y: 5.85 }, { x: 3.05, y: 5.85 }],
+    }, {
+        name: 'TOI',
+        color: '#20d42c',
+        data: [{ x: 3.05, y: 0 }, { x: 3.05, y: 5.85 }],
+    }, {
+        name: 'BTO',
+        color: '#941e8e',
+        data: [{ x: 8.58, y: 0 }, { x: 0, y: 8.58 }],
+    }, {
+        name: 'Turun',
+        color: '#eb872a',
+        data: [{ x: 1, y: 12 }, { x: 1, y: 3 }],
+        show: false,
+    }, {
+        name: 'Miring',
+        color: '#220b96',
+        data: [{ x: 1, y: 3 }, { x: 3, y: 9 }],
+        show: false,
+    }, {
+        name: 'Naik',
+        color: '#471507',
+        data: [{ x: 3, y: 9 }, { x: 3, y: 12 }],
+        show: false,
+    }, {
+        name: 'Datar',
+        color: '#074712',
+        data: [{ x: 3, y: 12 }, { x: 1, y: 12 }],
+        show: false,
+    }],
+    chart: {
+        height: 350,
+        type: 'line',
     },
-    categories: [0, 35.48, 64.52, 46.52]
-  },
-  yaxis: {
-    tickAmount: 7,
-    categories: [0, 35.48, 64.52, 46.52]
-  }
-};  
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
+    markers: {
+        size: 6,
+    },
+    stroke: {
+        width: 2,
+    },
+    xaxis: {
+        type: 'numeric',
+        title: {
+            text: 'TOI (HARI)'
+        }
+    },
+    yaxis: {
+        type: 'numeric',
+        title: {
+            text: 'AvLOS (HARI)'
+        }
+    },
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+chart.render();
 
 </script>
 
