@@ -29,7 +29,7 @@
                             <a href="{{ route('registration.patient-exit.create') }}" class="text-white"><button class="item-link @active('registration.patient-exit.create')">Pasien Keluar</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('registration.patient-move') }}" class="text-white"><button class="item-link">Pasien Pindah</button></a>
+                            <a href="{{ route('registration.patient-move.create') }}" class="text-white"><button class="item-link @active('registration.patient-move.create')">Pasien Pindah</button></a>
                         </li>
                         <li>
                             <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link @active('registration.histori.index')">Histori Pasien</button></a>

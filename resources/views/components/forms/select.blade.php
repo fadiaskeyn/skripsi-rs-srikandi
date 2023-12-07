@@ -23,3 +23,9 @@
     </select>
     <span class="absolute right-4 top-2"><iconify-icon icon="ep:arrow-down-bold"></iconify-icon></span>
 </div>
+
+@error($name)
+    <div class="text-red-500 mt-2 text-sm">
+        {{ $message }}
+    </div>
+@enderror

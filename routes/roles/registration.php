@@ -4,6 +4,7 @@ use App\Http\Controllers\Registration\DashboardController;
 use App\Http\Controllers\Registration\PatientController;
 use App\Http\Controllers\Registration\PatientEntryController;
 use App\Http\Controllers\Registration\PatientExitController;
+use App\Http\Controllers\Registration\PatientMoveController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', DashboardController::class)
@@ -17,4 +18,5 @@ Route::resource('patient-entry', PatientEntryController::class)
 Route::resource('patient-exit', PatientExitController::class)
     ->only('create', 'store');
 
-Route::view('/pasien-pindah', 'pages.registrasi.patient-move')->name('patient-move');
+Route::resource('patient-move', PatientMoveController::class)
+    ->only('create', 'store');

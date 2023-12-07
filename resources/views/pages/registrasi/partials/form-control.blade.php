@@ -22,7 +22,7 @@
     </div>
     <div class="p-5 lg:w-[50%] w-full">
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="nelg:w_patie w-fullnt" id="new_patient" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Lama', 'Baru']" />
+            <x-forms.select name="new_patient" id="new_patient" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Lama', 'Baru']" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="date" type="date" name="date" label="Tanggal Masuk" />

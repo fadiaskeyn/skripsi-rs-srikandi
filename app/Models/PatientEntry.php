@@ -23,6 +23,10 @@ class PatientEntry extends Model
         'dpjb',
     ];
 
+    protected $casts = [
+        'date' => 'date',
+    ];
+
     public function patient(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Patient::class);
