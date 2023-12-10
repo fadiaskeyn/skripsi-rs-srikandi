@@ -27,12 +27,7 @@ class PatientMoveController extends Controller
     public function store(PatientMoveRequest $request)
     {
         $entryData = PatientEntry::findOrFail($request->entry_id);
-
-        PatientMoveRepository::addMovingPatient($entryData, [
-            'moving_room' => $request->moving_room,
-            'nursing_class' => $request->nursing_class,
-            'payment_id' => $request->payment_id,
-        ]);
+        PatientMoveRepository::addMovingPatient($entryData, $request->validated());
 
         return back()->with('swals', 'Berhasil memindahkan pasien');
     }

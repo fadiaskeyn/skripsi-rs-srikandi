@@ -20,7 +20,7 @@ class PatientEntryResource extends JsonResource
             'service' => ServiceResource::make($this->service),
             'payment' => PaymentResource::make($this->payment),
             'room' => RoomResource::make($this->room),
-            'entry_date' => $this->date,
+            'entry_date' => $this->date->format('Y-m-d'),
             'new_patient' => $this->new_patient,
             'nursing_class' => $this->nursing_class,
             'status_patient' => $this->status_patient,

@@ -67,7 +67,7 @@
                                     <td>{{ $data->moving_nursing_class }}</td>
                                     <td>{{ $data->entry->date->format('d-m-Y') }}</td>
                                     <td>{{ $data->movingRoom->name }}</td>
-                                    <td>{{ $data->created_at->format('d-m-Y') }}</td>
+                                    <td>{{ $data->date->format('d-m-Y') }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

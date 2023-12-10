@@ -14,3 +14,16 @@ if(!function_exists('redirect_role')) {
             return redirect()->route('registration.dashboard');
     }
 }
+
+if(!function_exists('enumArray')) {
+    function enumArray(string $enum) {
+        $reflection = new ReflectionEnum($enum);
+        $constants = $reflection->getConstants();
+
+        $enumArray = [];
+        foreach ($constants as $case)
+            $enumArray[$case->value] = $case->value;
+
+        return $enumArray;
+    }
+}

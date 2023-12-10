@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Registration;
 
+use App\Enums\PatientWayout;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PatientExitRequest extends FormRequest
 {
@@ -25,7 +27,10 @@ class PatientExitRequest extends FormRequest
             'entry_id' => 'required|numeric|exists:patient_entries,id',
             'date' => 'required|date',
             'time' => 'required|date_format:H:i',
-            'way_out' => 'required|string',
+            'way_out' => [
+                'required',
+                Rule::enum(PatientWayout::class),
+            ],
             'dpjb' => 'required|string',
         ];
     }

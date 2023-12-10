@@ -1,4 +1,3 @@
-
 <input type="hidden" name="entry_id" id="entry_id">
 <div class="flex gap-5 w-full">
     <div class="p-5 lg:w-[50%] w-full">
@@ -45,13 +44,13 @@
             <x-forms.input type="date" name="date" id="date" label="Tanggal Keluar" placeholder="Pilih Tanggal keluar" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input type="time" name="time" id="time" label="Tanggal Keluar" placeholder="Pilih Jam keluar" />
+            <x-forms.input type="time" name="time" id="time" label="Waktu Keluar" placeholder="Pilih Jam keluar" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input name="long_care" id="long_care" label="Lama Rawat"/>
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="way_out" id="way_out" label="Cara keluar" placeholder="Pilih Cara keluar" :options="['Atas Izin Dokter' => 'Atas Izin Dokter', 'Atas Izin Pasien' => 'Atas Izin Pasien']" />
+            <x-forms.select name="way_out" id="way_out" label="Cara keluar" placeholder="Pilih Cara keluar" :options="enumArray(\App\Enums\PatientWayout::class)" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input name="dpjb" id="dpjb" label="DPJB"  type="text"  />

@@ -18,6 +18,11 @@ class PatientMove extends Model
         'moving_payment',
         'initial_nursing_class',
         'moving_nursing_class',
+        'date',
+    ];
+
+    protected $casts = [
+        'date' => 'date',
     ];
 
     public function patient()

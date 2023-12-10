@@ -25,6 +25,7 @@ class PatientEntry extends Model
 
     protected $casts = [
         'date' => 'date',
+        'out_date' => 'date',
     ];
 
     public function patient(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -44,6 +45,6 @@ class PatientEntry extends Model
 
     public function payment()
     {
-        return $this->belongsTo(Payment::class);
+          return $this->belongsTo(Payment::class);
     }
 }

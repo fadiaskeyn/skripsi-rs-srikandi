@@ -52,9 +52,9 @@
                     <tr>
                         <th colspan="3">Pasien Keluar Hidup</th>
                         <th colspan="2">Pasien Keluar Mati</th>
-                        <th rowspan="2">UMUM</th>
-                        <th rowspan="2">BPJS</th>
-                        <th rowspan="2">ASURANSI</th>
+                        @foreach ($payments as $payment)
+                            <th rowspan="2">{{ $payment }}</th>
+                        @endforeach
                         <th rowspan="2">VIP</th>
                         <th rowspan="2">I</th>
                         <th rowspan="2">II</th>
@@ -69,14 +69,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for ($i = 0; $i < 10; $i++)
-                        <tr>
-                            @for ($j = 0; $j < 20; $j++)
-                                <td></td>
-                            @endfor
-                        </tr>
-                    @endfor
-                    
+                    @foreach ($data as $recap)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $recap->date }}</td>
+                        <td>{{ $recap->entries->total_entries }}</td>
+                        <td>{{ $recap->entries->total_moves }}</td>
+                        <td>{{ $recap->entries->total }}</td>
+                        <td>{{ $recap->exits->self }}</td>
+                        <td>{{ $recap->exits->doctor }}</td>
+                        <td>{{ $recap->exits->referred }}</td>
+                        <td>{{ $recap->exits->diedLess }}</td>
+                        <td>{{ $recap->exits->diedMore }}</td>
+                        <td>{{ $recap->exits->total }}</td>
+                        <td></td>
+                        <td></td>
+                        @foreach ($payments as $payment)
+                            <td>{{ $recap->payments[$payment] }}</td>
+                        @endforeach
+                        <td></td>
+                        <td>{{ $recap->nursing_class[1] }}</td>
+                        <td>{{ $recap->nursing_class[2] }}</td>
+                        <td>{{ $recap->nursing_class[3] }}</td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

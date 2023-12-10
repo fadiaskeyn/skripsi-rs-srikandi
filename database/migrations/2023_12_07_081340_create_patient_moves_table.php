@@ -21,6 +21,7 @@ return new class extends Migration
             $table->bigInteger('moving_payment')->unsigned();
             $table->bigInteger('initial_nursing_class')->unsigned();
             $table->bigInteger('moving_nursing_class')->unsigned();
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('initial_room')->references('id')->on('rooms');

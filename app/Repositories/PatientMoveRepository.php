@@ -18,6 +18,7 @@ class PatientMoveRepository
             'moving_payment' => $data['payment_id'],
             'initial_nursing_class' => $entryData->nursing_class,
             'moving_nursing_class' => $data['nursing_class'],
+            'date' => $data['date'],
         ]);
 
         $entryData->update([
