@@ -38,23 +38,23 @@
                 </div>
                 <li class="menu-item dropdown-toggle">
                     <a href="#" class="">
-                        <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex">
+                        <button class="item w-full border-l-8 border-l-transparent px-8 py-5 text-left text-white flex @active('admin.reports.*')">
                             <span>Laporan</span>
                             <span class="flex justify-end w-full mt-0"><iconify-icon icon="iconamoon:arrow-down-2-duotone" class="text-2xl"></iconify-icon></span>
                         </button>
                     </a>
                 </li>
-                <div class="dropdown-menu-link">
+                <div class="dropdown-menu-link @active('admin.reports.*')">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('admin.reports.hospital-service-indicator') }}" class="text-white"><button class="item-link">Indikator Pelayanan RS</button></a>
+                            <a href="{{ route('admin.reports.hospital-service-indicator') }}" class="text-white"><button class="item-link @active('admin.reports.hospital-service-indicator')">Indikator Pelayanan RS</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.reports.hospital-visit') }}" class="text-white"><button class="item-link">Kunjuangan RS</button></a>
+                            <a href="{{ route('admin.reports.hospital-visit') }}" class="text-white"><button class="item-link @active('admin.reports.hospital-visit')">Kunjungan RS</button></a>
                         </li>
                         <li>
                             <a href="/admin/census" class="text-white">
-                            <button class="item-link">Rekapitulasi Sensus Harian</button></a>
+                            <button class="item-link @active('admin.reports.census')">Rekapitulasi Sensus Harian</button></a>
                         </li>
                         <li>
                             <a href="#" class="text-white"><button class="item-link">10 Besar penyakit RI</button></a>

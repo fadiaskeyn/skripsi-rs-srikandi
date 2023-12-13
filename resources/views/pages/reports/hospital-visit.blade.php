@@ -10,9 +10,30 @@
         </div>
     </div>
     <div class="shadow border p-5 mt-20 bg-white">
-        {{-- Table --}}
-        <x-content.table :headers="['No','Bulan', 'Laki-laki', 'Perempuan','Total']" :rows="[]" />
-
+        <div class="tables-responsive overflow-y-auto mt-10">
+            <table class="tables">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Bulan</th>
+                        <th>Laki-Laki</th>
+                        <th>Perempuan</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($visitors as $indicator)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $indicator->date }}</td>
+                        <td>{{ $indicator->male }}</td>
+                        <td>{{ $indicator->female }}</td>
+                        <td>{{ $indicator->total }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @endsection

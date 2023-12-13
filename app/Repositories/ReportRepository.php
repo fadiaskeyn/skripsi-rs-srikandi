@@ -6,8 +6,11 @@ use App\Enums\PatientWayout;
 use App\Models\PatientEntry;
 use App\Models\PatientMove;
 use App\Models\Payment;
+use App\Models\Room;
 use App\Services\MedicService;
 use Carbon\Carbon;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Support\Facades\DB;
 
 class ReportRepository
 {
@@ -40,6 +43,84 @@ class ReportRepository
                     2 => $entries->filter(fn($entry) => $entry->nursing_class == 2)->count(),
                     3 => $entries->filter(fn($entry) => $entry->nursing_class == 3)->count(),
                 ],
+            ];
+        });
+    }
+
+    public function getHospitalIndicators()
+    {
+        $dates = PatientEntry::select(DB::raw('MONTH(date) as month, YEAR(date) AS year'))
+            ->groupBy('year', 'month')
+            ->get();
+
+        $bedsTotal = Room::all()->sum('number_of_beds');
+
+        return $dates->map(function($date) use($bedsTotal) {
+            $patients = PatientEntry::whereMonth('date', $date->month)
+                ->whereYear('date', $date->year)
+                ->get();
+
+            $patientDieds = PatientEntry::whereMonth('date', $date->month)
+                ->whereYear('date', $date->year)
+                ->where('way_out', PatientWayout::DIED->value)
+                ->count();
+
+            $patientDiedsMore = PatientEntry::whereMonth('date', $date->month)
+                ->whereYear('date', $date->year)
+                ->where('way_out', PatientWayout::DIED->value)
+                ->whereRaw('TIMESTAMPDIFF(HOUR, date, out_date) > 48')
+                ->count();
+
+            $patientOutsTotal = PatientEntry::whereMonth('date', $date->month)
+                ->whereYear('date', $date->year)
+                ->whereNotNull('out_date')
+                ->count();
+
+            $days = Carbon::createFromFormat('Y-m', $date->year . '-' . $date->month)
+                ->daysInMonth;
+
+            $longCares = $patients->reduce(
+                fn(?int $carry, PatientEntry $patient) => $carry + MedicService::getLongCare($patient),
+                0
+            );
+
+            return (object) [
+                'date' => "{$date->month}-{$date->year}",
+                'beds_total' => $bedsTotal,
+                'bor' => ($patients->count() / ($bedsTotal * $days)) * 100,
+                'alos' => $longCares / $patientOutsTotal,
+                'toi' => (($bedsTotal * $days) - $patients->count()) / $patientOutsTotal,
+                'bto' => $patientOutsTotal / $bedsTotal,
+                'gdr' => ($patientDieds / $patientOutsTotal) * (1000 / 100),
+                'ndr' => ($patientDiedsMore / $patientOutsTotal) * (1000 / 100),
+            ];
+        });
+    }
+
+    public function getHospitalVisitors()
+    {
+        $dates = PatientEntry::select(DB::raw('MONTH(date) as month, YEAR(date) AS year'))
+            ->groupBy('year', 'month')
+            ->get();
+
+        return $dates->map(function($date) {
+            $malePatients = PatientEntry::whereMonth('date', $date->month)
+                ->whereYear('date', $date->year)
+                ->whereIn('patient_id', function(Builder $query) {
+                    $query->select('id')->from('patients')->where('gender', 'L');
+                })->count();
+
+            $female = PatientEntry::whereMonth('date', $date->month)
+                ->whereYear('date', $date->year)
+                ->whereIn('patient_id', function(Builder $query) {
+                    $query->select('id')->from('patients')->where('gender', 'P');
+                })->count();
+
+            return (object) [
+                'date' => "{$date->month}-{$date->year}",
+                'male' => $malePatients,
+                'female' => $female,
+                'total' => $malePatients + $female,
             ];
         });
     }

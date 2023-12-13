@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="w-full bg-white">
     <div class="space-y-8">
@@ -11,8 +12,38 @@
     </div>
     <div class="shadow border p-5 mt-20 bg-white">
         {{-- Table --}}
-        <x-content.table :headers="['No','Bulan', 'Jumlah Tempat Tidur', 'BOR %','LOS(HARI)', 'TOI(HARI)', 'BTO(KALI)', 'GDR(PERMILL)', 'NDR(PERMILL)']" :rows="[]" />
-
+        <div class="tables-responsive overflow-y-auto mt-10">
+            <table class="tables">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Bulan</th>
+                        <th>Jumlah Tempat Tidur</th>
+                        <th>BOR %</th>
+                        <th>LOS(HARI)</th>
+                        <th>TOI(HARI)</th>
+                        <th>BTO(KALI)</th>
+                        <th>GDR(PERMILL)</th>
+                        <th>NDR(PERMILL)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($indicators as $indicator)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $indicator->date }}</td>
+                        <td>{{ $indicator->beds_total }}</td>
+                        <td>{{ $indicator->bor }}</td>
+                        <td>{{ $indicator->alos }}</td>
+                        <td>{{ $indicator->toi }}</td>
+                        <td>{{ $indicator->bto }}</td>
+                        <td>{{ $indicator->gdr }}</td>
+                        <td>{{ $indicator->ndr }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @endsection

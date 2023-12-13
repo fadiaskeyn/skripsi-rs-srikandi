@@ -28,7 +28,7 @@ class RoomRepository implements RoomRepositoryInterface
             'number_of_beds' => $data['number_of_beds'],
             'type_room' => $data['type_room']
         ]);
-        
+
         return $room;
     }
 
