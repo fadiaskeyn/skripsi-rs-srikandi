@@ -6,6 +6,7 @@ use App\Enums\PatientWayout;
 use App\Models\PatientEntry;
 use App\Models\PatientMove;
 use App\Models\Payment;
+use App\Services\MedicService;
 use Carbon\Carbon;
 
 class ReportRepository
@@ -17,8 +18,15 @@ class ReportRepository
         return $availDates->map(function($date) {
             $entries = PatientEntry::whereDate('date', $date)->get();
             $moves = PatientMove::whereDate('date', $date)->get();
+            $outs = PatientEntry::whereNotNull('out_date')->whereDate('out_date', $date)->get();
+
+            $longCares = $outs->reduce(
+                fn(?int $carry, PatientEntry $entry) => $carry + MedicService::getLongCare($entry),
+                0
+            );
 
             return (object) [
+                'long_cares' => $longCares,
                 'date' => Carbon::createFromFormat('Y-m-d', $date)->format('d-m-Y'),
                 'entries' => (object) [
                     'total_entries' => $entries->count(),

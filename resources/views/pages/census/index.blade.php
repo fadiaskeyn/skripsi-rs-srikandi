@@ -82,8 +82,8 @@
                         <td>{{ $recap->exits->diedLess }}</td>
                         <td>{{ $recap->exits->diedMore }}</td>
                         <td>{{ $recap->exits->total }}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $recap->entries->total_entries }}</td>
+                        <td>{{ $recap->long_cares }}</td>
                         @foreach ($payments as $payment)
                             <td>{{ $recap->payments[$payment] }}</td>
                         @endforeach
