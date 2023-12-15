@@ -17,36 +17,36 @@
     <tbody></tbody>
         <tr>
             <td>BOR</td>
-            <td>0,0</td>
-            <td>35,48</td>
-            <td>0,0</td>
-            <td>64,52</td>
+            <td>0.0</td>
+            <td id="bor-1">0.0</td>
+            <td>0.0</td>
+            <td id="bor-2">0.0</td>
         </tr>
         <tr>
             <td>LOS</td>
-            <td>0,0</td>
-            <td>3,05</td>
-            <td>5,85</td>
-            <td>5,85</td>
+            <td>0.0</td>
+            <td id="los-1">0.0</td>
+            <td clas="los-2">0.0</td>
+            <td class="los-2">0.0</td>
         </tr>
         <tr>
             <td>TOI</td>
-            <td>3,05</td>
-            <td>3,05</td>
-            <td>0,0</td>
-            <td>5,85</td>
+            <td class="toi-1">0.0</td>
+            <td class="toi-1">0.0</td>
+            <td>0.0</td>
+            <td id="toi-2">0.0</td>
         </tr>
         <tr>
             <td>BTO</td>
-            <td>8,58</td>
-            <td>0,0</td>
-            <td>0,0</td>
-            <td>8,58</td>
+            <td class="bto">0.0</td>
+            <td>0.0</td>
+            <td>0.0</td>
+            <td class="bto">0.0</td>
         </tr>
         <tr>
             <td>TITIK</td>
-            <td>3,0</td>
-            <td>5,85</td>
+            <td id="titik-1">0.0</td>
+            <td id="titik-2">0.0</td>
             <td></td>
             <td></td>
         </tr>

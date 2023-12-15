@@ -53,48 +53,7 @@ class ReportRepository
             ->groupBy('year', 'month')
             ->get();
 
-        $bedsTotal = Room::all()->sum('number_of_beds');
-
-        return $dates->map(function($date) use($bedsTotal) {
-            $patients = PatientEntry::whereMonth('date', $date->month)
-                ->whereYear('date', $date->year)
-                ->get();
-
-            $patientDieds = PatientEntry::whereMonth('date', $date->month)
-                ->whereYear('date', $date->year)
-                ->where('way_out', PatientWayout::DIED->value)
-                ->count();
-
-            $patientDiedsMore = PatientEntry::whereMonth('date', $date->month)
-                ->whereYear('date', $date->year)
-                ->where('way_out', PatientWayout::DIED->value)
-                ->whereRaw('TIMESTAMPDIFF(HOUR, date, out_date) > 48')
-                ->count();
-
-            $patientOutsTotal = PatientEntry::whereMonth('date', $date->month)
-                ->whereYear('date', $date->year)
-                ->whereNotNull('out_date')
-                ->count();
-
-            $days = Carbon::createFromFormat('Y-m', $date->year . '-' . $date->month)
-                ->daysInMonth;
-
-            $longCares = $patients->reduce(
-                fn(?int $carry, PatientEntry $patient) => $carry + MedicService::getLongCare($patient),
-                0
-            );
-
-            return (object) [
-                'date' => "{$date->month}-{$date->year}",
-                'beds_total' => $bedsTotal,
-                'bor' => ($patients->count() / ($bedsTotal * $days)) * 100,
-                'alos' => $longCares / $patientOutsTotal,
-                'toi' => (($bedsTotal * $days) - $patients->count()) / $patientOutsTotal,
-                'bto' => $patientOutsTotal / $bedsTotal,
-                'gdr' => ($patientDieds / $patientOutsTotal) * (1000 / 100),
-                'ndr' => ($patientDiedsMore / $patientOutsTotal) * (1000 / 100),
-            ];
-        });
+        return $dates->map(fn($date) => MedicService::getIndicators($date->month, $date->year));
     }
 
     public function getHospitalVisitors()
