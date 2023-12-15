@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Registration\PatientEntryRequest;
 use App\Http\Resources\PatientEntryResource;
-use App\Models\{Patient, Payment, Room, Service};
+use App\Models\{Diagnosis, Patient, Payment, Room, Service};
 use App\Repositories\PatientEntryRepository;
 
 class PatientEntryController extends Controller
@@ -36,6 +36,7 @@ class PatientEntryController extends Controller
             'payments' => Payment::pluck('name', 'id')->toArray(),
             'services' => Service::pluck('name', 'id')->toArray(),
             'rooms' => Room::pluck('name', 'id')->toArray(),
+            'diagnoses' => Diagnosis::pluck('name', 'id')->toArray(),
         ]);
     }
 

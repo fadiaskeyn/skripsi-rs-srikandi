@@ -3,23 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Charts\BarberJohnsonChart;
+use App\Charts\DiagnoseChart;
 use App\Charts\VisitorChart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Chart\BarberJohnsonRequest;
 use App\Models\PatientEntry;
+use App\Repositories\DiagnosisRepository;
 use App\Services\MedicService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ChartController extends Controller
 {
-    protected $chart;
-    protected $barber;
+    protected $diagnose, $chart;
 
-    public function __construct(VisitorChart $chart, BarberJohnsonChart $barberJohnsonChart)
-    {
+    public function __construct(
+        DiagnoseChart $diagnoseChart,
+        VisitorChart $chart
+    ) {
+        $this->diagnose = $diagnoseChart;
         $this->chart = $chart;
-        $this->barber = $barberJohnsonChart;
     }
 
     public function visit()
@@ -39,6 +42,16 @@ class ChartController extends Controller
             ->get();
 
         return view('pages.chart.barber-johnson', compact('periods'));
+    }
+
+    public function topDiagnose()
+    {
+        $diagnoses = (new DiagnosisRepository)->getTopDiagnoses();
+
+        return view('pages.chart.top-diagnose', [
+            'chart' => $this->diagnose->build($diagnoses),
+            'diagnoses' => $diagnoses,
+        ]);
     }
 
     public function barberJohnsonJson(BarberJohnsonRequest $request)

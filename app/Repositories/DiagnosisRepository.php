@@ -4,10 +4,12 @@ namespace App\Repositories;
 
 use App\Interface\DiagnosisRepositoryInterface;
 use App\Models\Diagnosis;
+use App\Models\PatientEntry;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class DiagnosisRepository implements DiagnosisRepositoryInterface
 {
@@ -34,5 +36,30 @@ class DiagnosisRepository implements DiagnosisRepositoryInterface
     public static function getFind(int $id)
     {
         return Diagnosis::findOrFail($id);
+    }
+
+    public function getTopDiagnoses()
+    {
+        $diagnoses = PatientEntry::select(DB::raw("COUNT(*) AS total, diagnose_id"))
+            ->whereNotNull('diagnose_id')
+            ->groupBy('diagnose_id')
+            ->orderBy('total', 'DESC')
+            ->with('diagnose')
+            ->limit(10)
+            ->get();
+
+        $totals = [];
+        $names = [];
+
+        foreach($diagnoses as $diagnose) {
+            $totals[] = $diagnose->total;
+            $names[] = $diagnose->diagnose->name;
+        }
+
+        return (object) [
+            'totals' => $totals,
+            'names' => $names,
+            'diagnoses' => $diagnoses,
+        ];
     }
 }

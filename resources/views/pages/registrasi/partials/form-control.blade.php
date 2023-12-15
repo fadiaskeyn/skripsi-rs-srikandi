@@ -19,10 +19,13 @@
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="address" type="text" name="address" label="Alamat" readonly />
         </div>
+        <div class="md:flex md:items-center mb-6 gap-2">
+            <x-forms.select name="new_patient" id="new_patient" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Lama', 'Baru']" />
+        </div>
     </div>
     <div class="p-5 lg:w-[50%] w-full">
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="new_patient" id="new_patient" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Lama', 'Baru']" />
+            <x-forms.select name="diagnose_id" id="diagnose_id" label="Diagnosa" placeholder="Pilih Status Pasien" :options="$diagnoses" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="date" type="date" name="date" label="Tanggal Masuk" />

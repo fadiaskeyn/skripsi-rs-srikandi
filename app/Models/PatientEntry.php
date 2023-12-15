@@ -21,6 +21,7 @@ class PatientEntry extends Model
         'out_date',
         'way_out',
         'dpjb',
+        'diagnose_id',
     ];
 
     protected $casts = [
@@ -45,6 +46,11 @@ class PatientEntry extends Model
 
     public function payment()
     {
-          return $this->belongsTo(Payment::class);
+        return $this->belongsTo(Payment::class);
+    }
+
+    public function diagnose()
+    {
+        return $this->belongsTo(Diagnosis::class, 'diagnose_id', 'id');
     }
 }

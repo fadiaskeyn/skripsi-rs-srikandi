@@ -81,7 +81,7 @@
                             <a href="{{ route('admin.chart.inpatient') }}" class="text-white"><button class="item-link">Grafik Rawat Inap</button></a>
                         </li>
                         <li>
-                            <a href="#" class="text-white"><button class="item-link">Grafik 10 Besar penyakit RI</button></a>
+                            <a href="{{ route('admin.chart.top-diagnoses') }}" class="text-white"><button class="item-link">Grafik 10 Besar penyakit RI</button></a>
                         </li>
                     </ul>
                 </div>

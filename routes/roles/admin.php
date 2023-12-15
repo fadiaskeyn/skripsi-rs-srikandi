@@ -17,6 +17,7 @@ Route::controller(App\Http\Controllers\Admin\ChartController::class)
         Route::get('kunjungan', 'visit')->name('chart.visit');
         Route::get('rawat-inap', 'inpatient')->name('chart.inpatient');
         Route::get('barber-johnson', 'barberJohnson')->name('chart.barber-johnson');
+        Route::get('top-diagnoses', 'topDiagnose')->name('chart.top-diagnoses');
         Route::get('barber-johnson/json', 'barberJohnsonJson')->name('chart.barber-johnson.json');
     });
 
