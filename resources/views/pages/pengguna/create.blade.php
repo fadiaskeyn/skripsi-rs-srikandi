@@ -11,7 +11,7 @@
                 </div>
             </div>
                 {{-- form start --}}
-                <form class="mt-5 w-full max-w-sm" action="{{ route('admin.pengguna.store') }}" method="POST" autocomplete="off">
+                <form class="mt-5 w-full max-w-sm" action="{{ route('admin.user.store') }}" method="POST" autocomplete="off">
                     @csrf
                     @include('pages.pengguna.partials.form-control')
                 </form>
