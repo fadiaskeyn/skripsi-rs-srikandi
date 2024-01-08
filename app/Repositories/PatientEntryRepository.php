@@ -26,4 +26,25 @@ class PatientEntryRepository implements PatientEntryRepositoryInterface
             'diagnose_id' => $data['diagnose_id'],
         ]);
     }
+
+    public function historipatient($patientId): array
+    {
+        return PatientEntry::join('patients', 'patient_entries.patient_id', '=', 'patients.id')
+            ->join('services', 'patient_entries.service_id', '=', 'services.id')
+            ->join('diagnoses', 'patient_entries.diagnose_id', '=', 'diagnoses.id')
+            ->select(
+                'patients.fullname',
+                'patient_entries.date',
+                'patient_entries.out_date',
+                'services.name as service_name',
+                'diagnoses.name as diagnose_name',
+                'patient_entries.way_out',
+                'patient_entries.dpjb'
+            )
+            ->where('patient_entries.patient_id', $patientId)
+            ->where('patient_entries.status_patient', 'exit')
+            ->get()
+            ->toArray();
+    }
+
 }

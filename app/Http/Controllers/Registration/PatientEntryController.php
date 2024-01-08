@@ -71,6 +71,22 @@ class PatientEntryController extends Controller
         return PatientEntryResource::make($entry);
     }
 
+// app/Http/Controllers/Registration/PatientEntryController.php
+public function historipatient($medrec_number)
+{
+    $patient = Patient::where('medrec_number', $medrec_number)->first();
+
+    if (!$patient) {
+        abort(404, 'Pasien tidak ditemukan');
+    }
+
+    $historiEntries = $this->patientEntryRepository->historipatient($patient->id);
+
+    return view('pages.registrasi.history.historipatient', compact('historiEntries'));
+}
+
+
+
     /**
      * Show the form for editing the specified resource.
      */

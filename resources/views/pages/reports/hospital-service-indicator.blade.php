@@ -10,6 +10,13 @@
             <div class="line h-2 rounded-full w-2/4 bg-theme-border-sidebar"></div>
         </div>
     </div>
+    <div class="mt-5 max-w-2xl space-y-5">
+            <x-forms.select name="ruangan" :options="[]" id="ruangan" label="Ruangan" placeholder="Semua Ruangan" />
+            <div class="flex gap-5 max-w-lg">
+                <x-forms.input name="tanggal" type="date"  id="tanggal" label="Tanggal" />
+                <x-forms.input name="tanggal" type="date"  id="tanggal" label="" />
+            </div>
+        </div>
     <div class="shadow border p-5 mt-20 bg-white">
         {{-- Table --}}
         <div class="tables-responsive overflow-y-auto mt-10">

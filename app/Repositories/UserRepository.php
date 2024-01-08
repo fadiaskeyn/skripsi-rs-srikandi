@@ -9,8 +9,11 @@ class UserRepository implements UserRepositoryInterface
 {
 
     public function getData(): array{
-        $user = User::select('id', 'name', 'username', 'email')->get();
-        return $user->toArray();
+        $user = User::select('id', 'name', 'username', 'email');
+        if(request('searchInput')){
+            $user->where('name','like','%'. request('searchInput').'%');
+        }
+        return $user->get()->toArray();
     }
 
     public function create(array $data): User

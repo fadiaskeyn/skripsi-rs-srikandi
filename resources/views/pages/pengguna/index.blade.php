@@ -18,14 +18,18 @@
                     <a href="{{ route('admin.user.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pengguna <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
                 </div>
             </div>
+
+            <form action="{{ route('admin.user.index') }}">
+                @csrf
             <div class="flex justify-end">
                 <div class="input-box-search flex mt-5 border">
-                    <button class="px-3 py-2 text-lg"><iconify-icon icon="clarity:search-line"></iconify-icon></button>
-                    <input type="search" placeholder="Search" class="p-2 outline-none w-full">
+                    <button type="submit" class="px-3 py-2 text-lg"><iconify-icon icon="clarity:search-line"></iconify-icon></button>
+                    <input type="search" name="searchInput" placeholder="Search" id="searchInput" class="p-2 outline-none w-full">
                 </div>
             </div>
+</form>
             {{-- Table --}}
-            <x-content.table :headers="['No','name','username','email','Action']" :rows="$data" edit="admin.user.edit" url="/admin/pengguna/"/>
+            <x-content.table :headers="['No','name','username','email','Action']" :rows="$data" edit="admin.user.edit" url="registrasi/patient-entry/create"/>
         </div>
     </div>
 @endsection

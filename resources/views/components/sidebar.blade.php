@@ -56,9 +56,9 @@
                             <a href="/admin/census" class="text-white">
                             <button class="item-link @active('admin.reports.census')">Rekapitulasi Sensus Harian</button></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#" class="text-white"><button class="item-link">10 Besar penyakit RI</button></a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <li class="menu-item dropdown-toggle @active('admin.grafik.*')" >
@@ -77,9 +77,9 @@
                         <li>
                             <a href="{{ route('admin.chart.barber-johnson') }}" class="text-white"><button class="item-link">Grafik Barber Johnson</button></a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('admin.chart.inpatient') }}" class="text-white"><button class="item-link">Grafik Rawat Inap</button></a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('admin.chart.top-diagnoses') }}" class="text-white"><button class="item-link">Grafik 10 Besar penyakit RI</button></a>
                         </li>

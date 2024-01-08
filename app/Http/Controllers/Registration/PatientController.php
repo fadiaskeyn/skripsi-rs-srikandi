@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Registration;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Registration\PatientRequest;
 use App\Repositories\PatientRepository;
@@ -21,9 +20,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return view('pages.registrasi.history.index', [
-            'data' => $this->patientRepo->getData(),
-        ]);
+
+        return view('pages.registrasi.history.index', ['data' => $this->patientRepo->getData(),]);
     }
 
     /**
@@ -48,23 +46,29 @@ class PatientController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // ...
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        $roles = Role::pluck('name', 'name')->toArray();
+
+        return view('pages.registras.edit', [
+            'user' => $user,
+            'roles' => $roles,
+        ]);
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
     {
-        //
+        // ...
     }
 
     /**
@@ -72,6 +76,12 @@ class PatientController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
     }
+
+    // public function historipatient(){
+    //     return view('pages.registrasi.history.historipatient');
+    //     // ['data' => $this->patientRepo->historipatien()]);
+    // }
+
 }

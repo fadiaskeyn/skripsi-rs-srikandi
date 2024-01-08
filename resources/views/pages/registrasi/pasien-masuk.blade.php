@@ -3,7 +3,7 @@
 <div class="w-full bg-white">
     <div class="space-y-8">
         <div class="head">
-            <h2 class="text-3xl font-bold">Registrasi Pasien Masuk Rawat Inap</h2>
+            <h2 class="text-3xl font-bold">Registrasi Pasien Masuk Rawat Inap </h2>
         </div>
         <div class="line h-2 rounded-full w-full bg-theme-border-sidebar/20">
             <div class="line h-2 rounded-full w-2/4 bg-theme-border-sidebar"></div>
