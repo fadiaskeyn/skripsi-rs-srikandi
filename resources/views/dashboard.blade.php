@@ -4,7 +4,7 @@
         <div class="lg:flex grid grid-cols-1 gap-5 w-full justify-center">
             <div class="w-full space-y-5">
                 <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 justify-center w-full">
-                    <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">     
+                    <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">
                         <div class="flex flex-col gap-2">
                             <div class="w-full"><iconify-icon icon="solar:calendar-linear" class="text-3xl"></iconify-icon></div>
                             <div class="w-full">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="card h-auto bg-white border border-gray-200 p-5 w-full rounded-md">     
+                <div class="card h-auto bg-white border border-gray-200 p-5 w-full rounded-md">
                     <div class="head text-center">
                         <h2 class="text-2xl font-bold">Grafik Kunjungan</h2>
                     </div>
@@ -87,8 +87,8 @@
                 </div>
             </div>
         </div>
-        <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">
-            <h2 class="font-bold text-lg">Pasien Masuk Hari Ini</h2>     
+        {{-- <div class="card bg-white border border-gray-200 p-5 w-full rounded-md">
+            <h2 class="font-bold text-lg">Pasien Masuk Hari Ini</h2>
             <table class="table-pasien w-full border-collapse border mt-8">
                 <thead>
                     <tr>
@@ -111,7 +111,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div> --}}
     </div>
 @endsection
 
@@ -131,7 +131,7 @@
         document.getElementById('day').innerHTML = day;
         document.getElementById('date').innerHTML = `${date} ${month} ${year}`;
     </script>
-            
+
     {{-- Time --}}
     <script>
         // Get the current time
@@ -149,7 +149,7 @@
             timeElement.textContent = formattedTime;
         }
     </script>
-    <script>      
+    <script>
         var options = {
           series: [25, 15, 44, 55, 41, 17],
           chart: {

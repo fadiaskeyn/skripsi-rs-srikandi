@@ -47,4 +47,22 @@ class PatientEntryRepository implements PatientEntryRepositoryInterface
             ->toArray();
     }
 
+    public function all_patient()
+    {
+        return PatientEntry::join('rooms', 'patient_entries.room_id', '=', 'rooms.id')
+            ->join('patients', 'patient_entries.patient_id', '=', 'patients.id')
+            ->select(
+                'patient_entries.id',
+                'patients.medrec_number',
+                'patients.fullname',
+                'patients.birthdate',
+                'patients.gender',
+                'rooms.name as room_name',
+                'patient_entries.status_patient'
+            )
+            ->get()
+            ->toArray();
+    }
+
+
 }

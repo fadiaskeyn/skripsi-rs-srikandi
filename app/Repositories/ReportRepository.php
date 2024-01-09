@@ -145,4 +145,6 @@ class ReportRepository
 
         return $totals;
     }
+
+    
 }

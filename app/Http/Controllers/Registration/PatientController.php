@@ -79,9 +79,9 @@ class PatientController extends Controller
 
     }
 
-    // public function historipatient(){
-    //     return view('pages.registrasi.history.historipatient');
-    //     // ['data' => $this->patientRepo->historipatien()]);
-    // }
+    public function historipatient(){
+        return view('pages.registrasi.history.historipatient',
+        ['data' => $this->patientRepo->historipatient()]);
+    }
 
 }

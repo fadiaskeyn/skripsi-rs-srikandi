@@ -117,4 +117,28 @@
         $('#long_care').val(daysDifference + ' Hari');
     });
 </script>
+
+<script>
+    // Function to get URL parameter by name
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Set the value of the "rm" input field when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+        var medrecNumber = getParameterByName('medrec_number');
+        document.getElementById('rm').value = medrecNumber;
+    });
+
+    // Optional: Add a click event listener to the "rm-button" button for further actions
+    document.getElementById('rm-button').addEventListener('click', function () {
+        // Your additional logic here
+    });
+</script>
 @endpush

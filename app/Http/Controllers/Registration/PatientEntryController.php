@@ -87,6 +87,14 @@ public function historipatient($medrec_number)
 
 
 
+public function allpatient()
+{
+    // $patients = Patient::get();
+    // $historiEntries = $this->patientEntryRepository->all_patient();
+
+    return view('pages.registrasi.data-patient', ['patients' => $this->patientEntryRepository->all_patient()]);
+}
+
     /**
      * Show the form for editing the specified resource.
      */

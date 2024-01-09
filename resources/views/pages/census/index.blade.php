@@ -22,19 +22,14 @@
                     <h2 class="text-2xl font-bold">Table Rekapitulasi Sensus Harian</h2>
                 </div>
                 <div class="w-full flex justify-end gap-5">
-                    <a href="#" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Download PDF<span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
+                    <button id="download-pdf-button" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Download PDF<span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></button>
                     <a href="#" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Download Excel<span class="ml-4 mt-4"></span></a>
                     <a href="#" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Print<span class="ml-4 mt-4"></span></a>
                 </div>
             </div>
-            <div class="flex justify-end">
-                <div class="input-box-search flex mt-5 border">
-                    <button class="px-3 py-2 text-lg"><iconify-icon icon="clarity:search-line"></iconify-icon></button>
-                    <input type="search" placeholder="Search" class="p-2 outline-none w-full">
-                </div>
             </div>
             {{-- Table --}}
-            <table class="tables w-full">
+            <table class="tables w-full" id="table-cencus">
                 <thead>
                     <tr>
                         <th rowspan="3">No.</th>
@@ -97,4 +92,28 @@
             </table>
         </div>
     </div>
+
+    @push('script-injection')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script>
+        
+        //udah didefine padahal bjir
+        document.addEventListener('DOMContentLoaded', function () {
+    function exportToPDF() {
+        console.log("Exporting to PDF...");
+        const doc = new jsPDF();
+        const table = document.getElementById('table-cencus');
+        doc.autoTable({ html: table });
+        doc.save('table-export.pdf');
+    }
+
+    // Mendapatkan tombol
+    const downloadButton = document.getElementById('download-pdf-button');
+
+    // Menambahkan event listener pada tombol
+    downloadButton.addEventListener('click', exportToPDF);
+});
+
+    </script>
+    @endpush
 @endsection

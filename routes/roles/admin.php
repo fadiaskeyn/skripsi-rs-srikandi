@@ -32,3 +32,6 @@ Route::get('report/preview', fn() =>  view('pages.reports.report'))->name('repor
 
 Route::get('/census', App\Http\Controllers\Admin\CensusController::class)
     ->name('reports.census');
+
+    Route::get('/cetakpdf', [ReportController::class, 'cetakpdf'])
+    ->name('cetakpdf');

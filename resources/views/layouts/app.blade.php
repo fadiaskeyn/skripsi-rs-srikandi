@@ -12,6 +12,8 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         {{-- css injection --}}
         @stack('style-injection')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     </head>
     {{-- default font set globally to plus jakarta sans --}}
     <body class="font-plus-jakarta-sans antialiased">
@@ -40,7 +42,7 @@
     <script src="{{ asset('plugins/js/sweetalert2.js') }}"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     {{-- default app js --}}
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     {{-- javascript injection --}}
     @stack('script-injection')
 </html>
