@@ -25,17 +25,17 @@
                         <li>
                             <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patient-entry.create')">Pasien Masuk</button></a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('registration.patient-exit.create') }}" class="text-white"><button class="item-link @active('registration.patient-exit.create')">Pasien Keluar</button></a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('registration.patient-move.create') }}" class="text-white"><button class="item-link @active('registration.patient-move.create')">Pasien Pindah</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('registration.registration.data-patient') }}" class="text-white"><button class="item-link @active('registration.registration.data-patient')">DataPasien</button></a>
+                            <a href="{{ route('registration.registration.data-patient') }}" class="text-white"><button class="item-link @active('registration.registration.data-patient')">Pasien Keluar</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link @active('registration.histori.index')">Histori Pasien</button></a>
+                            <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link @active('registration.histori.index')">Data Pasien</button></a>
                         </li>
                     </ul>
                 </div>

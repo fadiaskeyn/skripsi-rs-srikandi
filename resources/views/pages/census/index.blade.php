@@ -96,7 +96,7 @@
     @push('script-injection')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
     <script>
-        
+
         //udah didefine padahal bjir
         document.addEventListener('DOMContentLoaded', function () {
     function exportToPDF() {
