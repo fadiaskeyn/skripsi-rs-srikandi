@@ -49,6 +49,7 @@ class ReportRepository
 
     public function getHospitalIndicators()
     {
+
         $dates = PatientEntry::select(DB::raw('MONTH(date) as month, YEAR(date) AS year'))
             ->groupBy('year', 'month')
             ->get();
@@ -57,32 +58,35 @@ class ReportRepository
     }
 
     public function getHospitalVisitors()
-    {
-        $dates = PatientEntry::select(DB::raw('MONTH(date) as month, YEAR(date) AS year'))
-            ->groupBy('year', 'month')
-            ->get();
+{
+    $dates = PatientEntry::select(DB::raw('DAY(date) as day, MONTH(date) as month, YEAR(date) AS year'))
+        ->groupBy('day', 'year', 'month')
+        ->get();
 
-        return $dates->map(function($date) {
-            $malePatients = PatientEntry::whereMonth('date', $date->month)
-                ->whereYear('date', $date->year)
-                ->whereIn('patient_id', function(Builder $query) {
-                    $query->select('id')->from('patients')->where('gender', 'L');
-                })->count();
+    return $dates->map(function ($date) {
+        $malePatients = PatientEntry::whereDay('date', $date->day)
+            ->whereMonth('date', $date->month)
+            ->whereYear('date', $date->year)
+            ->whereIn('patient_id', function (Builder $query) {
+                $query->select('id')->from('patients')->where('gender', 'L');
+            })->count();
 
-            $female = PatientEntry::whereMonth('date', $date->month)
-                ->whereYear('date', $date->year)
-                ->whereIn('patient_id', function(Builder $query) {
-                    $query->select('id')->from('patients')->where('gender', 'P');
-                })->count();
+        $female = PatientEntry::whereDay('date', $date->day)
+            ->whereMonth('date', $date->month)
+            ->whereYear('date', $date->year)
+            ->whereIn('patient_id', function (Builder $query) {
+                $query->select('id')->from('patients')->where('gender', 'P');
+            })->count();
 
-            return (object) [
-                'date' => "{$date->month}-{$date->year}",
-                'male' => $malePatients,
-                'female' => $female,
-                'total' => $malePatients + $female,
-            ];
-        });
-    }
+        return (object) [
+            'date' => Carbon::createFromDate($date->year, $date->month, $date->day)->format('d-m-Y'),
+            'male' => $malePatients,
+            'female' => $female,
+            'total' => $malePatients + $female,
+        ];
+    });
+}
+
 
     private function getAvailDates()
     {
@@ -146,5 +150,5 @@ class ReportRepository
         return $totals;
     }
 
-    
+
 }

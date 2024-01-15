@@ -94,3 +94,33 @@
         </tr>
     </tbody>
 </table>
+
+<table class="tables">
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Bulan</th>
+            <th>Jumlah Tempat Tidur</th>
+            <th>BOR %</th>
+            <th>LOS(HARI)</th>
+            <th>TOI(HARI)</th>
+            <th>BTO(KALI)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{-- @foreach ($indicators as $indicator)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $indicator->date }}</td>
+                <td>{{ $indicator->beds_total }}</td>
+                <td>{{ $indicator->bor }}</td>
+                <td>{{ $indicator->alos }}</td>
+                <td>{{ $indicator->toi }}</td>
+                <td>{{ $indicator->bto }}</td>
+                <td>{{ $indicator->gdr }}</td>
+                <td>{{ $indicator->ndr }}</td>
+            </tr>
+        @endforeach --}}
+     </tbody>
+</table>
+

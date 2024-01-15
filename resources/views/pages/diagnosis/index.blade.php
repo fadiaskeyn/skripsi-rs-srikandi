@@ -23,8 +23,8 @@
                     <h2 class="text-2xl font-bold">Table Diagnosa</h2>
                 </div>
                 <div class="w-full flex justify-end gap-5">
-                    <a href="#" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Batal<span class="ml-4 mt-4"></span></a>
-                    <a href="#" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Insert File<span class="ml-4 mt-4"></span></a>
+                    {{-- <a href="#" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Batal<span class="ml-4 mt-4"></span></a>
+                    <a href="#" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Insert File<span class="ml-4 mt-4"></span></a> --}}
                 </div>
             </div>
             <div class="flex justify-end">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             {{-- Table --}}
-             <div class="table-responsive">
+             <div class="tables-responsive overflow-y-auto mt-10">
                 <table class="table table-bordered table-striped" id="diagnosa_table">
                     <thead>
                         <tr>
@@ -51,8 +51,9 @@
                             <td>{{ $diagnosa->code_diagnosis }}</td>
                             <td>{{ $diagnosa->name }}</td>
                             <td>
-                                <button class="update" id="{{ $diagnosa->id }}">Edit</button>
-                                <button class="delete" id="{{ $diagnosa->id }}">Delete</button>
+                                <button class="inline-flex items-center px-4 py-2 rounded-lg bg-theme-border-sidebar text-white text-sm md:text-left font-medium" id="{{ $diagnosa->id }}">Edit</button>
+
+                                <button class="inline-flex  items-center px-4 py-2 rounded-lg bg-theme-border-sidebar/20 text-theme-border-sidebar text-sm md:text-left font-medium" onclick="confirmDelete({{ $diagnosa['id'] }})" id="{{ $diagnosa->id }}" >Delete</button>
                             </td>
                         </tr>
                         @endforeach
@@ -65,7 +66,7 @@
 @endsection
 
 @push('script-injection')
-    
+
 <script>
     $(document).ready(function() {
     // CREATE
@@ -139,6 +140,26 @@
     });
 });
 
+function confirmDelete(id) {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Anda tidak akan dapat mengembalikan ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Hapus'
+        }).then((result) => {
+            if(!result.isConfirmed) return;
+
+            const formElement = `<form action="{{ route('admin.diagnosis.index') }}/${id}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </form>`;
+
+            $(formElement).appendTo('body').submit();
+        });
+    }
+
 </script>
-    
+
 @endpush

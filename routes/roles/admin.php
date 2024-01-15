@@ -28,6 +28,9 @@ Route::get('hospital-visit-report', [ReportController::class, 'visitors'])
 Route::get('hospital-service-indicator', [ReportController::class, 'indicator'])
     ->name('reports.hospital-service-indicator');
 
+Route::get('hospital-service-indicator/ajax', [ReportController::class, 'fetchData'])
+    ->name('admin.laporan.indikator.ajax');
+
 Route::get('report/preview', fn() =>  view('pages.reports.report'))->name('reports.print');
 
 Route::get('/census', App\Http\Controllers\Admin\CensusController::class)

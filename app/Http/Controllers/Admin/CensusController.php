@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Payment;
+use App\Models\{Diagnosis, Patient, Payment, Room, Service};
 use App\Repositories\ReportRepository;
 use Illuminate\Http\Request;
 
@@ -21,6 +21,7 @@ class CensusController extends Controller
         return view("pages.census.index", [
             'data' => $this->reportRepo->getCensusRecapitulations(),
             'payments' => Payment::pluck('name'),
+            'rooms' => Room::pluck('name', 'id')->toArray(),
         ]);
     }
 }

@@ -25,3 +25,26 @@
     </div>
 </div>
 @endsection
+@push('script-injection')
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Anda tidak akan dapat mengembalikan ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Hapus'
+        }).then((result) => {
+            if(!result.isConfirmed) return;
+
+            const formElement = `<form action="{{ route('admin.room.index') }}/${id}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            </form>`;
+
+            $(formElement).appendTo('body').submit();
+        });
+    }
+</script>
+@endpush

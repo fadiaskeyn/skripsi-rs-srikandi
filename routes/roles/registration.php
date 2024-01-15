@@ -18,6 +18,9 @@ Route::resource('histori', PatientController::class);
 Route::get('patient-entry/{medrec_number}/historipatient', [PatientEntryController::class, 'historipatient'])
     ->name('registration.patient-entry.historipatient');
 
+// Route::get('admin/report/indikator', [PatientEntryController::class, 'historipatient'])
+//     ->name('registration.patient-entry.historipatient');
+
     Route::get('patient-entry/data-patient', [PatientEntryController::class, 'allpatient'])
     ->name('registration.data-patient');
 

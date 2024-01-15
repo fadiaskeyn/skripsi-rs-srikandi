@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('patient_entries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained()->onDelete('cascade');
+            $table->foreignId('patient_id')->constrained();
             $table->dateTime('date');
             $table->tinyInteger('new_patient');
             $table->integer('nursing_class');

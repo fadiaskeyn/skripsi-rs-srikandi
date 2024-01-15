@@ -6,7 +6,7 @@
 ])
 
 <div class="tables-responsive overflow-y-auto mt-10">
-    <table class="tables">
+    <table class="tables table-bordered table-striped">
         <thead>
             <tr>
                 @foreach ($headers as $header)

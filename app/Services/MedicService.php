@@ -6,6 +6,7 @@ use App\Enums\PatientWayout;
 use App\Models\PatientEntry;
 use App\Models\Room;
 use Carbon\Carbon;
+use App\Services\DB;
 
 class MedicService
 {
@@ -18,7 +19,6 @@ class MedicService
     public static function getIndicators($month, $year)
     {
         $bedsTotal = Room::all()->sum('number_of_beds');
-
         $patients = PatientEntry::whereMonth('date', $month)
                 ->whereYear('date', $year)
                 ->get();
@@ -48,7 +48,7 @@ class MedicService
         );
 
         return (object) [
-            'date' => Carbon::createFromFormat('Y-m', $year . '-' . $month)->format('m-Y'),
+           'date' => Carbon::createFromFormat('Y-m-d', $year . '-' . $month . '-01')->format('d-m-Y'),
             'beds_total' => $bedsTotal,
             'bor' => ($patients->count() / ($bedsTotal * $days)) * 100,
             'alos' => $longCares == 0 ? 0 : $longCares / $patientOutsTotal,
@@ -61,5 +61,23 @@ class MedicService
                 ($patientDiedsMore / $patientOutsTotal) * (1000 / 100),
             'days' => $days,
         ];
+    }
+
+     public static function getIndicatorsByDateRange($startDate, $endDate, $ruangan)
+    {
+        $query = PatientEntry::query()
+            ->select('date', DB::raw('MONTH(date) as month, YEAR(date) AS year'))
+            ->groupBy('date', 'year', 'month');
+
+        // Filter berdasarkan ruangan jika disediakan
+        if (!empty($ruangan)) {
+            $query->where('ruangan', $ruangan);
+        }
+
+        $dates = $query->whereBetween('date', [$startDate, $endDate])->get();
+
+        return $dates->map(function ($date) {
+            return self::getIndicators($date->month, $date->year, $date->date);
+        });
     }
 }
