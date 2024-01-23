@@ -21,10 +21,12 @@ class BarberJohnsonRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-            'month' => 'required|date_format:m',
-            'year' => 'required|date_format:Y',
-        ];
-    }
+{
+    return [
+        'day' => 'required|date_format:d',
+        'month' => 'required|date_format:m',
+        'year' => 'required|date_format:Y',
+    ];
+}
+
 }

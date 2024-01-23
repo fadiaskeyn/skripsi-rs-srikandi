@@ -12,19 +12,39 @@
     </div>
     <form action="">
         @csrf
-    <div class="mt-5 max-w-2xl space-y-5">
-        <x-forms.select name="ruangan" :options="$rooms" id="ruangan" label="Ruangan" placeholder="Semua Ruangan" values="$rooms" />
-        <div class="flex gap-5 max-w-lg">
-            <x-forms.input name="tanggal_start" type="date" id="tanggal_start" label="Tanggal Awal" />
-            <x-forms.input name="tanggal_end" type="date" id="tanggal_end" label="Tanggal Akhir" />
+        <div class="mt-5 max-w-2xl space-y-5">
+            <x-forms.select name="ruangan" :options="$rooms" id="ruangan" label="Ruangan" placeholder="Semua Ruangan" values="$rooms" />
+            <div class="flex gap-5 max-w-lg">
+                <!-- Remove date input fields -->
+                <select name="selected_date" class="bg-gray-100 rounded-full p-3 w-full" id="selected_date">
+                    @forelse ($periods as $period)
+                    <option value="{{ "{$period->month}-{$period->year}" }}">{{ "{$period->month}-{$period->year}" }}</option>
+                    @empty
+                    <option value="">--Pilih Bulan--</option>
+                    @endforelse
+                </select>
+            </div>
+            <button id="filterBtn" class="bg-orange-950 text-white px-4 py-2 rounded-md" type="submit">Filter</button>
         </div>
-        <button id="filterBtn" class="bg-orange-950 text-white px-4 py-2 rounded-md" type="submit">Filter</button>
-    </div>
-    <div class="shadow border p-5 mt-20 bg-white">
     </form>
+    {{-- <select name="" class="bg-gray-100 rounded-full p-3 w-full" id="date">
+        @forelse ($indicators as $indicator)
+        <option value="{{ "{$indicator->month}-{$indicator->year}" }}">{{ "{$indicator->month}-{$indicator->year}" }}</option>
+        @empty
+        <option value="">--Pilih Bulan--</option>
+        @endforelse
+    </select> --}}
         {{-- Table --}}
         <div class="tables-responsive overflow-y-auto mt-10">
-            <table class="tables">
+            <div class="w-full flex justify-end gap-5">
+                <button name="downloadbtn" id="downloadbtn" class="px-7 py-3 mt-2 mb-8 text-white rounded-lg bg-theme-border-sidebar">
+                    Download PDF<span class="ml-4 mt-4">
+                        <iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon>
+                    </span>
+                </button>
+            </div>
+        </div>
+            <table class="tables table-cencus w-full" id="table-cencus">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -58,69 +78,55 @@
     </div>
 </div>
 @endsection
-
 @push('script-injection')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
 <script>
-   function fetchData() {
-    const ruangan = $('#ruangan').val();
-    const tanggalStart = $('#tanggal_start').val();
-    const tanggalEnd = $('#tanggal_end').val();
-
-    $.ajax({
-        url: '{{ route('admin.admin.laporan.indikator.ajax') }}',
-        method: 'GET',
-        data: {
-            ruangan: ruangan,
-            tanggal_start: tanggalStart,
-            tanggal_end: tanggalEnd,
-        },
-        success: function(response) {
-            // Update table content with the new data
-            updateTable(response.data);
-        },
-        error: function(error) {
-            console.error(error);
-        }
+    document.getElementById('downloadbtn').addEventListener('click', function() {
+        generate();
     });
-}
+    function generate() {
+        var doc = new jspdf.jsPDF('p', 'pt', 'letter');
+        var htmlstring = '';
+        var tempVarToCheckPageHeight = 0;
+        var pageHeight = 0;
+        pageHeight = doc.internal.pageSize.height;
+        specialElementHandler = {
 
-// Set up event listeners
-$('#ruangan, #tanggal_start, #tanggal_end').change(function() {
-    // Fetch data only if all three elements are selected
-    if ($('#ruangan').val() && $('#tanggal_start').val() && $('#tanggal_end').val()) {
-        fetchData();
+            '#bypassme': function (element, renderer) {
+                return true;
+            }
+        };
+        margin = {
+            top: 20,
+            bottom: 60,
+            left: 40,
+            right: 40,
+            width: 600
+        };
+        var y = 20;
+        doc.setLineWidth(2);
+        doc.text(15, y = y + 30, "Cencus Harian");
+        doc.autoTable({
+            html: '#table-cencus',
+            startY: 70,
+            theme: 'grid',
+            ColumnStyle: {
+                0: {
+                    cellwidth: 120,
+                },
+                1: {
+                    cellwidth: 120,
+                },
+                2: {
+                    cellwidth: 120,
+                }
+            },
+            styles: {
+                minCellHeight: 50
+            }
+        });
+        doc.save('Cencus_Harian.pdf');
     }
-});
-
-// Filter button click event
-$('#filterBtn').click(function() {
-    fetchData();
-});
-fetchData();
-
-// Function Untuk merubah tabel
-    function updateTable(data) {
-    // Reset table body content
-    $('tbody').html('');
-
-    // Iterate through each data entry and append it to the table
-    data.forEach((entry, index) => {
-        $('tbody').append(`
-            <tr>
-                <td name="no">${index + 1}</td>
-                <td name="tanggal">${entry.date}</td>
-                <td name="jumlahtd">${entry.beds_total}</td>
-                <td name="bor">${entry.bor}</td>
-                <td name="los">${entry.alos}</td>
-                <td name="toi">${entry.toi}</td>
-                <td name="bto">${entry.bto}</td>
-                <td name ="gdr">${entry.gdr}</td>
-                <td name="ndr">${entry.ndr}</td>
-            </tr>
-        `);
-    });
-}
-
 </script>
-@endpush
-
+    @endpush

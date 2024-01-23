@@ -8,16 +8,16 @@
             </button>
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="fullname" type="text" name="fullname" label="Nama Pasien" readonly />
+            <x-forms.input id="fullname" type="text" name="fullname" label="Nama Pasien" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="birthdate" type="date" name="birthdate" label="Tgl. Lahir" readonly />
+            <x-forms.input id="birthdate" type="date" name="birthdate" label="Tgl. Lahir" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select id="gender" type="text" name="gender" label="Jenis Kelamin" placeholder="Pilih Jenis Kelamin" :options="['P' => 'P', 'L' => 'L']" readonly/>
+            <x-forms.select id="gender" type="text" name="gender" label="Jenis Kelamin" placeholder="Pilih Jenis Kelamin" :options="['P' => 'P', 'L' => 'L']" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.input id="address" type="text" name="address" label="Alamat" readonly />
+            <x-forms.input id="address" type="text" name="address" label="Alamat" />
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.select name="new_patient" id="new_patient" label="Status Pasien" placeholder="Pilih Status Pasien" :options="['Lama', 'Baru']" />
@@ -25,7 +25,7 @@
     </div>
     <div class="p-5 lg:w-[50%] w-full">
         <div class="md:flex md:items-center mb-6 gap-2">
-            <x-forms.select name="diagnose_id" id="diagnose_id" label="Diagnosa" placeholder="Pilih Status Pasien" :options="$diagnoses" />
+            {{-- <x-forms.select name="diagnose_id" id="diagnose_id" label="Diagnosa" placeholder="Pilih Status Pasien" :options="$diagnoses" /> --}}
         </div>
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="date" type="date" name="date" label="Tanggal Masuk" />

@@ -108,7 +108,7 @@
         </tr>
     </thead>
     <tbody>
-        {{-- @foreach ($indicators as $indicator)
+        {{-- @foreach ($periods as $indicator)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $indicator->date }}</td>
@@ -119,8 +119,8 @@
                 <td>{{ $indicator->bto }}</td>
                 <td>{{ $indicator->gdr }}</td>
                 <td>{{ $indicator->ndr }}</td>
-            </tr>
-        @endforeach --}}
+            </tr> --}}
+        {{-- @endforeach --}}
      </tbody>
 </table>
 

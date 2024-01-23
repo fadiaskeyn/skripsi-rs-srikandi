@@ -8,9 +8,19 @@ use App\Models\Room;
 class RoomRepository implements RoomRepositoryInterface
 {
     public function getData(): array
-    {
-        return Room::select('id','name', 'number_of_beds', 'type_room')->get()->toArray();
-    }
+{
+    $rooms = Room::select('id', 'name', 'number_of_beds', 'type_room')->get();
+
+    return $rooms->map(function ($room) {
+        return [
+            'id' => $room->id,
+            'name' => $room->name,
+            'number_of_beds' => $room->number_of_beds,
+            'type_room' => $room->type_room,
+        ];
+    })->toArray();
+}
+
 
     public function create(array $data): Room
     {

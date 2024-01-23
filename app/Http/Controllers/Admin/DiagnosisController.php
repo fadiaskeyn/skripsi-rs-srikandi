@@ -31,7 +31,7 @@ class DiagnosisController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -54,7 +54,7 @@ class DiagnosisController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(int $id)
-    {   
+    {
         $diagnosis = DiagnosisRepository::getFind($id);
         return response()->json([
             'data' => $diagnosis
@@ -66,7 +66,7 @@ class DiagnosisController extends Controller
      */
     public function update(Request $request, Diagnosis $diagnosis)
     {
-       
+
     }
 
     /**

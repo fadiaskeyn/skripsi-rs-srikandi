@@ -22,7 +22,7 @@
             </div>
 </form>
             {{-- Table --}}
-            <x-content.tablesemua :headers="['No','No. RM', 'Nama Pasien', 'Tgl Lahir', 'Jenis Kelamin', 'Alamat', 'Status','Action']" :rows="$patients"/>
+            <x-content.tablesemua :headers="['No','No. RM', 'Nama Pasien', 'Tgl Lahir', 'Jenis Kelamin', 'Ruangan', 'status','Action']" :rows="$patients"/>
 
         </div>
     </div>

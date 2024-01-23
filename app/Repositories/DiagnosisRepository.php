@@ -5,8 +5,10 @@ namespace App\Repositories;
 use App\Interface\DiagnosisRepositoryInterface;
 use App\Models\Diagnosis;
 use App\Models\PatientEntry;
+use App\Models\Room;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Repositories\RoomRepository;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +42,7 @@ class DiagnosisRepository implements DiagnosisRepositoryInterface
 
     public function getTopDiagnoses()
     {
+        $rooms = Room::select('id','name');
         $diagnoses = PatientEntry::select(DB::raw("COUNT(*) AS total, diagnose_id"))
             ->whereNotNull('diagnose_id')
             ->groupBy('diagnose_id')

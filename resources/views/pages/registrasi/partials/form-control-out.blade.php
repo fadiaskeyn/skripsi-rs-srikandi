@@ -26,6 +26,9 @@
         <div class="md:flex md:items-center mb-6 gap-2">
             <x-forms.input id="entry_date"  type="date" label="Tanggal Masuk" />
         </div>
+        <div class="md:flex md:items-center mb-6 gap-2">
+            <x-forms.select name="diagnose_id" id="diagnose_id" label="Diagnosa" placeholder="Pilih Status Pasien" :options="$diagnoses" />
+        </div>
     </div>
     <div class="p-5 lg:w-[50%] w-full">
         <div class="md:flex md:items-center mb-6 gap-2">

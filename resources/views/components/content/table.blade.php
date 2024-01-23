@@ -22,6 +22,7 @@
                     @endforeach
                     <td>
                         <a class="inline-flex  items-center px-4 py-2 rounded-lg bg-theme-border-sidebar/20 text-theme-border-sidebar text-sm md:text-left font-medium" href="{{ route($edit, $row['id']) }}">Edit</a>
+
                         <button class="inline-flex items-center px-4 py-2 rounded-lg bg-theme-border-sidebar text-white text-sm md:text-left font-medium" href=""  onclick="confirmDelete({{ $row['id'] }})">Hapus</button>
                     </td>
                 </tr>

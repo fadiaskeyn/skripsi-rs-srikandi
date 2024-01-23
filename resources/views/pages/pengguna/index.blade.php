@@ -35,6 +35,7 @@
 @endsection
 
 @push('script-injection')
+
 <script>
     function confirmDelete(id) {
         Swal.fire({

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PatientEntry extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'patient_id',
         'date',
@@ -25,7 +24,7 @@ class PatientEntry extends Model
     ];
 
     protected $casts = [
-        'date' => 'date',
+        'date' => 'datetime:Y-m-d\TH:i:s.u\Z',
         'out_date' => 'date',
     ];
 

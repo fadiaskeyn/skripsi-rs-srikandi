@@ -23,7 +23,7 @@
                 <div class="dropdown-menu-link @active('registration.patient*,registration.histori.*')">
                     <ul class="menu-dropdown">
                         <li>
-                            <a href="{{ route('registration.patient-entry.create') }}" class="text-white"><button class="item-link @active('registration.patient-entry.create')">Pasien Masuk</button></a>
+                            <a href="{{ route('registration.registration.data-pasien-masuk') }}" class="text-white"><button class="item-link @active('registration.patient-entry.create')">Pasien Masuk</button></a>
                         </li>
                         {{-- <li>
                             <a href="{{ route('registration.patient-exit.create') }}" class="text-white"><button class="item-link @active('registration.patient-exit.create')">Pasien Keluar</button></a>
@@ -35,7 +35,7 @@
                             <a href="{{ route('registration.registration.data-patient') }}" class="text-white"><button class="item-link @active('registration.registration.data-patient')">Pasien Keluar</button></a>
                         </li>
                         <li>
-                            <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link @active('registration.histori.index')">Data Pasien</button></a>
+                            <a href="{{ route('registration.histori.index') }}" class="text-white"><button class="item-link @active('registration.histori.index')">History Pasien</button></a>
                         </li>
                     </ul>
                 </div>

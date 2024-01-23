@@ -20,4 +20,12 @@
             </div>
         </div>
     </div>
+
 @endsection
+
+@if ($errors->has('error'))
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+       alert("Error!!! Pasien Sudah berstatus Entry atau sudah terdaftar !!!")
+    </script>
+@endif

@@ -29,7 +29,7 @@ class PatientEntryRequest extends FormRequest
             'nursing_class' => 'required|numeric',
             'payment_id' => 'required|exists:payments,id',
             'room_id' => 'required|exists:rooms,id',
-            'diagnose_id' => 'required|exists:diagnoses,id',
+            // 'diagnose_id' => 'required|exists:diagnoses,id',
         ];
     }
 }

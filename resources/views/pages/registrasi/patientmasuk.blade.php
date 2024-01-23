@@ -13,9 +13,11 @@
             <div class="p-2 lg:flex grid space-y-5 grid-cols-1 justify-between">
                 <div class="w-full flex justify-end">
                     <a href="{{ route('registration.histori.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar">Tambah Pasien <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
+
+                    <a href="{{ route('registration.patient-entry.create') }}" class="px-7 py-3 text-white rounded-lg bg-theme-border-sidebar"> Form Pasien Entry <span class="ml-4 mt-4"><iconify-icon icon="octicon:plus-16" class="text-sm"></iconify-icon></span></a>
                 </div>
             </div>
-            <form class="mt-5 lg:w-3/4 p-8 " action="{{ route('registration.histori.index') }}">
+            <form action="{{ route('registration.registration.data-pasien-masuk') }}">
                 @csrf
             <div class="flex justify-end">
                 <div class="input-box-search flex mt-5 border">
@@ -25,7 +27,7 @@
             </div>
 </form>
             {{-- Table --}}
-            <x-content.table-patient :headers="['No','No. RM', 'Nama', 'Tgl Lahir', 'Jenis Kelamin', 'Alamat','Action']" :rows="$data"/>
+            <x-content.tabel-pasien-masuk :headers="['No','No. RM', 'Nama', 'Tgl Lahir', 'Jenis Kelamin', 'Alamat','Action']" :rows="$data"/>
         </div>
     </div>
 

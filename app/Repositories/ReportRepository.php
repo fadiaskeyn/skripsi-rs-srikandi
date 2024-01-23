@@ -14,79 +14,6 @@ use Illuminate\Support\Facades\DB;
 
 class ReportRepository
 {
-    public function getCensusRecapitulations()
-    {
-        $availDates = $this->getAvailDates();
-
-        return $availDates->map(function($date) {
-            $entries = PatientEntry::whereDate('date', $date)->get();
-            $moves = PatientMove::whereDate('date', $date)->get();
-            $outs = PatientEntry::whereNotNull('out_date')->whereDate('out_date', $date)->get();
-
-            $longCares = $outs->reduce(
-                fn(?int $carry, PatientEntry $entry) => $carry + MedicService::getLongCare($entry),
-                0
-            );
-
-            return (object) [
-                'long_cares' => $longCares,
-                'date' => Carbon::createFromFormat('Y-m-d', $date)->format('d-m-Y'),
-                'entries' => (object) [
-                    'total_entries' => $entries->count(),
-                    'total_moves' => $moves->count(),
-                    'total' => ($entries->count() + $moves->count()),
-                ],
-                'exits' => (object) $this->getOutPatients($date),
-                'payments' => $this->getTotalPayments($entries),
-                'nursing_class' => [
-                    1 => $entries->filter(fn($entry) => $entry->nursing_class == 1)->count(),
-                    2 => $entries->filter(fn($entry) => $entry->nursing_class == 2)->count(),
-                    3 => $entries->filter(fn($entry) => $entry->nursing_class == 3)->count(),
-                ],
-            ];
-        });
-    }
-
-    public function getHospitalIndicators()
-    {
-
-        $dates = PatientEntry::select(DB::raw('MONTH(date) as month, YEAR(date) AS year'))
-            ->groupBy('year', 'month')
-            ->get();
-
-        return $dates->map(fn($date) => MedicService::getIndicators($date->month, $date->year));
-    }
-
-    public function getHospitalVisitors()
-{
-    $dates = PatientEntry::select(DB::raw('DAY(date) as day, MONTH(date) as month, YEAR(date) AS year'))
-        ->groupBy('day', 'year', 'month')
-        ->get();
-
-    return $dates->map(function ($date) {
-        $malePatients = PatientEntry::whereDay('date', $date->day)
-            ->whereMonth('date', $date->month)
-            ->whereYear('date', $date->year)
-            ->whereIn('patient_id', function (Builder $query) {
-                $query->select('id')->from('patients')->where('gender', 'L');
-            })->count();
-
-        $female = PatientEntry::whereDay('date', $date->day)
-            ->whereMonth('date', $date->month)
-            ->whereYear('date', $date->year)
-            ->whereIn('patient_id', function (Builder $query) {
-                $query->select('id')->from('patients')->where('gender', 'P');
-            })->count();
-
-        return (object) [
-            'date' => Carbon::createFromDate($date->year, $date->month, $date->day)->format('d-m-Y'),
-            'male' => $malePatients,
-            'female' => $female,
-            'total' => $malePatients + $female,
-        ];
-    });
-}
-
 
     private function getAvailDates()
     {
@@ -107,6 +34,116 @@ class ReportRepository
             ->unique()
             ->sortBy(null);
     }
+
+    public function getCensusRecapitulations($startDate, $endDate,$roomID)
+{
+    $query = PatientEntry::query();
+
+    // Validasi dan filter date range
+    if (!empty($startDate) && !empty($endDate)) {
+        $query->whereBetween('date', [$startDate, $endDate]);
+    }
+
+    if (!empty($roomID)) {
+        $query->where('room_id', $roomID);
+    }
+
+    return $this->getAvailDates()->map(function ($date) use ($query) {
+        $entries = $query->whereDate('date', $date)->get();
+        $moves = PatientMove::whereDate('date', $date)->get();
+        $outs = PatientEntry::whereNotNull('out_date')->whereDate('out_date', $date)->get();
+
+        $longCares = $outs->reduce(
+            fn (?int $carry, PatientEntry $entry) => $carry + MedicService::getLongCare($entry),
+            0
+        );
+
+        return (object)[
+            'long_cares' => $longCares,
+
+            'date' => Carbon::createFromFormat('Y-m-d', $date)->format('d-m-Y'),
+            'entries' => (object)[
+                'total_entries' => $entries->count(),
+                'total_moves' => $moves->count(),
+                'total' => ($entries->count() + $moves->count()),
+            ],
+            'exits' => (object)$this->getOutPatients($date),
+            'payments' => $this->getTotalPayments($entries),
+            'nursing_class' => [
+                1 => $entries->filter(fn($entry) => $entry->nursing_class == 1)->count(),
+                2 => $entries->filter(fn($entry) => $entry->nursing_class == 2)->count(),
+                3 => $entries->filter(fn($entry) => $entry->nursing_class == 3)->count(),
+            ],
+        ];
+    });
+}
+public function getHospitalIndicators($month, $year, $roomID)
+{
+    $query = PatientEntry::query();
+
+    if (!empty($month) && !empty($year)) {
+        // Sesuaikan dengan format grouping yang sesuai dengan query MySQL Anda
+        $query->selectRaw('MONTH(date) as month, YEAR(date) as year')
+            ->groupBy(DB::raw('YEAR(date), MONTH(date)'))
+            ->whereYear('date', $year)
+            ->whereMonth('date', $month);
+    }
+
+    // Saring berdasarkan roomID jika disediakan
+    if (!empty($roomID)) {
+        $query->where('room_id', $roomID);
+    }
+
+    // Dapatkan hasil query
+    $periods = $query->get();
+
+    return $periods;
+}
+
+
+
+public function getHospitalVisitors($startDate, $endDate)
+{
+
+   $query = PatientEntry::query();
+    $dates = $query->select(DB::raw('DAY(date) as day, MONTH(date) as month, YEAR(date) AS year'))
+        ->groupBy('day', 'year', 'month')
+        ->get();
+    // Hitung jumlah pasien laki-laki dan perempuan untuk setiap tanggal
+    return $dates->map(function ($date) use ($startDate, $endDate) {
+        $malePatients = PatientEntry::whereDay('date', $date->day)
+            ->whereMonth('date', $date->month)
+            ->whereYear('date', $date->year)
+            ->whereIn('patient_id', function (Builder $query) {
+                $query->select('id')->from('patients')->where('gender', 'L');
+            });
+
+        $femalePatients = PatientEntry::whereDay('date', $date->day)
+            ->whereMonth('date', $date->month)
+            ->whereYear('date', $date->year)
+            ->whereIn('patient_id', function (Builder $query) {
+                $query->select('id')->from('patients')->where('gender', 'P');
+            });
+
+        // Jika startDate dan endDate tidak kosong, tambahkan filter untuk kedua jenis kelamin
+        if (!empty($startDate) && !empty($endDate)) {
+            $malePatients->whereBetween('date', [$startDate, $endDate]);
+            $femalePatients->whereBetween('date', [$startDate, $endDate]);
+        }
+
+        // Hitung jumlah pasien laki-laki dan perempuan
+        $maleCount = $malePatients->count();
+        $femaleCount = $femalePatients->count();
+
+        return (object) [
+            'date' => Carbon::createFromDate($date->year, $date->month, $date->day)->format('d-m-Y'),
+            'male' => $maleCount,
+            'female' => $femaleCount,
+            'total' => $maleCount + $femaleCount,
+        ];
+    });
+}
+
 
     private function getOutPatients(string $date)
     {

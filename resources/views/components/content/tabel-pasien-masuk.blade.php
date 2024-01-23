@@ -19,10 +19,10 @@
                     @foreach ($row as $cell)
                         <td>{{ $cell }}</td>
                     @endforeach
-                    <td class="flex gap-4">
+                    <td class="flex-none">
                         <a class="inline-flex  items-center px-4 py-2 rounded-lg bg-theme-border-sidebar/20 text-theme-border-sidebar text-sm md:text-left font-medium" href="{{route('registration.patient-entry.create', ['medrec_number' => $row['medrec_number']]) }}">Registrasi</a>
 
-                        <a class="inline-flex items-center px-4 py-2 rounded-lg bg-theme-border-sidebar text-white text-sm md:text-left font-medium" href="{{ route('registration.registration.patient-entry.historipatient', ['medrec_number' => $row['medrec_number']]) }}">Histori</a>
+                        {{-- <a class="inline-flex items-center px-4 py-2 rounded-lg bg-theme-border-sidebar text-white text-sm md:text-left font-medium" href="{{ route('registration.registration.patient-entry.historipatient', ['medrec_number' => $row['medrec_number']]) }}">Histori</a> --}}
 
                     </td>
                 </tr>
