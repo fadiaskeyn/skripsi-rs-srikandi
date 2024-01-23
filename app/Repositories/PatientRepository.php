@@ -24,7 +24,7 @@ class PatientRepository implements PatientRepositoryInterface
     public function create(array $data): Patient
     {
         return Patient::create([
-            'medrec_number' => $data['medrec_number'],
+            'medrec_number' => $data['rm'],
             'fullname' => $data['fullname'],
             'birthdate' => $data['birthdate'],
             'gender' => $data['gender'],

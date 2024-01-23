@@ -20,7 +20,7 @@ class PatientEntry extends Model
         'out_date',
         'way_out',
         'dpjb',
-        'diagnose_id',
+        // 'diagnose_id',
     ];
 
     protected $casts = [

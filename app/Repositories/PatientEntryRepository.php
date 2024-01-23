@@ -18,7 +18,7 @@ class PatientEntryRepository implements PatientEntryRepositoryInterface
     public function create(array $data): PatientEntry
     {
         // Find or create a patient based on 'medrec_number'
-        $patient = Patient::firstOrCreate(['medrec_number' => $data['medrec_number']]);
+        $patient = Patient::firstOrCreate(['medrec_number' => $data['rm'] ?? $data['medrec_number']]);
 
         return PatientEntry::create([
             'patient_id' => $patient->id, // Use the patient's ID from the 'patients' table

@@ -5,16 +5,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Registration\PatientRequest;
 use App\Http\Requests\Registration\PatientEntryRequest;
 use App\Repositories\PatientRepository;
-use App\Models\{Diagnosis, Patient, Payment, Room, Service};
+use App\Models\{Diagnosis, Patient, PatientEntry, Payment, Room, Service};
+use App\Repositories\PatientEntryRepository;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    private PatientRepository $patientRepo;
+    protected PatientRepository $patientRepo;
+    protected PatientEntryRepository $patientEntryRepo;
 
     public function __construct()
     {
         $this->patientRepo = new PatientRepository;
+        $this->patientEntryRepo = new PatientEntryRepository;
     }
 
     /**
@@ -39,13 +42,12 @@ class PatientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PatientEntryRequest $request)
+    public function store(Request $request)
     {
-        $patientRepo = new PatientRepository;
-        $patientEntryRepo = new PatientEntryRepository;
-
-        // Create or get patient based on 'medrec_number'
-        $patient = $patientRepo->create($request->validated());
+       
+        $this->patientRepo->create($request->all());
+        $this->patientEntryRepo->create($request->all());
+        
 
         // Check if the patient with the same 'medrec_number' has an 'entry' status
         $existingEntry = PatientEntry::join('patients', 'patients.id', '=', 'patient_entries.patient_id')
@@ -58,10 +60,6 @@ class PatientController extends Controller
             return back()->withErrors(['error' => 'Pasien dengan status "entry" sudah terdaftar.'])->withInput();
         }
 
-        // Create PatientEntry with the obtained patient_id
-        $data = $request->validated();
-        $data['patient_id'] = $patient->id;
-        $patientEntryRepo->create($data);
 
         return back()->with('swals', 'Berhasil mendaftarkan pasien');
     }
